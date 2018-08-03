@@ -15,8 +15,12 @@
  */
 
 #include "applicationui.hpp"
+#include "WebImageView/WebImageView.hpp"
+#include "Requester/Requester.hpp"
+#include "AudioPlayer/AudioPlayer.hpp"
 
 #include <bb/cascades/Application>
+#include <bb/cascades/DevelopmentSupport>
 
 #include <QLocale>
 #include <QTranslator>
@@ -28,11 +32,21 @@ using namespace bb::cascades;
 Q_DECL_EXPORT int main(int argc, char **argv)
 {
     Application app(argc, argv);
+    /**
+     * To use this feature, you must enable sending QML files to a device.
+     * In the Momentics IDE, in Window > Preferences > BlackBerry,
+     * select Send QML files to device on save,
+     * the application must be built in debug mode
+     * and the development support must be installed in valid application instance.
+     */
+    DevelopmentSupport::install();
 
-    // Create the Application UI object, this is where the main.qml file
-    // is loaded and the application scene is set.
+    qmlRegisterType<QTimer>("tech.lwl", 1, 0, "QTimer");
+    qmlRegisterType<WebImageView>("tech.lwl", 1, 0, "WebImageView");
+    qmlRegisterType<Requester>("tech.lwl", 1, 0, "Requester");
+    qmlRegisterType<AudioPlayer>("tech.lwl", 1, 0, "AudioPlayer");
+
     ApplicationUI appui;
 
-    // Enter the application main event loop.
     return Application::exec();
 }

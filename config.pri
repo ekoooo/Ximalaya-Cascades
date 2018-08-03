@@ -35,15 +35,41 @@ simulator {
 }
 
 config_pri_assets {
-    OTHER_FILES += $$quote($$BASEDIR/assets/main.qml)
+    OTHER_FILES += \
+        $$quote($$BASEDIR/assets/api.js) \
+        $$quote($$BASEDIR/assets/common/Common.qml) \
+        $$quote($$BASEDIR/assets/components/Carousel.qml) \
+        $$quote($$BASEDIR/assets/components/RefreshHeader.qml) \
+        $$quote($$BASEDIR/assets/images/audio_player/aco.png) \
+        $$quote($$BASEDIR/assets/images/audio_player/add.png) \
+        $$quote($$BASEDIR/assets/images/audio_player/af.png) \
+        $$quote($$BASEDIR/assets/images/bb10/ic_forward.png) \
+        $$quote($$BASEDIR/assets/images/bb10/ic_pause.png) \
+        $$quote($$BASEDIR/assets/images/bb10/ic_play.png) \
+        $$quote($$BASEDIR/assets/images/bb10/ic_reply.png) \
+        $$quote($$BASEDIR/assets/images/carousel/round_white.png) \
+        $$quote($$BASEDIR/assets/images/image_top_default.png) \
+        $$quote($$BASEDIR/assets/images/ting_np_icon.png) \
+        $$quote($$BASEDIR/assets/main.qml) \
+        $$quote($$BASEDIR/assets/pages/AudioPlayerUI.qml) \
+        $$quote($$BASEDIR/assets/pages/child/ItemContainer.qml)
 }
 
 config_pri_source_group1 {
     SOURCES += \
+        $$quote($$BASEDIR/src/AudioPlayer/AudioPlayer.cpp) \
+        $$quote($$BASEDIR/src/Misc/Misc.cpp) \
+        $$quote($$BASEDIR/src/Requester/Requester.cpp) \
+        $$quote($$BASEDIR/src/WebImageView/WebImageView.cpp) \
         $$quote($$BASEDIR/src/applicationui.cpp) \
         $$quote($$BASEDIR/src/main.cpp)
 
-    HEADERS += $$quote($$BASEDIR/src/applicationui.hpp)
+    HEADERS += \
+        $$quote($$BASEDIR/src/AudioPlayer/AudioPlayer.hpp) \
+        $$quote($$BASEDIR/src/Misc/Misc.hpp) \
+        $$quote($$BASEDIR/src/Requester/Requester.hpp) \
+        $$quote($$BASEDIR/src/WebImageView/WebImageView.hpp) \
+        $$quote($$BASEDIR/src/applicationui.hpp)
 }
 
 CONFIG += precompile_header
@@ -57,9 +83,53 @@ lupdate_inclusion {
         $$quote($$BASEDIR/../src/*.cc) \
         $$quote($$BASEDIR/../src/*.cpp) \
         $$quote($$BASEDIR/../src/*.cxx) \
+        $$quote($$BASEDIR/../src/AudioPlayer/*.c) \
+        $$quote($$BASEDIR/../src/AudioPlayer/*.c++) \
+        $$quote($$BASEDIR/../src/AudioPlayer/*.cc) \
+        $$quote($$BASEDIR/../src/AudioPlayer/*.cpp) \
+        $$quote($$BASEDIR/../src/AudioPlayer/*.cxx) \
+        $$quote($$BASEDIR/../src/Misc/*.c) \
+        $$quote($$BASEDIR/../src/Misc/*.c++) \
+        $$quote($$BASEDIR/../src/Misc/*.cc) \
+        $$quote($$BASEDIR/../src/Misc/*.cpp) \
+        $$quote($$BASEDIR/../src/Misc/*.cxx) \
+        $$quote($$BASEDIR/../src/Requester/*.c) \
+        $$quote($$BASEDIR/../src/Requester/*.c++) \
+        $$quote($$BASEDIR/../src/Requester/*.cc) \
+        $$quote($$BASEDIR/../src/Requester/*.cpp) \
+        $$quote($$BASEDIR/../src/Requester/*.cxx) \
+        $$quote($$BASEDIR/../src/WebImageView/*.c) \
+        $$quote($$BASEDIR/../src/WebImageView/*.c++) \
+        $$quote($$BASEDIR/../src/WebImageView/*.cc) \
+        $$quote($$BASEDIR/../src/WebImageView/*.cpp) \
+        $$quote($$BASEDIR/../src/WebImageView/*.cxx) \
         $$quote($$BASEDIR/../assets/*.qml) \
         $$quote($$BASEDIR/../assets/*.js) \
-        $$quote($$BASEDIR/../assets/*.qs)
+        $$quote($$BASEDIR/../assets/*.qs) \
+        $$quote($$BASEDIR/../assets/common/*.qml) \
+        $$quote($$BASEDIR/../assets/common/*.js) \
+        $$quote($$BASEDIR/../assets/common/*.qs) \
+        $$quote($$BASEDIR/../assets/components/*.qml) \
+        $$quote($$BASEDIR/../assets/components/*.js) \
+        $$quote($$BASEDIR/../assets/components/*.qs) \
+        $$quote($$BASEDIR/../assets/images/*.qml) \
+        $$quote($$BASEDIR/../assets/images/*.js) \
+        $$quote($$BASEDIR/../assets/images/*.qs) \
+        $$quote($$BASEDIR/../assets/images/audio_player/*.qml) \
+        $$quote($$BASEDIR/../assets/images/audio_player/*.js) \
+        $$quote($$BASEDIR/../assets/images/audio_player/*.qs) \
+        $$quote($$BASEDIR/../assets/images/bb10/*.qml) \
+        $$quote($$BASEDIR/../assets/images/bb10/*.js) \
+        $$quote($$BASEDIR/../assets/images/bb10/*.qs) \
+        $$quote($$BASEDIR/../assets/images/carousel/*.qml) \
+        $$quote($$BASEDIR/../assets/images/carousel/*.js) \
+        $$quote($$BASEDIR/../assets/images/carousel/*.qs) \
+        $$quote($$BASEDIR/../assets/pages/*.qml) \
+        $$quote($$BASEDIR/../assets/pages/*.js) \
+        $$quote($$BASEDIR/../assets/pages/*.qs) \
+        $$quote($$BASEDIR/../assets/pages/child/*.qml) \
+        $$quote($$BASEDIR/../assets/pages/child/*.js) \
+        $$quote($$BASEDIR/../assets/pages/child/*.qs)
 
     HEADERS += \
         $$quote($$BASEDIR/../src/*.h) \
