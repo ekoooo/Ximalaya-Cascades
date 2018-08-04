@@ -36,6 +36,7 @@ Page {
             onTriggered: {
                 audioPlayer.previous();
             }
+            enabled: !isLoading
         },
         ActionItem {
             title: mediaState === MediaState.Started ? qsTr("暂停") : qsTr("播放")
@@ -48,6 +49,7 @@ Page {
                     audioPlayer.play();
                 }
             }
+            enabled: !isLoading
         },
         ActionItem {
             title: qsTr("下一集")
@@ -56,6 +58,7 @@ Page {
             onTriggered: {
                 audioPlayer.next();
             }
+            enabled: !isLoading
         }
     ]
 
@@ -219,60 +222,18 @@ Page {
 
         // loading
         Container {
-            id: loadingContainer
-            property bool isRun: isLoading
-            
+            visible: isLoading
             horizontalAlignment: HorizontalAlignment.Fill
             verticalAlignment: VerticalAlignment.Fill
             layout: DockLayout {}
+            background: Color.create(0,0,0,0.5)
             
-            onIsRunChanged: {
-                if(isRun) {
-                    opacity = 1;
-                    loadingContainer.visible = true;
-                }else {
-                    loadingHideAni.play();
-                }
-            }
-            
-            animations: [
-                FadeTransition {
-                    id: loadingHideAni
-                    fromOpacity: 1
-                    toOpacity: 0
-                    duration: 200
-                    onEnded: {
-                        loadingContainer.visible = false;
-                    }
-                }
-            ]
-            
-            WebImageView {
-                url: "asset:///images/image_top_default.png"
-                horizontalAlignment: HorizontalAlignment.Fill
-                verticalAlignment: VerticalAlignment.Fill
-                scalingMethod: ScalingMethod.AspectFill
-            }
-            Container {
+            ActivityIndicator {
+                running: true
+                preferredHeight: 100
+                preferredWidth: 100
                 horizontalAlignment: HorizontalAlignment.Center
                 verticalAlignment: VerticalAlignment.Center
-                layout: StackLayout {
-                    orientation: LayoutOrientation.LeftToRight
-                }
-                ActivityIndicator {
-                    running: true
-                    preferredHeight: 100
-                    preferredWidth: 100
-                    horizontalAlignment: HorizontalAlignment.Center
-                    verticalAlignment: VerticalAlignment.Center
-                }
-                Label {
-                    text: qsTr("正在加载中...")
-                    verticalAlignment: VerticalAlignment.Center
-                    textStyle {
-                        color: Color.White
-                    }
-                }
             }
         }
     }
