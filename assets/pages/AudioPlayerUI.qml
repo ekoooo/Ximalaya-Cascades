@@ -8,23 +8,23 @@ Page {
     id: apRoot
     objectName: "audioPlayer"
     
+    // 播放器需要的基本信息
     property AudioPlayer audioPlayer
-    // 如果 trackId 改变，而且不为空，则为更换播放，如果为空则为打开播放器
-    property variant trackId
-    property variant albumInfo
-    // 当前播放信息
-    property variant trackInfo: {}
-    // 是否是更新播放
-    property bool isChangedTrackId: false
+    property variant trackId // 当前播放声音ID，如果是直接打开播放器，请传入：-1
+    property variant trackInfo: {} // 当前播放声音的信息
+    property variant albumInfo // 当前页的专辑信息
+    property variant listAlbumInfo // 当前列表显示的专辑信息
     
+    // 用于 timeline 和 pause 状态
     property variant mediaState: MediaState.Stopped // 播放器状态
     property variant duration: 0 // 长度
     property variant position: 0 // 当前播放位置
     
+    // 加载中标志
     property bool isLoading: true
     
     titleBar: TitleBar {
-        title: qsTr("正在播放：") + (trackInfo['title'] || qsTr("无"))
+        title: (trackInfo['nickname'] || qsTr("演播")) + '：' + (trackInfo['title'] || qsTr("无"))
         scrollBehavior: TitleBarScrollBehavior.Sticky
     }
 
@@ -64,106 +64,120 @@ Page {
         verticalAlignment: VerticalAlignment.Fill
         layout: DockLayout {}
         
-        // 底部封面背景
-        WebImageView {
-            url: trackInfo['coverLarge'] || ""
-            scalingMethod: ScalingMethod.AspectFill
-            failImageSource: "asset:///images/image_top_default.png"
-            horizontalAlignment: HorizontalAlignment.Fill
-            verticalAlignment: VerticalAlignment.Fill
-            implicitLayoutAnimationsEnabled: false
-        }
-        
         Container {
             horizontalAlignment: HorizontalAlignment.Center
             verticalAlignment: VerticalAlignment.Center
-            background: Color.create(0,0,0,0.3)
-            layout: StackLayout {}
-            
+            layout: StackLayout {
+                
+            }
             Container {
                 layoutProperties: StackLayoutProperties {
                     spaceQuota: 1
                 }
-                layout: DockLayout {}
-                horizontalAlignment: HorizontalAlignment.Center
-                
-                Container {
-                    layout: DockLayout {}
-                    verticalAlignment: VerticalAlignment.Center
-                    
-                    Container {
-                        id: cdContainer
-                        horizontalAlignment: HorizontalAlignment.Center
-                        layout: DockLayout {
-                        
+                ListView {
+                    scrollRole: ScrollRole.Main
+                    dataModel: ArrayDataModel {
+                        id: dm
+                    }
+                    onTriggered: {
+                        if(dm.data(indexPath)['__type']) {
+                            return;
                         }
-                        margin.topOffset: ui.du(10)
-                        
-                        WebImageView {
-                            url: "asset:///images/audio_player/aco.png"
-                            preferredWidth: displayInfo.pixelSize.width * 0.45
-                            preferredHeight: displayInfo.pixelSize.width * 0.45
-                            scalingMethod: ScalingMethod.AspectFit
-                            horizontalAlignment: HorizontalAlignment.Center
+                        // 如果是播放的不是当前页的话，则需要更新专辑信息
+                        if(listAlbumInfo['data']['pageId'] != albumInfo['data']['pageId']) {
+                            audioPlayer.setAlbumInfo(listAlbumInfo);
                         }
-                        WebImageView {
-                            url: "asset:///images/audio_player/add.png"
-                            preferredWidth: displayInfo.pixelSize.width * 0.45
-                            preferredHeight: displayInfo.pixelSize.width * 0.45
-                            scalingMethod: ScalingMethod.AspectFit
-                            horizontalAlignment: HorizontalAlignment.Center
-                        }
-                        animations: [
-                            RotateTransition {
-                                id: cdRotateTransition
-                                fromAngleZ: cdContainer.rotationZ || 0
-                                toAngleZ: (cdContainer.rotationZ || 0) + 360
-                                duration: 10000
-                                easingCurve: StockCurve.Linear
-                                repeatCount: AnimationRepeatCount.Forever
-                            }
-                        ]
-                        onCreationCompleted: {
-                        
+                        // 付费声音处理
+                        if(dm.data(indexPath)['isPaid']) {
+                            _misc.showToast(qsTr("此集为付费声音 →.→"));
+                        }else {
+                            audioPlayer.go(dm.data(indexPath)['trackId']);
                         }
                     }
-                    
-                    Container {
-                        horizontalAlignment: HorizontalAlignment.Center
-                        translationY: ui.du(-18)
-                        rotationZ: -45
-                        layout: DockLayout {
-                        
-                        }
-                        WebImageView {
-                            url: "asset:///images/audio_player/af.png"
-                            preferredHeight: ui.du(40)
-                            preferredWidth: ui.du(40)
-                            scalingMethod: ScalingMethod.AspectFit
-                            verticalAlignment: VerticalAlignment.Bottom
-                        }
-                        animations: [
-                            RotateTransition {
-                                id: afAniStoped
-                                fromAngleZ: 0
-                                toAngleZ: -45
-                                duration: 400
-                                easingCurve: StockCurve.Linear
-                            },
-                            RotateTransition {
-                                id: afAniStarted
-                                fromAngleZ: -45
-                                toAngleZ: 0
-                                duration: 400
-                                easingCurve: StockCurve.Linear
+                    // 重写 itemType
+                    function itemType(data, indexPath) {
+                        return data.__type || "item";
+                    }
+                    listItemComponents: [
+                        ListItemComponent {
+                            type: "item"
+                            CustomListItem {
+                                dividerVisible: true
+                                Container {
+                                    topPadding: ui.du(2)
+                                    bottomPadding: ui.du(2)
+                                    leftPadding: ui.du(2)
+                                    rightPadding: ui.du(2)
+                                    verticalAlignment: VerticalAlignment.Center
+                                    
+                                    Container {
+                                        layout: StackLayout {
+                                            orientation: LayoutOrientation.LeftToRight
+                                        }
+                                        WebImageView {
+                                            url: ListItemData['coverSmall']
+                                            preferredWidth: ui.du(5)
+                                            preferredHeight: ui.du(5)
+                                            scalingMethod: ScalingMethod.AspectFill
+                                            failImageSource: "asset:///images/audio_player/loading.png"
+                                            loadingImageSource: "asset:///images/audio_player/loading.png"
+                                        }
+                                        Label {
+                                            text: ListItemData['title']
+                                            textStyle {
+                                                color: ListItemData['isPaid'] ? ui.palette.secondaryTextOnPlain : ui.palette.textOnPlain
+                                            }
+                                        }
+                                    }
+                                }
                             }
-                        ]
+                        }
+                    ]
+                }
+            }
+            // 操作按钮
+            Container {
+                background: ui.palette.plain
+                topPadding: ui.du(2)
+                bottomPadding: ui.du(2)
+                leftPadding: ui.du(2)
+                rightPadding: ui.du(2)
+                
+                verticalAlignment: VerticalAlignment.Center
+                layout: StackLayout {
+                    orientation: LayoutOrientation.LeftToRight
+                }
+                Button {
+                    text: qsTr("上一页")
+                    horizontalAlignment: HorizontalAlignment.Fill
+                    appearance: ControlAppearance.Primary
+                    enabled: listAlbumInfo && listAlbumInfo['data']['pageId'] > 1
+                    layoutProperties: StackLayoutProperties {
+                        spaceQuota: 1
+                    }
+                    onClicked: {
+                         _misc.showToast("上一页");
+                    }
+                }
+                Button {
+                    text: qsTr("下一页")
+                    horizontalAlignment: HorizontalAlignment.Fill
+                    appearance: ControlAppearance.Primary
+                    enabled: listAlbumInfo && listAlbumInfo['data']['pageId'] < listAlbumInfo['data']['maxPageId']
+                    layoutProperties: StackLayoutProperties {
+                        spaceQuota: 1
+                    }
+                    onClicked: {
+                        _misc.showToast("下一页");
                     }
                 }
             }
             // 底部进度条
             ItemContainer {
                 layout_: StackLayout {}
+                background: ui.palette.plain
+                verticalAlignment: VerticalAlignment.Bottom
+                
                 Slider {
                     fromValue: 0
                     toValue: duration
@@ -200,10 +214,10 @@ Page {
                         }
                     }
                 }
-                verticalAlignment: VerticalAlignment.Bottom
             }
         }
 
+        // loading
         Container {
             id: loadingContainer
             property bool isRun: isLoading
@@ -263,29 +277,37 @@ Page {
         }
     }
     
-    attachedObjects: [
-        DisplayInfo {
-            id: displayInfo
-        }
-    ]
-    
     onTrackIdChanged: {
+        var currentPlayTrackId = _misc.getConfig(common.settingsKey.currentPlayTrackId, "");
         // 如果 trackId 发生变化则播放（保存操作在 go 中）
-        if(_misc.getConfig(common.settingsKey.currentPlayTrackId, "") != trackId && !!trackId) {
-            isChangedTrackId = true;
+        if(currentPlayTrackId != trackId && trackId !== -1) {
             audioPlayer.setAlbumInfo(albumInfo);
             audioPlayer.go(trackId);
         }else {
-            isChangedTrackId = false;
-            isLoading = false;
+            if(trackId === -1) { // 如果是直接打开播放器
+                trackId = currentPlayTrackId;
+                return;
+            }
+            if(!audioPlayer.albumInfo) { // 关闭设备，继续点击播放最后一个播放声音，此 albumInfo 会为空，所以要处理
+                _misc.setConfig(common.settingsKey.currentPlayTrackId, "");
+                trackId = currentPlayTrackId;
+                return;
+            }
+            // 初始化信息
+            albumInfo = audioPlayer.albumInfo;
             // 如果是暂停状态进来的，也继续播放
             audioPlayer.play();
+            // 渲染界面
             render();
+            renderList(albumInfo);
+            
+            isLoading = false;
         }
     }
     
-    // connect start
-    function currentTrackChanged() {
+    // ===================== connect start ===================== 
+    function currentTrackChanged(trackId) {
+        trackId = audioPlayer.trackId;
         render();
     }
     function positionChanged(p) {
@@ -295,19 +317,40 @@ Page {
         duration = d;
     }
     function mediaStateChanged(ms) {
-        if(ms === MediaState.Unprepared) {
+        if(ms === MediaState.Unprepared || ms === MediaState.Prepared) {
             isLoading = true;
         }else {
             isLoading = false;
         }
         
         mediaState = ms;
-        updateAni();
     }
-    function previousOrNext(flag) {
+    function albumInfoChanged() {
+        albumInfo = audioPlayer.albumInfo;
+        renderList(albumInfo)
+    }
+    function albumEnd(flag) {
+        if(flag == 1) {
+            _misc.showToast(qsTr("专辑播放完毕"));
+        }else {
+            _misc.showToast(qsTr("播放列表已无上一集"));
+        }
+        isLoading = false;
+    }
+    function track404() {
+        _misc.showToast(qsTr("暂无播放"));
+        isLoading = false;
+    }
+    function preNextTrack() {
         isLoading = true;
     }
-    // connect end
+    // ===================== connect end ===================== 
+    function renderList(albumInfo) {
+        listAlbumInfo = albumInfo; // 保存当前列表专辑信息
+        
+        dm.clear();
+        dm.insert(0, albumInfo['data']['list']);
+    }
     
     // 开始渲染
     function render() {
@@ -315,19 +358,6 @@ Page {
         position = audioPlayer.position;
         duration = audioPlayer.duration;
         mediaState = audioPlayer.mediaState;
-        
-        updateAni();
-    }
-    
-    // 更新动画
-    function updateAni() {
-        if(mediaState != MediaState.Started) {
-            cdRotateTransition.stop();
-            afAniStoped.play();
-        }else {
-            cdRotateTransition.play();
-            afAniStarted.play();
-        }
     }
     
     function formatTime(s) {

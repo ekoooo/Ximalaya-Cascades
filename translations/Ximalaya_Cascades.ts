@@ -5,12 +5,12 @@
     <name>AudioPlayerUI</name>
     <message>
         <location filename="../assets/pages/AudioPlayerUI.qml" line="27"/>
-        <source>正在播放：</source>
+        <source>无</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../assets/pages/AudioPlayerUI.qml" line="27"/>
-        <source>无</source>
+        <source>演播</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -34,12 +34,37 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/AudioPlayerUI.qml" line="256"/>
+        <location filename="../assets/pages/AudioPlayerUI.qml" line="143"/>
+        <source>上一页</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/AudioPlayerUI.qml" line="155"/>
+        <source>下一页</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/AudioPlayerUI.qml" line="261"/>
         <source>正在加载中...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/AudioPlayerUI.qml" line="336"/>
+        <location filename="../assets/pages/AudioPlayerUI.qml" line="324"/>
+        <source>专辑播放完毕</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/AudioPlayerUI.qml" line="326"/>
+        <source>播放列表已无上一集</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/AudioPlayerUI.qml" line="331"/>
+        <source>暂无播放</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/AudioPlayerUI.qml" line="356"/>
         <source>%1:%2</source>
         <translation type="unfinished"></translation>
     </message>

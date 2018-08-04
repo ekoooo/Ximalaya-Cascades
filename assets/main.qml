@@ -26,28 +26,39 @@ NavigationPane {
     property variant audioPlayerUIPage
     
     Page {
-        ListView {
-            id: lv
-            dataModel: ArrayDataModel {
-                id: dm
-            }
-            onTriggered: {
-                nav.trackId = dm.data(indexPath)['trackId'];
-                nav.goAudioPlayerUI();
-            }
-            listItemComponents: [
-                ListItemComponent {
-                    type: ""
-                    CustomListItem {
-                        Label {
-                            verticalAlignment: VerticalAlignment.Center
-                            text: ListItemData['title']
+        Container {
+            ListView {
+                id: lv
+                dataModel: ArrayDataModel {
+                    id: dm
+                }
+                onTriggered: {
+                    nav.trackId = dm.data(indexPath)['trackId'];
+                    nav.goAudioPlayerUI();
+                }
+                listItemComponents: [
+                    ListItemComponent {
+                        type: ""
+                        CustomListItem {
+                            Label {
+                                verticalAlignment: VerticalAlignment.Center
+                                text: ListItemData['title']
+                            }
                         }
                     }
+                ]
+                onCreationCompleted: {
+                    listRequester.send("http://mobile.ximalaya.com/mobile/v1/album/track?albumId=4756811&pageId=56&pageSize=20&device=android&isAsc=true");
                 }
-            ]
-            onCreationCompleted: {
-                listRequester.send("http://mobile.ximalaya.com/mobile/v1/album/track?albumId=4756811&pageId=1&pageSize=20&device=android&isAsc=true");
+            }
+            
+            Button {
+                text: "open"
+                onClicked: {
+                    nav.trackId = -1;
+                    nav.goAudioPlayerUI();
+                }
+                horizontalAlignment: HorizontalAlignment.Fill
             }
         }
     }
@@ -55,20 +66,30 @@ NavigationPane {
     attachedObjects: [
         AudioPlayer {
             id: player
-            onMyPositionChanged: {
-                audioPlayerUIPage && audioPlayerUIPage.positionChanged(position)
+            property bool havePage: !!audioPlayerUIPage
+            onPositionChanged: {
+                havePage && audioPlayerUIPage.positionChanged(position)
             }
-            onMyDurationChanged: {
-                audioPlayerUIPage && audioPlayerUIPage.durationChanged(duration);
+            onDurationChanged: {
+                havePage && audioPlayerUIPage.durationChanged(duration);
             }
-            onMyMediaStateChanged: {
-                audioPlayerUIPage && audioPlayerUIPage.mediaStateChanged(mediaState);
+            onMediaStateChanged: {
+                havePage && audioPlayerUIPage.mediaStateChanged(mediaState);
             }
             onCurrentTrackChanged: {
-                audioPlayerUIPage && audioPlayerUIPage.currentTrackChanged();
+                havePage && audioPlayerUIPage.currentTrackChanged(trackId);
             }
-            onPreviousOrNext: {
-                audioPlayerUIPage && audioPlayerUIPage.previousOrNext(flag);
+            onAlbumInfoChanged: {
+                havePage && audioPlayerUIPage.albumInfoChanged();
+            }
+            onAlbumEnd: {
+                havePage && audioPlayerUIPage.albumEnd(flag);
+            }
+            onTrack404: {
+                havePage && audioPlayerUIPage.track404();
+            }
+            onPreNextTrack: {
+                havePage && audioPlayerUIPage.preNextTrack();
             }
         },
         Common {

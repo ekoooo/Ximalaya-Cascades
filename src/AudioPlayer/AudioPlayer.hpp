@@ -13,6 +13,7 @@
 #include <bb/multimedia/MediaPlayer>
 #include <bb/multimedia/NowPlayingConnection>
 #include <bb/multimedia/MediaState>
+#include "../Requester/Requester.hpp"
 
 using namespace bb::multimedia;
 
@@ -47,15 +48,23 @@ class AudioPlayer : public bb::multimedia::MediaPlayer {
         Q_INVOKABLE void go(QString trackId);
 
     private:
+        Requester *requester;
         NowPlayingConnection *nowPlayingConnection;
         QVariant mAlbumInfo;
         QMap<QString, QVariant> currentTrackInfo; // 当前播放的声音信息
 
         QMap<QString, QVariant> getTrackItemNyId(QString trackId);
         QMap<QString, QVariant> getPreNextTrackItem(int flag); // -1 上一曲，1下一曲
+        void playNextAlbum();
 
         void go(QMap<QString, QVariant> trackItem);
         void setNpInfo(QMap<QString, QVariant> trackItem);
+
+        static QString albumInfoApi;
+
+        // 界面卡住的问题
+        QTimer *playTimer;
+        void startPlayTimer();
 
     public slots:
         void npPlay();
@@ -69,15 +78,16 @@ class AudioPlayer : public bb::multimedia::MediaPlayer {
         void mpPositionChanged(unsigned int position);
 
         void setAlbumInfo(const QVariant albumInfo);
+        void getNextAlbumFinished(QString data);
+        void getNextAlbumError(QString errorMsg);
 
+        void playTimerTimeout();
     signals:
-        void albumInfoChanged();
-        void currentTrackChanged();
-        void previousOrNext(int flag); // -1 上一曲，1 下一曲
-
-        void myDurationChanged(unsigned int duration);
-        void myPositionChanged(unsigned int duration);
-        void myMediaStateChanged(bb::multimedia::MediaState::Type mediaState);
+        void albumInfoChanged(); // 专辑改变
+        void currentTrackChanged(QString trackId); // 播放声音，信息改变
+        void albumEnd(int flag); // 专辑播放完了, -1，播放列表无上一集了，1，专辑播放完了
+        void track404(); // 播放声音没找到
+        void preNextTrack(int flag); // 上一集或者下一集
 };
 
 #endif /* AUDIOPLAYER_HPP_ */

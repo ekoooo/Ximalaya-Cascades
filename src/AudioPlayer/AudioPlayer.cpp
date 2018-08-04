@@ -12,9 +12,14 @@
 #include <bb/multimedia/NowPlayingConnection>
 #include <bb/multimedia/OverlayStyle>
 #include <bb/multimedia/MediaState>
+#include <bb/data/JsonDataAccess>
 #include "../Misc/Misc.hpp"
+#include "../Requester/Requester.hpp"
 
 using namespace bb::multimedia;
+using namespace bb::data;
+
+QString AudioPlayer::albumInfoApi = "http://mobile.ximalaya.com/mobile/v1/album/track?albumId=%1&pageId=%2&pageSize=20&isAsc=true";
 
 AudioPlayer::AudioPlayer() : bb::multimedia::MediaPlayer() {
     nowPlayingConnection = new NowPlayingConnection(this);
@@ -38,15 +43,12 @@ void AudioPlayer::mpMediaStateChanged(bb::multimedia::MediaState::Type mediaStat
     }else if(mediaState == MediaState::Stopped) {
         nowPlayingConnection->revoke();
     }
-    emit myMediaStateChanged(mediaState);
 }
 void AudioPlayer::mpDurationChanged(unsigned int duration) {
     nowPlayingConnection->setDuration(duration);
-    emit myDurationChanged(duration);
 }
 void AudioPlayer::mpPositionChanged(unsigned int position) {
     nowPlayingConnection->setPosition(position);
-    emit myPositionChanged(position);
     // 到了最后一秒就下一曲
     if(this->duration() > 0 && this->duration() - position < 1000) {
         this->next();
@@ -78,6 +80,7 @@ void AudioPlayer::setAlbumInfo(const QVariant albumInfo) {
     emit albumInfoChanged();
 }
 
+// 根据声音ID，获取信息
 QMap<QString, QVariant> AudioPlayer::getTrackItemNyId(QString trackId) {
     QMap<QString, QVariant> rt;
     QMap<QString, QVariant> item;
@@ -127,6 +130,39 @@ QMap<QString, QVariant> AudioPlayer::getPreNextTrackItem(int flag) {
     return rt;
 }
 
+// 获取下一页专辑信息
+void AudioPlayer::playNextAlbum() {
+    QMap<QString, QVariant> info = this->mAlbumInfo.toMap();
+    QMap<QString, QVariant> data = info["data"].toMap();
+    QList<QVariant> list = data["list"].toList();
+    int currentPage = data["pageId"].toInt();
+
+    if(currentPage < data["maxPageId"].toInt()) {
+        QString url = AudioPlayer::albumInfoApi.arg(list.at(0).toMap()["albumId"].toString()).arg(currentPage + 1);
+        requester = new Requester();
+        requester->send(url);
+        connect(requester, SIGNAL(finished(QString)), this, SLOT(getNextAlbumFinished(QString)));
+        connect(requester, SIGNAL(error(QString)), this, SLOT(getNextAlbumError(QString)));
+    }else {
+        emit albumEnd(1);
+    }
+}
+void AudioPlayer::getNextAlbumFinished(QString data) {
+    JsonDataAccess jda;
+    QVariant albumInfo = jda.loadFromBuffer(data.toUtf8());
+
+    QMap<QString, QVariant> info = albumInfo.toMap();
+    QMap<QString, QVariant> dataMap = info["data"].toMap();
+    QList<QVariant> list = dataMap["list"].toList();
+
+    this->setAlbumInfo(albumInfo);
+    // 播放第一首
+    this->go(list.at(0).toMap());
+}
+void AudioPlayer::getNextAlbumError(QString errorMsg) {
+    qDebug() << "AudioPlayer::getNextAlbumError" << errorMsg;
+}
+
 // 设置 metaData 和 icon
 void AudioPlayer::setNpInfo(QMap<QString, QVariant> trackItem) {
     QVariantMap metaData;
@@ -149,21 +185,31 @@ void AudioPlayer::go(QString trackId) {
 }
 void AudioPlayer::go(QMap<QString, QVariant> trackItem) {
     if(!trackItem.isEmpty()) {
-        qDebug() << "play:" << trackItem["playUrl64"].toString();
+        /**
+         * 播放源和大小
+         * playUrl64 e.g. 5.26mb
+         * playUrl32 e.g. 2.63mb
+         * playPathAacv224 e.g. 2.04mb
+         * playPathAacv164 e.g. 5.33mb
+         */
+        QString playUrl = trackItem["playPathAacv224"].toString();
 
-        this->setSourceUrl(trackItem["playUrl64"].toString());
+        qDebug() << "play:" << playUrl;
+
+        this->setSourceUrl(playUrl);
         this->setNpInfo(trackItem);
         this->setVolume(1);
-        this->play();
+        this->startPlayTimer();
 
         // 保存当前信息
         this->currentTrackInfo = trackItem;
         // 保存标志到 Settings 中
         Misc::setConfig("currentPlayTrackId", trackItem["trackId"].toString());
         // 返回信息，用于更新界面
-        emit currentTrackChanged();
+        emit currentTrackChanged(trackItem["trackId"].toString());
     }else {
-        qDebug() << "播放失败，trackItem isEmpty";
+        qDebug() << "AudioPlayer::go trackItem isEmpty";
+        emit track404();
     }
 }
 
@@ -173,11 +219,11 @@ void AudioPlayer::next() {
     QMap<QString, QVariant> trackItem = this->getPreNextTrackItem(1);
     if(trackItem.isEmpty()) {
         // 没有下一曲了，加载下一页的内容
-
+        this->playNextAlbum();
     }else {
-        // emit previousOrNext(1);
-        // 播放下一曲
         this->go(trackItem);
+
+        emit preNextTrack(1);
     }
 }
 
@@ -186,11 +232,23 @@ void AudioPlayer::previous() {
     // 获取当前播放的信息
     QMap<QString, QVariant> trackItem = this->getPreNextTrackItem(-1);
     if(trackItem.isEmpty()) {
-        // 没有下一曲了，加载下一页的内容
-
+        // 没有上一曲了
+        emit albumEnd(-1);
     }else {
-        // emit previousOrNext(1);
-        // 播放下一曲
         this->go(trackItem);
+
+        emit preNextTrack(-1);
     }
+}
+
+void AudioPlayer::startPlayTimer() {
+    this->playTimer = new QTimer();
+    this->playTimer->setInterval(300);
+    this->playTimer->start();
+
+    connect(playTimer, SIGNAL(timeout()), this, SLOT(playTimerTimeout()));
+}
+void AudioPlayer::playTimerTimeout() {
+    this->playTimer->stop();
+    this->play();
 }

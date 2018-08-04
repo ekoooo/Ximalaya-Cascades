@@ -43,6 +43,7 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/images/audio_player/aco.png) \
         $$quote($$BASEDIR/assets/images/audio_player/add.png) \
         $$quote($$BASEDIR/assets/images/audio_player/af.png) \
+        $$quote($$BASEDIR/assets/images/audio_player/loading.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_forward.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_pause.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_play.png) \
@@ -71,6 +72,12 @@ config_pri_source_group1 {
         $$quote($$BASEDIR/src/WebImageView/WebImageView.hpp) \
         $$quote($$BASEDIR/src/applicationui.hpp)
 }
+
+INCLUDEPATH += $$quote($$BASEDIR/src/AudioPlayer) \
+    $$quote($$BASEDIR/src/Requester) \
+    $$quote($$BASEDIR/src/WebImageView) \
+    $$quote($$BASEDIR/src) \
+    $$quote($$BASEDIR/src/Misc)
 
 CONFIG += precompile_header
 
