@@ -115,7 +115,7 @@
     </message>
     <message>
         <location filename="../assets/pages/AudioPlayerUI.qml" line="491"/>
-        <source>播放结束，此集为付费声音</source>
+        <source>无法播放付费声音</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

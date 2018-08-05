@@ -162,6 +162,14 @@ void AudioPlayer::getNextAlbumFinished(QString data) {
     QMap<QString, QVariant> dataMap = info["data"].toMap();
     QList<QVariant> list = dataMap["list"].toList();
 
+    // 判断下一页是不是付费声音
+    QMap<QString, QVariant> itemInfo = list.at(0).toMap();
+    if(!itemInfo["isFree"].toBool()) {
+        qDebug() << "AudioPlayer::getNextAlbumFinished isFree" << itemInfo["isFree"].toBool();
+        emit track404();
+        return;
+    }
+
     this->setAlbumInfo(albumInfo);
     // 播放第一首
     this->go(list.at(0).toMap());
@@ -203,8 +211,8 @@ void AudioPlayer::go(QMap<QString, QVariant> trackItem) {
         QString playUrl = trackItem[audioPlayerSourceType].toString();
         qDebug() << "AudioPlayer::go playUrl:" << playUrl;
 
-        if(playUrl == "") { // 付费声音
-            qDebug() << "AudioPlayer::go playUrl is null";
+        if(!trackItem["isFree"].toBool()) { // 付费声音
+            qDebug() << "AudioPlayer::go isFree" << trackItem["isFree"].toBool();
             emit track404();
             return;
         }

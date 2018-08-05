@@ -184,7 +184,7 @@ Page {
                                         Label {
                                             text: ListItemData['title']
                                             textStyle {
-                                                color: ListItemData['isFree'] ? ui.palette.primary : ui.palette.secondaryTextOnPlain
+                                                color: ListItemData['isFree'] ? ui.palette.textOnPlain : Color.Gray
                                             }
                                         }
                                     }
@@ -488,7 +488,7 @@ Page {
         isLoading = false;
     }
     function track404() {
-        _misc.showToast(qsTr("播放结束，此集为付费声音"));
+        _misc.showToast(qsTr("无法播放付费声音"));
         isLoading = false;
     }
     function preNextTrack() {
