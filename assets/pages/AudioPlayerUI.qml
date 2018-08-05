@@ -22,8 +22,11 @@ Page {
     
     // 加载中标志
     property bool isLoading: true
+    
+    property bool opVisible: _misc.getConfig(common.settingsKey.audioPlayerOpVisible, "1") === "1"
 
     titleBar: TitleBar {
+        scrollBehavior: TitleBarScrollBehavior.Sticky
         kind: TitleBarKind.FreeForm
         kindProperties: FreeFormTitleBarKindProperties {
             Container {
@@ -97,7 +100,21 @@ Page {
             onTriggered: {
                 audioPlayer.next();
             }
-            enabled: !isLoading
+            enabled: ! isLoading
+        },
+        ActionItem {
+            title: opVisible ? qsTr("关闭操作面板") : qsTr("打开操作面板")
+            ActionBar.placement: ActionBarPlacement.InOverflow
+            imageSource: "asset:///images/bb10/ic_show_vkb.png"
+            onTriggered: {
+                opVisible = !opVisible;
+                _misc.setConfig(common.settingsKey.audioPlayerOpVisible, opVisible ? "1" : "0");
+            }
+            shortcuts: [
+                Shortcut {
+                    key: "h"
+                }
+            ]
         }
     ]
 
@@ -179,6 +196,8 @@ Page {
             }
             // 操作按钮
             Container {
+                id: opContainer
+                visible: opVisible
                 background: ui.palette.plain
                 topPadding: ui.du(2)
                 bottomPadding: ui.du(2)
@@ -189,33 +208,145 @@ Page {
                 layout: StackLayout {
                     orientation: LayoutOrientation.LeftToRight
                 }
-                Button {
-                    text: qsTr("上一页")
-                    horizontalAlignment: HorizontalAlignment.Fill
-                    appearance: ControlAppearance.Primary
-                    enabled: listAlbumInfo && listAlbumInfo['data']['pageId'] > 1
+                Container {
+                    id: exitBtnContainer
+                    property variant currentExitTime: 0
+                    property variant exitTime: 0
+                    rightPadding: ui.du(1)
+                    
+                    layout: StackLayout {
+                        orientation: LayoutOrientation.LeftToRight
+                    }
                     layoutProperties: StackLayoutProperties {
                         spaceQuota: 1
                     }
-                    onClicked: {
-                        common.apiAlbumInfo(albumInfoRequester, listAlbumInfo['data']['list'][0]['albumId'], listAlbumInfo['data']['pageId'] - 1);
+                    implicitLayoutAnimationsEnabled: false
+                    
+                    Button {
+                        text: exitBtnSubContainer.visible ? qsTr("停止") : qsTr("定时关闭")
+                        appearance: exitBtnContainer.getAppearanceType(0)
+                        onClicked: {
+                            if(exitBtnSubContainer.visible) {
+                                exitBtnContainer.clickBtn(-1);
+                            }
+                            
+                            exitBtnSubContainer.visible = true;
+                            paginationContainer.visible = false;
+                        }
+                        layoutProperties: StackLayoutProperties {
+                            spaceQuota: 1
+                        }
+                    }
+                    Container {
+                        id: exitBtnSubContainer
+                        visible: false
+                        
+                        layout: StackLayout {
+                            orientation: LayoutOrientation.LeftToRight
+                        }
+                        layoutProperties: StackLayoutProperties {
+                            spaceQuota: 3
+                        }
+                        Button {
+                            text: qsTr("0.5")
+                            appearance: exitBtnContainer.getAppearanceType(30)
+                            onClicked: {
+                                exitBtnContainer.clickBtn(30);
+                            }
+                        }
+                        Button {
+                            text: qsTr("1.0")
+                            appearance: exitBtnContainer.getAppearanceType(60)
+                            onClicked: {
+                                exitBtnContainer.clickBtn(60);
+                            }
+                        }
+                        Button {
+                            text: qsTr("2.0")
+                            appearance: exitBtnContainer.getAppearanceType(120)
+                            onClicked: {
+                                exitBtnContainer.clickBtn(120);
+                            }
+                        }
+                        Button {
+                            text: qsTr("3.0")
+                            appearance: exitBtnContainer.getAppearanceType(180)
+                            onClicked: {
+                                exitBtnContainer.clickBtn(180);
+                            }
+                        }
+                        Button {
+                            text: "✘"
+                            appearance: ControlAppearance.Primary
+                            onClicked: {
+                                exitBtnSubContainer.visible = false;
+                                paginationContainer.visible = true;
+                            }
+                        }
+                    }
+                    
+                    function getAppearanceType(min) {
+                        return exitBtnContainer.exitTime/1000/60 === min ? ControlAppearance.Primary : ControlAppearance.Plain
+                    }
+                    
+                    function clickBtn(min) {
+                        if(min === -1) { // 停止定时关闭
+                            if(exitBtnContainer.exitTime != 0) {
+                                _misc.showToast(qsTr("定时关闭已取消"));
+                            }
+                            // 先提示，在停止，因为停止信号会马上发送过来
+                            audioPlayer.startExitTimer(-1);
+                        }else {
+                            if(exitBtnContainer.exitTime/1000/60 !== min) {
+                                audioPlayer.startExitTimer(min);
+                                
+                                _misc.showToast(min + qsTr("分钟后自动关闭"));
+                            }else {
+                                _misc.showToast(qsTr("定时关闭，剩余：") + formatTime(exitBtnContainer.exitTime - exitBtnContainer.currentExitTime));
+                            }
+                        }
                     }
                 }
-                Button {
-                    text: qsTr("下一页")
+                Container {
+                    id: paginationContainer
+                    visible: true
                     horizontalAlignment: HorizontalAlignment.Fill
-                    appearance: ControlAppearance.Primary
-                    enabled: listAlbumInfo && listAlbumInfo['data']['pageId'] < listAlbumInfo['data']['maxPageId']
                     layoutProperties: StackLayoutProperties {
-                        spaceQuota: 1
+                        spaceQuota: 3
                     }
-                    onClicked: {
-                        common.apiAlbumInfo(albumInfoRequester, listAlbumInfo['data']['list'][0]['albumId'], listAlbumInfo['data']['pageId'] + 1);
+                    layout: StackLayout {
+                        orientation: LayoutOrientation.LeftToRight
+                    }
+                    Button {
+                        text: qsTr("上一页")
+                        horizontalAlignment: HorizontalAlignment.Fill
+                        appearance: ControlAppearance.Primary
+                        enabled: listAlbumInfo && listAlbumInfo['data']['pageId'] > 1
+                        layoutProperties: StackLayoutProperties {
+                            spaceQuota: 1
+                        }
+                        onClicked: {
+                            common.apiAlbumInfo(albumInfoRequester, listAlbumInfo['data']['list'][0]['albumId'], listAlbumInfo['data']['pageId'] - 1);
+                        }
+                    }
+                    Button {
+                        text: qsTr("下一页")
+                        horizontalAlignment: HorizontalAlignment.Fill
+                        appearance: ControlAppearance.Primary
+                        enabled: listAlbumInfo && listAlbumInfo['data']['pageId'] < listAlbumInfo['data']['maxPageId']
+                        layoutProperties: StackLayoutProperties {
+                            spaceQuota: 1
+                        }
+                        onClicked: {
+                            common.apiAlbumInfo(albumInfoRequester, listAlbumInfo['data']['list'][0]['albumId'], listAlbumInfo['data']['pageId'] + 1);
+                        }
                     }
                 }
             }
             // 底部进度条
             ItemContainer {
+                id: timelineContainer
+                visible: opVisible
                 layout_: StackLayout {}
                 background: ui.palette.plain
                 verticalAlignment: VerticalAlignment.Bottom
@@ -362,6 +493,10 @@ Page {
     }
     function preNextTrack() {
         isLoading = true;
+    }
+    function exitTimerInterval(currentExitTime, exitTime) {
+        exitBtnContainer.currentExitTime = currentExitTime;
+        exitBtnContainer.exitTime = exitTime;
     }
     // ===================== connect end ===================== 
     function renderList(albumInfo) {

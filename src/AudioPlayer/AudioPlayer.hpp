@@ -46,6 +46,7 @@ class AudioPlayer : public bb::multimedia::MediaPlayer {
         Q_INVOKABLE void previous();
         // 播放
         Q_INVOKABLE void go(QString trackId);
+        Q_INVOKABLE void startExitTimer(int m); // m分钟后关闭
 
     private:
         Requester *requester;
@@ -64,6 +65,10 @@ class AudioPlayer : public bb::multimedia::MediaPlayer {
 
         // 界面卡住的问题
         QTimer *playTimer;
+        QTimer *exitTimer;
+        long exitTime;
+        long currentExitTime;
+
         void startPlayTimer();
 
     public slots:
@@ -82,12 +87,15 @@ class AudioPlayer : public bb::multimedia::MediaPlayer {
         void getNextAlbumError(QString errorMsg);
 
         void playTimerTimeout();
+        void exitTimerTimeout();
     signals:
         void albumInfoChanged(); // 专辑改变
         void currentTrackChanged(QString trackId); // 播放声音，信息改变
         void albumEnd(int flag); // 专辑播放完了, -1，播放列表无上一集了，1，专辑播放完了
         void track404(); // 播放声音没找到
         void preNextTrack(int flag); // 上一集或者下一集
+
+        void exitTimerInterval(long currentExitTime, long exitTime);
 };
 
 #endif /* AUDIOPLAYER_HPP_ */

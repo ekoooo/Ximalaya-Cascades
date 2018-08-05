@@ -66,30 +66,32 @@ NavigationPane {
     attachedObjects: [
         AudioPlayer {
             id: player
-            property bool havePage: !!audioPlayerUIPage
             onPositionChanged: {
-                havePage && audioPlayerUIPage.positionChanged(position)
+                audioPlayerUIPage && audioPlayerUIPage.positionChanged(position)
             }
             onDurationChanged: {
-                havePage && audioPlayerUIPage.durationChanged(duration);
+                audioPlayerUIPage && audioPlayerUIPage.durationChanged(duration);
             }
             onMediaStateChanged: {
-                havePage && audioPlayerUIPage.mediaStateChanged(mediaState);
+                audioPlayerUIPage && audioPlayerUIPage.mediaStateChanged(mediaState);
             }
             onCurrentTrackChanged: {
-                havePage && audioPlayerUIPage.currentTrackChanged(trackId);
+                audioPlayerUIPage && audioPlayerUIPage.currentTrackChanged(trackId);
             }
             onAlbumInfoChanged: {
-                havePage && audioPlayerUIPage.albumInfoChanged();
+                audioPlayerUIPage && audioPlayerUIPage.albumInfoChanged();
             }
             onAlbumEnd: {
-                havePage && audioPlayerUIPage.albumEnd(flag);
+                audioPlayerUIPage && audioPlayerUIPage.albumEnd(flag);
             }
             onTrack404: {
-                havePage && audioPlayerUIPage.track404();
+                audioPlayerUIPage && audioPlayerUIPage.track404();
             }
             onPreNextTrack: {
-                havePage && audioPlayerUIPage.preNextTrack();
+                audioPlayerUIPage && audioPlayerUIPage.preNextTrack();
+            }
+            onExitTimerInterval: {
+                audioPlayerUIPage && audioPlayerUIPage.exitTimerInterval(currentExitTime, exitTime);
             }
         },
         Common {

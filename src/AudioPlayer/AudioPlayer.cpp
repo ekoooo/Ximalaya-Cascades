@@ -22,6 +22,12 @@ using namespace bb::data;
 QString AudioPlayer::albumInfoApi = "http://mobile.ximalaya.com/mobile/v1/album/track?albumId=%1&pageId=%2&pageSize=20&isAsc=true";
 
 AudioPlayer::AudioPlayer() : bb::multimedia::MediaPlayer() {
+    this->playTimer = new QTimer();
+    this->exitTimer = new QTimer();
+
+    connect(playTimer, SIGNAL(timeout()), this, SLOT(playTimerTimeout()));
+    connect(exitTimer, SIGNAL(timeout()), this, SLOT(exitTimerTimeout()));
+
     nowPlayingConnection = new NowPlayingConnection(this);
     nowPlayingConnection->setOverlayStyle(OverlayStyle::Fancy);
 
@@ -148,6 +154,8 @@ void AudioPlayer::playNextAlbum() {
     }
 }
 void AudioPlayer::getNextAlbumFinished(QString data) {
+    qDebug() << "getNextAlbumFinished............";
+
     JsonDataAccess jda;
     QVariant albumInfo = jda.loadFromBuffer(data.toUtf8());
 
@@ -192,7 +200,7 @@ void AudioPlayer::go(QMap<QString, QVariant> trackItem) {
          * playPathAacv224 e.g. 2.04mb
          * playPathAacv164 e.g. 5.33mb
          */
-        QString playUrl = trackItem["playPathAacv224"].toString();
+        QString playUrl = trackItem["playUrl64"].toString();
 
         qDebug() << "play:" << playUrl;
 
@@ -242,13 +250,39 @@ void AudioPlayer::previous() {
 }
 
 void AudioPlayer::startPlayTimer() {
-    this->playTimer = new QTimer();
+    this->playTimer->stop();
     this->playTimer->setInterval(300);
     this->playTimer->start();
-
-    connect(playTimer, SIGNAL(timeout()), this, SLOT(playTimerTimeout()));
 }
 void AudioPlayer::playTimerTimeout() {
     this->playTimer->stop();
     this->play();
+}
+
+void AudioPlayer::startExitTimer(int m) {
+    if(m == -1) {
+        this->exitTimer->stop();
+        emit exitTimerInterval(0, 0);
+        return;
+    }
+
+    this->exitTime = m * 1000 * 60;
+    this->currentExitTime = 0;
+
+    this->exitTimer->stop();
+    this->exitTimer->setInterval(1000);
+    this->exitTimer->start();
+
+    emit exitTimerInterval(this->currentExitTime, this->exitTime);
+}
+void AudioPlayer::exitTimerTimeout() {
+    this->currentExitTime = this->currentExitTime + 1000;
+
+    if(this->currentExitTime >= this->exitTime) {
+        this->exitTimer->stop();
+        emit exitTimerInterval(0, 0);
+        // TODO 关闭
+    }else {
+        emit exitTimerInterval(this->currentExitTime, this->exitTime);
+    }
 }

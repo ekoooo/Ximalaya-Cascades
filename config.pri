@@ -48,6 +48,7 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/images/bb10/ic_pause.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_play.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_reply.png) \
+        $$quote($$BASEDIR/assets/images/bb10/ic_show_vkb.png) \
         $$quote($$BASEDIR/assets/images/carousel/round_white.png) \
         $$quote($$BASEDIR/assets/images/image_top_default.png) \
         $$quote($$BASEDIR/assets/images/ting_np_icon.png) \

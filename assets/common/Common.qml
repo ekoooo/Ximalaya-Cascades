@@ -15,7 +15,9 @@ QtObject {
         // 开发者消息版本
         "developerMessageVersion": "developerMessageVersion",
         // 当前播放的 trackId
-        "currentPlayTrackId": "currentPlayTrackId"
+        "currentPlayTrackId": "currentPlayTrackId",
+        // 播放器操作面板显示状态
+        "audioPlayerOpVisible": "audioPlayerOpVisible"
     }
     
     // 快捷键
