@@ -28,6 +28,10 @@ QtObject {
         _misc.openDialog(qsTr("确定"), qsTr("取消"), title, body);
     }
     
+    // ============ api start ============
+    function apiAlbumInfo(requester, albumId, pageId) {
+        requester.send(qsTr(api.albumInfo).arg(albumId.toString()).arg(pageId.toString()));
+    }
     // ============ api end ============
     function httpGetAsync(theUrl, callback) {
         var xmlHttp = new XMLHttpRequest();

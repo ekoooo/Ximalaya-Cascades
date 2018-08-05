@@ -22,10 +22,49 @@ Page {
     
     // 加载中标志
     property bool isLoading: true
-    
+
     titleBar: TitleBar {
-        title: (trackInfo['nickname'] || qsTr("演播")) + '：' + (trackInfo['title'] || qsTr("无"))
-        scrollBehavior: TitleBarScrollBehavior.Sticky
+        kind: TitleBarKind.FreeForm
+        kindProperties: FreeFormTitleBarKindProperties {
+            Container {
+                leftPadding: ui.du(2)
+                rightPadding: ui.du(2)
+                topPadding: ui.du(2)
+                bottomPadding: ui.du(2)
+                layout: StackLayout {
+                    orientation: LayoutOrientation.LeftToRight
+                }
+                
+                WebImageView {
+                    url: trackInfo['smallLogo'] || ''
+                    scalingMethod: ScalingMethod.AspectFit
+                    verticalAlignment: VerticalAlignment.Center
+                    failImageSource: "asset:///images/audio_player/loading.png"
+                    loadingImageSource: "asset:///images/audio_player/loading.png"
+                    implicitLayoutAnimationsEnabled: false
+                }
+                Container {
+                    verticalAlignment: VerticalAlignment.Center
+                    leftPadding: ui.du(2)
+                    Container {
+                        Label {
+                            text: qsTr("演播：") + (trackInfo['nickname'] || '无')
+                            textStyle {
+                                base: SystemDefaults.TextStyles.SubtitleText
+                            }
+                        }
+                    }
+                    Container {
+                        Label {
+                            text: qsTr("正在播放：") + (trackInfo['title'] || '无')
+                            textStyle {
+                                base: SystemDefaults.TextStyles.SubtitleText
+                            }
+                        }
+                    }
+                }
+            }
+        }
     }
 
     actions: [
@@ -159,7 +198,7 @@ Page {
                         spaceQuota: 1
                     }
                     onClicked: {
-                         _misc.showToast("上一页");
+                        common.apiAlbumInfo(albumInfoRequester, listAlbumInfo['data']['list'][0]['albumId'], listAlbumInfo['data']['pageId'] - 1);
                     }
                 }
                 Button {
@@ -171,7 +210,7 @@ Page {
                         spaceQuota: 1
                     }
                     onClicked: {
-                        _misc.showToast("下一页");
+                        common.apiAlbumInfo(albumInfoRequester, listAlbumInfo['data']['list'][0]['albumId'], listAlbumInfo['data']['pageId'] + 1);
                     }
                 }
             }
@@ -238,6 +277,23 @@ Page {
         }
     }
     
+    attachedObjects: [
+        Requester {
+            id: albumInfoRequester
+            onBeforeSend: {
+                isLoading = true;
+            }
+            onFinished: {
+                isLoading = false;
+                renderList(JSON.parse(data));
+            }
+            onError: {
+                _misc.showToast(error);
+                isLoading = false;
+            }
+        }
+    ]
+    
     onTrackIdChanged: {
         var currentPlayTrackId = _misc.getConfig(common.settingsKey.currentPlayTrackId, "");
         // 如果 trackId 发生变化则播放（保存操作在 go 中）
@@ -288,7 +344,9 @@ Page {
     }
     function albumInfoChanged() {
         albumInfo = audioPlayer.albumInfo;
-        renderList(albumInfo)
+        if(JSON.stringify(listAlbumInfo) !== JSON.stringify(albumInfo)) {
+            renderList(albumInfo)
+        }
     }
     function albumEnd(flag) {
         if(flag == 1) {
