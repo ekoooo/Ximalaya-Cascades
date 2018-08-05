@@ -48,7 +48,7 @@ NavigationPane {
                     }
                 ]
                 onCreationCompleted: {
-                    listRequester.send("http://mobile.ximalaya.com/mobile/v1/album/track?albumId=4756811&pageId=56&pageSize=20&device=android&isAsc=true");
+                    listRequester.send("http://mobile.ximalaya.com/mobile/v1/album/track?albumId=13394295&pageId=2&pageSize=20&device=android&isAsc=true");
                 }
             }
             

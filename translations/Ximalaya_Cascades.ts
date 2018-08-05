@@ -45,7 +45,7 @@
     </message>
     <message>
         <location filename="../assets/pages/AudioPlayerUI.qml" line="151"/>
-        <source>此集为付费声音 →.→</source>
+        <source>此集为付费声音，无法播放</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -60,71 +60,66 @@
     </message>
     <message>
         <location filename="../assets/pages/AudioPlayerUI.qml" line="251"/>
-        <source>test</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/pages/AudioPlayerUI.qml" line="258"/>
         <source>0.5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/AudioPlayerUI.qml" line="265"/>
+        <location filename="../assets/pages/AudioPlayerUI.qml" line="258"/>
         <source>1.0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/AudioPlayerUI.qml" line="272"/>
+        <location filename="../assets/pages/AudioPlayerUI.qml" line="265"/>
         <source>2.0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/AudioPlayerUI.qml" line="279"/>
+        <location filename="../assets/pages/AudioPlayerUI.qml" line="272"/>
         <source>3.0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/AudioPlayerUI.qml" line="302"/>
+        <location filename="../assets/pages/AudioPlayerUI.qml" line="295"/>
         <source>定时关闭已取消</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/AudioPlayerUI.qml" line="310"/>
+        <location filename="../assets/pages/AudioPlayerUI.qml" line="303"/>
         <source>分钟后自动关闭</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/AudioPlayerUI.qml" line="312"/>
+        <location filename="../assets/pages/AudioPlayerUI.qml" line="305"/>
         <source>定时关闭，剩余：</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/AudioPlayerUI.qml" line="328"/>
+        <location filename="../assets/pages/AudioPlayerUI.qml" line="321"/>
         <source>上一页</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/AudioPlayerUI.qml" line="340"/>
+        <location filename="../assets/pages/AudioPlayerUI.qml" line="333"/>
         <source>下一页</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/AudioPlayerUI.qml" line="491"/>
+        <location filename="../assets/pages/AudioPlayerUI.qml" line="484"/>
         <source>专辑播放完毕</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/AudioPlayerUI.qml" line="493"/>
+        <location filename="../assets/pages/AudioPlayerUI.qml" line="486"/>
         <source>播放列表已无上一集</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/AudioPlayerUI.qml" line="498"/>
-        <source>暂无播放</source>
+        <location filename="../assets/pages/AudioPlayerUI.qml" line="491"/>
+        <source>播放结束，此集为付费声音</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/AudioPlayerUI.qml" line="527"/>
+        <location filename="../assets/pages/AudioPlayerUI.qml" line="520"/>
         <source>%1:%2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -132,12 +127,12 @@
 <context>
     <name>Common</name>
     <message>
-        <location filename="../assets/common/Common.qml" line="30"/>
+        <location filename="../assets/common/Common.qml" line="38"/>
         <source>确定</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="30"/>
+        <location filename="../assets/common/Common.qml" line="38"/>
         <source>取消</source>
         <translation type="unfinished"></translation>
     </message>

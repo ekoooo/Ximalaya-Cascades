@@ -155,8 +155,6 @@ void AudioPlayer::playNextAlbum() {
     }
 }
 void AudioPlayer::getNextAlbumFinished(QString data) {
-    qDebug() << "getNextAlbumFinished............";
-
     JsonDataAccess jda;
     QVariant albumInfo = jda.loadFromBuffer(data.toUtf8());
 
@@ -169,7 +167,7 @@ void AudioPlayer::getNextAlbumFinished(QString data) {
     this->go(list.at(0).toMap());
 }
 void AudioPlayer::getNextAlbumError(QString errorMsg) {
-    qDebug() << "AudioPlayer::getNextAlbumError" << errorMsg;
+    qDebug() << "AudioPlayer::getNextAlbumError errorMsg:" << errorMsg;
 }
 
 // 设置 metaData 和 icon
@@ -196,14 +194,20 @@ void AudioPlayer::go(QMap<QString, QVariant> trackItem) {
     if(!trackItem.isEmpty()) {
         /**
          * 播放源和大小
-         * playUrl64 e.g. 5.26mb
+         * playUrl64 e.g. 5.26mb // 默认
          * playUrl32 e.g. 2.63mb
          * playPathAacv224 e.g. 2.04mb
          * playPathAacv164 e.g. 5.33mb
          */
-        QString playUrl = trackItem["playUrl64"].toString();
+        QString audioPlayerSourceType = Misc::getConfig("audioPlayerSourceType", "playUrl64");
+        QString playUrl = trackItem[audioPlayerSourceType].toString();
+        qDebug() << "AudioPlayer::go playUrl:" << playUrl;
 
-        qDebug() << "play:" << playUrl;
+        if(playUrl == "") { // 付费声音
+            qDebug() << "AudioPlayer::go playUrl is null";
+            emit track404();
+            return;
+        }
 
         this->setSourceUrl(playUrl);
         this->setNpInfo(trackItem);

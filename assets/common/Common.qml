@@ -17,7 +17,15 @@ QtObject {
         // 当前播放的 trackId
         "currentPlayTrackId": "currentPlayTrackId",
         // 播放器操作面板显示状态
-        "audioPlayerOpVisible": "audioPlayerOpVisible"
+        "audioPlayerOpVisible": "audioPlayerOpVisible",
+        /**
+         * 播放声音源
+         * playUrl64 e.g. 5.26mb // 默认
+         * playUrl32 e.g. 2.63mb
+         * playPathAacv224 e.g. 2.04mb
+         * playPathAacv164 e.g. 5.33mb
+         */
+        "audioPlayerSourceType": "audioPlayerSourceType"
     }
     
     // 快捷键

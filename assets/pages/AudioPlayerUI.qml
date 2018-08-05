@@ -147,8 +147,8 @@ Page {
                             audioPlayer.setAlbumInfo(listAlbumInfo);
                         }
                         // 付费声音处理
-                        if(dm.data(indexPath)['isPaid']) {
-                            _misc.showToast(qsTr("此集为付费声音 →.→"));
+                        if(!dm.data(indexPath)['isFree']) {
+                            _misc.showToast(qsTr("此集为付费声音，无法播放"));
                         }else {
                             audioPlayer.go(dm.data(indexPath)['trackId']);
                         }
@@ -184,7 +184,7 @@ Page {
                                         Label {
                                             text: ListItemData['title']
                                             textStyle {
-                                                color: ListItemData['isPaid'] ? ui.palette.secondaryTextOnPlain : ui.palette.textOnPlain
+                                                color: ListItemData['isFree'] ? ui.palette.primary : ui.palette.secondaryTextOnPlain
                                             }
                                         }
                                     }
@@ -488,7 +488,7 @@ Page {
         isLoading = false;
     }
     function track404() {
-        _misc.showToast(qsTr("暂无播放"));
+        _misc.showToast(qsTr("播放结束，此集为付费声音"));
         isLoading = false;
     }
     function preNextTrack() {
