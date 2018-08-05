@@ -38,6 +38,7 @@ class Misc : public QObject {
         Q_INVOKABLE static QString requesterCacheSize();
 
         Q_INVOKABLE static QByteArray toUtf8(QString text);
+        Q_INVOKABLE static void exit();
 
         Q_INVOKABLE void invokeViewIamge(QString path);
         Q_INVOKABLE void invokeBrowser(QString url);

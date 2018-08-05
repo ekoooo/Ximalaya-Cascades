@@ -6,6 +6,7 @@
  */
 
 #include "AudioPlayer.hpp"
+#include "../Misc/Misc.hpp"
 
 #include <QObject>
 #include <bb/multimedia/MediaPlayer>
@@ -281,7 +282,8 @@ void AudioPlayer::exitTimerTimeout() {
     if(this->currentExitTime >= this->exitTime) {
         this->exitTimer->stop();
         emit exitTimerInterval(0, 0);
-        // TODO 关闭
+        // 关闭应用
+        Misc::exit();
     }else {
         emit exitTimerInterval(this->currentExitTime, this->exitTime);
     }

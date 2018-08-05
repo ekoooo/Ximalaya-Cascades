@@ -25,6 +25,7 @@
 #include <bb/cascades/VisualStyle>
 #include <bb/cascades/Theme>
 #include <bb/cascades/ColorTheme>
+#include <bb/cascades/Application>
 
 using namespace bb::system;
 using namespace bb::cascades;
@@ -200,4 +201,8 @@ void Misc::openDialog(const QString &confirmLabel, const QString &cancelLabel, c
 void Misc::onDialogFinished(bb::system::SystemUiResult::Type type) {
     Q_UNUSED(type);
     dialog->deleteLater();
+}
+
+void Misc::exit() {
+    Application::exit();
 }
