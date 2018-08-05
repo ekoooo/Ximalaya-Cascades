@@ -104,22 +104,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/AudioPlayerUI.qml" line="484"/>
+        <location filename="../assets/pages/AudioPlayerUI.qml" line="493"/>
         <source>专辑播放完毕</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/AudioPlayerUI.qml" line="486"/>
-        <source>播放列表已无上一集</source>
+        <location filename="../assets/pages/AudioPlayerUI.qml" line="495"/>
+        <source>没有可播放的上一集</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/AudioPlayerUI.qml" line="491"/>
+        <location filename="../assets/pages/AudioPlayerUI.qml" line="500"/>
         <source>无法播放付费声音</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/AudioPlayerUI.qml" line="520"/>
+        <location filename="../assets/pages/AudioPlayerUI.qml" line="529"/>
         <source>%1:%2</source>
         <translation type="unfinished"></translation>
     </message>

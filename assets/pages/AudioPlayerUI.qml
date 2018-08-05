@@ -142,16 +142,16 @@ Page {
                         if(dm.data(indexPath)['__type']) {
                             return;
                         }
+                        // 付费声音处理
+                        if(!dm.data(indexPath)['isFree']) {
+                            _misc.showToast(qsTr("此集为付费声音，无法播放"));
+                            return;
+                        }
                         // 如果是播放的不是当前页的话，则需要更新专辑信息
                         if(listAlbumInfo['data']['pageId'] != albumInfo['data']['pageId']) {
                             audioPlayer.setAlbumInfo(listAlbumInfo);
                         }
-                        // 付费声音处理
-                        if(!dm.data(indexPath)['isFree']) {
-                            _misc.showToast(qsTr("此集为付费声音，无法播放"));
-                        }else {
-                            audioPlayer.go(dm.data(indexPath)['trackId']);
-                        }
+                        audioPlayer.go(dm.data(indexPath)['trackId']);
                     }
                     // 重写 itemType
                     function itemType(data, indexPath) {
@@ -339,6 +339,15 @@ Page {
                         }
                         onClicked: {
                             common.apiAlbumInfo(albumInfoRequester, listAlbumInfo['data']['list'][0]['albumId'], listAlbumInfo['data']['pageId'] + 1);
+                        }
+                    }
+                    Button {
+                        text: listAlbumInfo ? (listAlbumInfo['data']['pageId'] + '/' + listAlbumInfo['data']['maxPageId']) : '0/0'
+                        horizontalAlignment: HorizontalAlignment.Fill
+                        appearance: ControlAppearance.Plain
+                        // enabled: false
+                        layoutProperties: StackLayoutProperties {
+                            spaceQuota: 1
                         }
                     }
                 }
