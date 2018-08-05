@@ -117,21 +117,26 @@ QMap<QString, QVariant> AudioPlayer::getPreNextTrackItem(int flag) {
     QMap<QString, QVariant> data = info["data"].toMap();
     QList<QVariant> list = data["list"].toList();
 
+    bool isSearched = false;
     int i = 0, nextIndex, preIndex;
+
     for(i = 0; i < list.length(); i++) {
         item = list.at(i).toMap();
         if(item["trackId"].toString() == this->currentTrackInfo["trackId"].toString()) {
             nextIndex = i + 1;
             preIndex = i - 1;
+            isSearched = true;
             break;
         }
     }
 
-    if(flag == 1 && nextIndex < list.length()) {
-        rt = list.at(nextIndex).toMap();
-    }
-    if(flag == -1 && preIndex >= 0) {
-        rt = list.at(preIndex).toMap();
+    if(isSearched) {
+        if(flag == 1 && nextIndex < list.length()) {
+            rt = list.at(nextIndex).toMap();
+        }
+        if(flag == -1 && preIndex >= 0) {
+            rt = list.at(preIndex).toMap();
+        }
     }
 
     return rt;
@@ -253,7 +258,7 @@ void AudioPlayer::previous() {
     // 获取当前播放的信息
     QMap<QString, QVariant> trackItem = this->getPreNextTrackItem(-1);
     if(trackItem.isEmpty()) {
-        // 没有上一曲了
+        // 没有上一曲了，或者为收费声音
         emit albumEnd(-1);
     }else {
         this->go(trackItem);

@@ -483,7 +483,7 @@ Page {
         if(flag == 1) {
             _misc.showToast(qsTr("专辑播放完毕"));
         }else {
-            _misc.showToast(qsTr("播放列表已无上一集"));
+            _misc.showToast(qsTr("没有可播放的上一集"));
         }
         isLoading = false;
     }
