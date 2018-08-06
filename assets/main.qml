@@ -1,67 +1,89 @@
-/*
- * Copyright (c) 2011-2015 BlackBerry Limited.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- * http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
-
 import bb.cascades 1.4
 import bb.multimedia 1.4
 import tech.lwl 1.0
 import "asset:///common"
+import "asset:///pages" as Page
 
-NavigationPane {
-    id: nav
-    property variant albumInfo
-    property variant trackId
-    property variant audioPlayerUIPage
+TabbedPane {
+    id: tabbedPane
+    property variant nav: activeTab.tabNav // 所以页面可用导航
+    property bool backButtonVisiable: _misc.getConfig(common.settingsKey.backButtonVisiable, "1") === "1" // 是否显示返回按钮
+    // audioPlayerUI property start
+    property variant audioPlayerUIPage // 播放器页面
+    property variant albumInfo // 专辑信息
+    property variant trackId // 声音ID
+    // audioPlayerUI property end
     
-    Page {
-        Container {
-            ListView {
-                id: lv
-                dataModel: ArrayDataModel {
-                    id: dm
-                }
-                onTriggered: {
-                    nav.trackId = dm.data(indexPath)['trackId'];
-                    nav.goAudioPlayerUI();
-                }
-                listItemComponents: [
-                    ListItemComponent {
-                        type: ""
-                        CustomListItem {
-                            Label {
-                                verticalAlignment: VerticalAlignment.Center
-                                text: ListItemData['title']
-                            }
-                        }
-                    }
-                ]
-                onCreationCompleted: {
-                    listRequester.send("http://mobile.ximalaya.com/mobile/v1/album/track?albumId=13394295&pageId=2&pageSize=20&device=android&isAsc=true");
-                }
-            }
-            
-            Button {
-                text: "open"
-                onClicked: {
-                    nav.trackId = -1;
-                    nav.goAudioPlayerUI();
-                }
-                horizontalAlignment: HorizontalAlignment.Fill
+    showTabsOnActionBar: false
+    // activeTab: indexTab // 默认 activeTab 为 主页
+    activeTab: searchTab // 默认 activeTab 为 主页
+    
+    Menu.definition: MenuDefinition {
+        helpAction: HelpActionItem {
+            title: qsTr("帮助")
+            onTriggered: {
+                
             }
         }
+        settingsAction: SettingsActionItem {
+            title: qsTr("设置")
+            onTriggered: {
+                
+            }
+        }
+        actions: [
+            ActionItem {
+                title: qsTr("赞助")
+                imageSource: "asset:///images/bb10/ic_contact.png"
+                onTriggered: {
+                    
+                }
+            },
+            ActionItem {
+                title: qsTr("评价")
+                imageSource: "asset:///images/bb10/ic_edit_bookmarks.png"
+                onTriggered: {
+                    _misc.invokeBBWorld(common.bbwAddr);
+                }
+            },
+            ActionItem {
+                title: qsTr("关于")
+                imageSource: "asset:///images/bb10/ic_info.png"
+                onTriggered: {
+                    
+                }
+            }
+        ]
     }
+    
+    tabs: [
+        Tab {
+            id: indexTab
+            property alias tabNav: indexNav
+            title: qsTr("主页")
+            imageSource: "asset:///images/bb10/ic_home.png"
+            NavigationPane {
+                id: indexNav
+                Page.index {}
+                onPopTransitionEnded: common.onPopTransitionEnded(nav, page)
+                onPushTransitionEnded: common.onPushTransitionEnded(nav, page)
+                backButtonsVisible: tabbedPane.backButtonVisiable
+            }
+        },
+        Tab {
+            id: searchTab
+            property alias tabNav: searchNav
+            title: qsTr("搜索")
+            imageSource: "asset:///images/bb10/ic_search.png"
+            NavigationPane {
+                id: searchNav
+                Page.search {}
+                onPopTransitionEnded: common.onPopTransitionEnded(nav, page)
+                onPushTransitionEnded: common.onPushTransitionEnded(nav, page)
+                backButtonsVisible: tabbedPane.backButtonVisiable
+            }
+        }
+    ]
     
     attachedObjects: [
         AudioPlayer {
@@ -94,47 +116,44 @@ NavigationPane {
                 audioPlayerUIPage && audioPlayerUIPage.exitTimerInterval(currentExitTime, exitTime);
             }
         },
-        Common {
-            id: common
-        },
-        Requester {
-            id: listRequester
-            onFinished: {
-                var rs = JSON.parse(data);
-                dm.clear();
-                dm.insert(0, rs.data.list);
-                
-                nav.albumInfo = rs;
-            }
-        },
         ComponentDefinition {
             id: audioPlayerUI
-            source: "asset:///pages/AudioPlayerUI.qml"
+            source: "asset:///pages/audioPlayerUI.qml"
         },
         QTimer {
-            id: timer
+            id: audioPlayerUItimer
             interval: 200
             onTimeout: {
-                timer.stop();
-                initAudioPlayerUI();
+                audioPlayerUItimer.stop();
+                tabbedPane.initAudioPlayerUIParams();
             }
+        },
+        Common {
+            id: common
         }
     ]
     
-    function goAudioPlayerUI() {
-        audioPlayerUIPage = audioPlayerUI.createObject();
-        nav.push(audioPlayerUIPage);
-        timer.start();
-    }
-    function initAudioPlayerUI() {
-        audioPlayerUIPage.audioPlayer = player;
-        if(nav.trackId !== -1) {
-            audioPlayerUIPage.albumInfo = nav.albumInfo
-        }
-        audioPlayerUIPage.trackId = nav.trackId; // 注意顺序，trackId 赋值必须在最后面。
+    onCreationCompleted: {
+        // 设置主题
+        _misc.setTheme(_misc.getConfig(common.settingsKey.theme, "Bright"));
     }
     
-    onPopTransitionEnded: {
-        page.destroy();
+    /**
+     * 进入播放器
+     * 如果是直接进入，trackId = -1
+     */
+    function pushAudioPlayerUI(trackId, albumInfo) {
+        audioPlayerUIPage = audioPlayerUI.createObject();
+        nav.push(audioPlayerUIPage);
+        // 保存至 tabbedPane 中，提供给 timer 使用
+        tabbedPane.trackId = trackId;
+        tabbedPane.albumInfo = albumInfo;
+        
+        audioPlayerUItimer.start();
+    }
+    function initAudioPlayerUIParams() {
+        audioPlayerUIPage.audioPlayer = player;
+        audioPlayerUIPage.albumInfo = tabbedPane.albumInfo
+        audioPlayerUIPage.trackId = tabbedPane.trackId; // 注意顺序，trackId 赋值必须在最后面。
     }
 }

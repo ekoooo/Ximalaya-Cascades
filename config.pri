@@ -44,17 +44,30 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/images/audio_player/add.png) \
         $$quote($$BASEDIR/assets/images/audio_player/af.png) \
         $$quote($$BASEDIR/assets/images/audio_player/loading.png) \
+        $$quote($$BASEDIR/assets/images/audio_player/no_content.png) \
+        $$quote($$BASEDIR/assets/images/bb10/ic_contact.png) \
+        $$quote($$BASEDIR/assets/images/bb10/ic_edit_bookmarks.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_forward.png) \
+        $$quote($$BASEDIR/assets/images/bb10/ic_home.png) \
+        $$quote($$BASEDIR/assets/images/bb10/ic_info.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_pause.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_play.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_reply.png) \
+        $$quote($$BASEDIR/assets/images/bb10/ic_search.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_show_vkb.png) \
         $$quote($$BASEDIR/assets/images/carousel/round_white.png) \
         $$quote($$BASEDIR/assets/images/image_top_default.png) \
+        $$quote($$BASEDIR/assets/images/pay_icon.png) \
+        $$quote($$BASEDIR/assets/images/play_num_icon.png) \
+        $$quote($$BASEDIR/assets/images/ting_default.png) \
         $$quote($$BASEDIR/assets/images/ting_np_icon.png) \
         $$quote($$BASEDIR/assets/main.qml) \
-        $$quote($$BASEDIR/assets/pages/AudioPlayerUI.qml) \
-        $$quote($$BASEDIR/assets/pages/child/ItemContainer.qml)
+        $$quote($$BASEDIR/assets/main_bak.qml) \
+        $$quote($$BASEDIR/assets/pages/Copy of search.qml) \
+        $$quote($$BASEDIR/assets/pages/audioPlayerUI.qml) \
+        $$quote($$BASEDIR/assets/pages/child/ItemContainer.qml) \
+        $$quote($$BASEDIR/assets/pages/index.qml) \
+        $$quote($$BASEDIR/assets/pages/search.qml)
 }
 
 config_pri_source_group1 {

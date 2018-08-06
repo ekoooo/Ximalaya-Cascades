@@ -38,9 +38,23 @@ QtObject {
         _misc.openDialog(qsTr("确定"), qsTr("取消"), title, body);
     }
     
+    // ============ nav start ============
+    function onPopTransitionEnded(nav, page) {
+        page.destroy();
+    }
+    
+    function onPushTransitionEnded(nav, page) {
+    
+    }
+    // ============ nav end ============
+    
     // ============ api start ============
     function apiAlbumInfo(requester, albumId, pageId) {
         requester.send(qsTr(api.albumInfo).arg(albumId.toString()).arg(pageId.toString()));
+    }
+    function apiSearch(requester, core, kw, page) {
+        // core: album 专辑 user 主播
+        requester.send(qsTr(api.search).arg(core).arg(encodeURIComponent(kw)).arg(page.toString()));
     }
     // ============ api end ============
     function httpGetAsync(theUrl, callback) {

@@ -85,6 +85,10 @@ Page {
             ActionBar.placement: ActionBarPlacement.Signature
             imageSource: mediaState === MediaState.Started ? "asset:///images/bb10/ic_pause.png" : "asset:///images/bb10/ic_play.png"
             onTriggered: {
+                if(audioPlayer.mediaState === MediaState.Unprepared) {
+                    return;
+                }
+
                 if(mediaState === MediaState.Started) {
                     audioPlayer.pause();
                 }else {
@@ -130,11 +134,25 @@ Page {
                 
             }
             Container {
+                layout: DockLayout {
+                    
+                }
                 layoutProperties: StackLayoutProperties {
                     spaceQuota: 1
                 }
+                // 背景小猫猫，表示无播放
+                WebImageView {
+                    visible: !listAlbumInfo
+                    url: "asset:///images/audio_player/no_content.png"
+                    horizontalAlignment: HorizontalAlignment.Fill
+                    verticalAlignment: VerticalAlignment.Center
+                    scalingMethod: ScalingMethod.AspectFill
+                }
                 ListView {
                     scrollRole: ScrollRole.Main
+                    horizontalAlignment: HorizontalAlignment.Fill
+                    verticalAlignment: VerticalAlignment.Fill
+                    
                     dataModel: ArrayDataModel {
                         id: dm
                     }
@@ -326,6 +344,9 @@ Page {
                             spaceQuota: 1
                         }
                         onClicked: {
+                            if(!listAlbumInfo) {
+                                return;
+                            }
                             common.apiAlbumInfo(albumInfoRequester, listAlbumInfo['data']['list'][0]['albumId'], listAlbumInfo['data']['pageId'] - 1);
                         }
                     }
@@ -338,6 +359,9 @@ Page {
                             spaceQuota: 1
                         }
                         onClicked: {
+                            if(!listAlbumInfo) {
+                                return;
+                            }
                             common.apiAlbumInfo(albumInfoRequester, listAlbumInfo['data']['list'][0]['albumId'], listAlbumInfo['data']['pageId'] + 1);
                         }
                     }
@@ -365,7 +389,7 @@ Page {
                     toValue: duration
                     value: position
                     onTouch: {
-                        if(event.isUp() || event.isCancel()) {
+                        if((event.isUp() || event.isCancel()) && audioPlayer.mediaState !== MediaState.Unprepared) {
                             audioPlayer.seekTime(parseInt(immediateValue, 10));
                         }
                     }
@@ -450,13 +474,27 @@ Page {
          * (isEmptyAlbumInfo) 关闭应用，继续点击播放最后一个播放声音，应该初始化 albumInfo
          */
         if(currentPlayTrackId != trackId || trackId === -1 || isEmptyAlbumInfo) { // 切换声音，或者直接进入播放器
+            var playTrackId = trackId;
+            
             if(trackId === -1) { // 如果是直接打开播放器，则取出相应的信息
-                trackId = currentPlayTrackId;
+                playTrackId = currentPlayTrackId;
                 albumInfo = audioPlayer.albumInfo;
+
+                // 如果连播放器中都没有消息，则是新打开播放器，什么都没播放
+                if(!albumInfo) {
+                    isLoading = false;
+                    return;
+                }
+            }
+            // 继续验证专辑信息是否存在
+            if(!albumInfo) {
+                _misc.showToast(qsTr("无专辑信息，播放失败"));
+                isLoading = false;
+                return;
             }
             
             audioPlayer.setAlbumInfo(albumInfo);
-            audioPlayer.go(trackId);
+            audioPlayer.go(playTrackId);
         }else {
             // 初始化信息
             albumInfo = audioPlayer.albumInfo;
