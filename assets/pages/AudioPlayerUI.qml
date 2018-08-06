@@ -425,7 +425,12 @@ Page {
             }
             onFinished: {
                 isLoading = false;
-                renderList(JSON.parse(data));
+                var rt = JSON.parse(data);
+                if(rt.ret === 0) {
+                    renderList(rt);
+                }else {
+                    _misc.showToast(rt.msg);
+                }
             }
             onError: {
                 _misc.showToast(error);
@@ -436,24 +441,27 @@ Page {
     
     onTrackIdChanged: {
         var currentPlayTrackId = _misc.getConfig(common.settingsKey.currentPlayTrackId, "");
-        // 如果 trackId 发生变化则播放（保存操作在 go 中）
-        if(currentPlayTrackId != trackId && trackId !== -1) {
+        var isEmptyAlbumInfo = !audioPlayer.albumInfo;
+        
+        /**
+         * 进入播放器，初始化
+         * (currentPlayTrackId != trackId) ==> 切换声音
+         * (trackId === -1) ==> 直接打开播放器
+         * (isEmptyAlbumInfo) 关闭应用，继续点击播放最后一个播放声音，应该初始化 albumInfo
+         */
+        if(currentPlayTrackId != trackId || trackId === -1 || isEmptyAlbumInfo) { // 切换声音，或者直接进入播放器
+            if(trackId === -1) { // 如果是直接打开播放器，则取出相应的信息
+                trackId = currentPlayTrackId;
+                albumInfo = audioPlayer.albumInfo;
+            }
+            
             audioPlayer.setAlbumInfo(albumInfo);
             audioPlayer.go(trackId);
         }else {
-            if(trackId === -1) { // 如果是直接打开播放器
-                trackId = currentPlayTrackId;
-                return;
-            }
-            if(!audioPlayer.albumInfo) { // 关闭设备，继续点击播放最后一个播放声音，此 albumInfo 会为空，所以要处理
-                _misc.setConfig(common.settingsKey.currentPlayTrackId, "");
-                trackId = currentPlayTrackId;
-                return;
-            }
             // 初始化信息
             albumInfo = audioPlayer.albumInfo;
             // 如果是暂停状态进来的，也继续播放
-            audioPlayer.play();
+            // audioPlayer.play();
             // 渲染界面
             render();
             renderList(albumInfo);
@@ -462,7 +470,7 @@ Page {
         }
     }
     
-    // ===================== connect start ===================== 
+    // connect start 
     function currentTrackChanged(trackId) {
         trackId = audioPlayer.trackId;
         render();
@@ -507,7 +515,9 @@ Page {
         exitBtnContainer.currentExitTime = currentExitTime;
         exitBtnContainer.exitTime = exitTime;
     }
-    // ===================== connect end ===================== 
+    // connect end 
+    
+    // 保存当前专辑信息，并加载列表
     function renderList(albumInfo) {
         listAlbumInfo = albumInfo; // 保存当前列表专辑信息
         
@@ -523,6 +533,7 @@ Page {
         mediaState = audioPlayer.mediaState;
     }
     
+    // 格式化时间戳为：mm:ss
     function formatTime(s) {
         var minutes = Math.floor(s/1000/60);
         var seconds = Math.floor(s/1000%60);

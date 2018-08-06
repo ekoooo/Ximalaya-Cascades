@@ -128,7 +128,9 @@ NavigationPane {
     }
     function initAudioPlayerUI() {
         audioPlayerUIPage.audioPlayer = player;
-        audioPlayerUIPage.albumInfo = nav.albumInfo;
+        if(nav.trackId !== -1) {
+            audioPlayerUIPage.albumInfo = nav.albumInfo
+        }
         audioPlayerUIPage.trackId = nav.trackId; // 注意顺序，trackId 赋值必须在最后面。
     }
     

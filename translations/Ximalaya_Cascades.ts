@@ -44,7 +44,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/AudioPlayerUI.qml" line="151"/>
+        <location filename="../assets/pages/AudioPlayerUI.qml" line="147"/>
         <source>此集为付费声音，无法播放</source>
         <translation type="unfinished"></translation>
     </message>
