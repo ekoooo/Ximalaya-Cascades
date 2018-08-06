@@ -26,6 +26,10 @@ AudioPlayer::AudioPlayer() : bb::multimedia::MediaPlayer() {
     this->playTimer = new QTimer();
     this->exitTimer = new QTimer();
 
+    this->exitTime = 0;
+    this->currentExitTime = 0;
+    this->requester = NULL;
+
     connect(playTimer, SIGNAL(timeout()), this, SLOT(playTimerTimeout()));
     connect(exitTimer, SIGNAL(timeout()), this, SLOT(exitTimerTimeout()));
 
