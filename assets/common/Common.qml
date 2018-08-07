@@ -38,6 +38,21 @@ QtObject {
         _misc.openDialog(qsTr("确定"), qsTr("取消"), title, body);
     }
     
+    /**
+     * 格式化数字
+     * 12300 1.23万
+     * 123000000 1.23亿
+     */
+    function parsePlayerNum(num) {
+        var rs = num;
+        if(num >= 10000 && num < 100000000) {
+            rs = Math.round((num/10000)*100)/100 + qsTr("万");
+        }else if(num >= 100000000) {
+            rs = Math.round((num/100000000)*100)/100 + qsTr("亿");
+        }
+        return rs;
+    }
+    
     // ============ nav start ============
     function onPopTransitionEnded(nav, page) {
         page.destroy();

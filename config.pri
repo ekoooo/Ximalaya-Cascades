@@ -38,13 +38,13 @@ config_pri_assets {
     OTHER_FILES += \
         $$quote($$BASEDIR/assets/api.js) \
         $$quote($$BASEDIR/assets/common/Common.qml) \
-        $$quote($$BASEDIR/assets/components/Carousel.qml) \
         $$quote($$BASEDIR/assets/components/RefreshHeader.qml) \
+        $$quote($$BASEDIR/assets/images/album_tracks_icon.png) \
         $$quote($$BASEDIR/assets/images/audio_player/aco.png) \
         $$quote($$BASEDIR/assets/images/audio_player/add.png) \
         $$quote($$BASEDIR/assets/images/audio_player/af.png) \
         $$quote($$BASEDIR/assets/images/audio_player/loading.png) \
-        $$quote($$BASEDIR/assets/images/audio_player/no_content.png) \
+        $$quote($$BASEDIR/assets/images/avatars_icon.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_contact.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_edit_bookmarks.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_forward.png) \
@@ -55,17 +55,35 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/images/bb10/ic_reply.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_search.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_show_vkb.png) \
-        $$quote($$BASEDIR/assets/images/carousel/round_white.png) \
-        $$quote($$BASEDIR/assets/images/image_top_default.png) \
+        $$quote($$BASEDIR/assets/images/no_content.png) \
         $$quote($$BASEDIR/assets/images/pay_icon.png) \
-        $$quote($$BASEDIR/assets/images/play_num_icon.png) \
+        $$quote($$BASEDIR/assets/images/sound_playtimes_icon.png) \
         $$quote($$BASEDIR/assets/images/ting_default.png) \
         $$quote($$BASEDIR/assets/images/ting_np_icon.png) \
+        $$quote($$BASEDIR/assets/images/user_grade/individual_orangeV0.png) \
+        $$quote($$BASEDIR/assets/images/user_grade/individual_orangeV1.png) \
+        $$quote($$BASEDIR/assets/images/user_grade/individual_orangeV10.png) \
+        $$quote($$BASEDIR/assets/images/user_grade/individual_orangeV11.png) \
+        $$quote($$BASEDIR/assets/images/user_grade/individual_orangeV12.png) \
+        $$quote($$BASEDIR/assets/images/user_grade/individual_orangeV13.png) \
+        $$quote($$BASEDIR/assets/images/user_grade/individual_orangeV14.png) \
+        $$quote($$BASEDIR/assets/images/user_grade/individual_orangeV15.png) \
+        $$quote($$BASEDIR/assets/images/user_grade/individual_orangeV16.png) \
+        $$quote($$BASEDIR/assets/images/user_grade/individual_orangeV2.png) \
+        $$quote($$BASEDIR/assets/images/user_grade/individual_orangeV3.png) \
+        $$quote($$BASEDIR/assets/images/user_grade/individual_orangeV4.png) \
+        $$quote($$BASEDIR/assets/images/user_grade/individual_orangeV5.png) \
+        $$quote($$BASEDIR/assets/images/user_grade/individual_orangeV6.png) \
+        $$quote($$BASEDIR/assets/images/user_grade/individual_orangeV7.png) \
+        $$quote($$BASEDIR/assets/images/user_grade/individual_orangeV8.png) \
+        $$quote($$BASEDIR/assets/images/user_grade/individual_orangeV9.png) \
         $$quote($$BASEDIR/assets/main.qml) \
         $$quote($$BASEDIR/assets/main_bak.qml) \
         $$quote($$BASEDIR/assets/pages/Copy of search.qml) \
         $$quote($$BASEDIR/assets/pages/audioPlayerUI.qml) \
+        $$quote($$BASEDIR/assets/pages/child/AlbumItem.qml) \
         $$quote($$BASEDIR/assets/pages/child/ItemContainer.qml) \
+        $$quote($$BASEDIR/assets/pages/child/UserItem.qml) \
         $$quote($$BASEDIR/assets/pages/index.qml) \
         $$quote($$BASEDIR/assets/pages/search.qml)
 }
@@ -136,9 +154,9 @@ lupdate_inclusion {
         $$quote($$BASEDIR/../assets/images/bb10/*.qml) \
         $$quote($$BASEDIR/../assets/images/bb10/*.js) \
         $$quote($$BASEDIR/../assets/images/bb10/*.qs) \
-        $$quote($$BASEDIR/../assets/images/carousel/*.qml) \
-        $$quote($$BASEDIR/../assets/images/carousel/*.js) \
-        $$quote($$BASEDIR/../assets/images/carousel/*.qs) \
+        $$quote($$BASEDIR/../assets/images/user_grade/*.qml) \
+        $$quote($$BASEDIR/../assets/images/user_grade/*.js) \
+        $$quote($$BASEDIR/../assets/images/user_grade/*.qs) \
         $$quote($$BASEDIR/../assets/pages/*.qml) \
         $$quote($$BASEDIR/../assets/pages/*.js) \
         $$quote($$BASEDIR/../assets/pages/*.qs) \

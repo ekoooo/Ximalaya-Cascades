@@ -143,7 +143,7 @@ Page {
                 // 背景小猫猫，表示无播放
                 WebImageView {
                     visible: !listAlbumInfo
-                    url: "asset:///images/audio_player/no_content.png"
+                    url: "asset:///images/no_content.png"
                     horizontalAlignment: HorizontalAlignment.Fill
                     verticalAlignment: VerticalAlignment.Center
                     scalingMethod: ScalingMethod.AspectFill

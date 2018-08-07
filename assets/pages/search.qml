@@ -1,5 +1,6 @@
 import bb.cascades 1.4
 import tech.lwl 1.0
+import "asset:///pages/child"
 
 Page {
     id: searchPage
@@ -33,7 +34,7 @@ Page {
             textField.input.onSubmitted: {
                 searchPage.search(textField.text, 'all');
             }
-            textField.text: "灵异"
+            textField.text: "音乐"
         }
     }
     
@@ -58,11 +59,17 @@ Page {
                 ]
                 onSelectedValueChanged: {
                     if(selectedValue === 'c1') {
-                        c1.visible = true;
                         c2.visible = false;
+                        c1.visible = true;
+                        
+                        userLv.scrollRole = ScrollRole.None;
+                        albumLv.scrollRole = ScrollRole.Main;
                     }else if(selectedValue === 'c2') {
-                        c2.visible = true;
                         c1.visible = false;
+                        c2.visible = true;
+                        
+                        albumLv.scrollRole = ScrollRole.None;
+                        userLv.scrollRole = ScrollRole.Main;
                     }
                 }
             }
@@ -84,11 +91,22 @@ Page {
                 visible: true
                 horizontalAlignment: HorizontalAlignment.Fill
                 verticalAlignment: VerticalAlignment.Fill
+                layout: DockLayout {}
                 
+                WebImageView {
+                    visible: searchParams.album.totalPage === 0 && !searchParams.album.isLoading
+                    url: "asset:///images/no_content.png"
+                    horizontalAlignment: HorizontalAlignment.Fill
+                    verticalAlignment: VerticalAlignment.Center
+                    scalingMethod: ScalingMethod.AspectFill
+                }
                 ListView {
                     id: albumLv
-                    bottomPadding: ui.du(14)
+                    property variant common_: common
                     
+                    horizontalAlignment: HorizontalAlignment.Fill
+                    verticalAlignment: VerticalAlignment.Fill
+                    bottomPadding: ui.du(14)
                     layoutProperties: StackLayoutProperties {
                         spaceQuota: 1
                     }
@@ -98,93 +116,37 @@ Page {
                     listItemComponents: [
                         ListItemComponent {
                             type: ""
-                            CustomListItem {
-                                Container {
-                                    leftPadding: ui.du(2)
-                                    rightPadding: ui.du(2)
-                                    topPadding: ui.du(2)
-                                    bottomPadding: ui.du(2)
-                                    
-                                    layout: StackLayout {
-                                        orientation: LayoutOrientation.LeftToRight
-                                    }
-                                    // Cover Container
-                                    Container {
-                                        id: coverContainer
-                                        preferredWidth: ui.du(12)
-                                        preferredHeight: ui.du(12)
-                                        layout: DockLayout {
-                                            
-                                        }
-                                        
-                                        WebImageView {
-                                            url: ListItemData['cover_path']
-                                            failImageSource: "asset:///images/ting_default.png"
-                                            loadingImageSource: "asset:///images/ting_default.png"
-                                            scalingMethod: ScalingMethod.AspectFill
-                                            horizontalAlignment: HorizontalAlignment.Fill
-                                            verticalAlignment: VerticalAlignment.Fill
-                                        }
-                                        
-                                        WebImageView {
-                                            visible: ListItemData['is_paid']
-                                            url: "asset:///images/pay_icon.png"
-                                            horizontalAlignment: HorizontalAlignment.Left
-                                            verticalAlignment: VerticalAlignment.Top
-                                            preferredWidth: coverContainer.preferredWidth / 3
-                                            preferredHeight: coverContainer.preferredHeight / 3
-                                        }
-                                    }
-                                    // Audio Info Container
-                                    Container {
-                                        leftPadding: ui.du(2)
-                                        rightPadding: ui.du(2)
-                                        layoutProperties: StackLayoutProperties {
-                                            spaceQuota: 1
-                                        }
-                                        verticalAlignment: VerticalAlignment.Fill
-                                        
-                                        Container {
-                                            Label {
-                                                text: ListItemData['title']
-                                                textFit.mode: LabelTextFitMode.FitToBounds
-                                            }
-                                        }
-                                        Container {
-                                            Label {
-                                                text: ListItemData['intro']
-                                                textStyle {
-                                                    base: SystemDefaults.TextStyles.SubtitleText
-                                                    color: Color.Gray
-                                                }
-                                            }
-                                            topPadding: 8
-                                            bottomPadding: 8
-                                        }
-                                        Container {
-                                            layout: StackLayout {
-                                                orientation: LayoutOrientation.LeftToRight
-                                            }
-                                            Label {
-                                                text: qsTr("播放：") + ListItemData['play']
-                                                textStyle {
-                                                    base: SystemDefaults.TextStyles.SmallText
-                                                    color: Color.Gray
-                                                }
-                                            }
-                                            Label {
-                                                text: qsTr("集数：") +ListItemData['tracks']
-                                                textStyle {
-                                                    base: SystemDefaults.TextStyles.SmallText
-                                                    color: Color.Gray
-                                                }
-                                            }
-                                        }
-                                    }
+                            AlbumItem {
+                                listItemData: ListItemData
+                                common: ListItem.view.common_
+                            }
+                        }
+                    ]
+                    attachedObjects: [
+                        ListScrollStateHandler {
+                            onAtEndChanged: {
+                                if(atEnd && !albumDm.isEmpty() && !searchParams.album.isLoading && searchParams.album.page < searchParams.album.totalPage) {
+                                    searchPage.search(searchParams.album.kw, 'album');
                                 }
                             }
                         }
                     ]
+                }
+                Container {
+                    visible: searchParams.album.isLoading
+                    horizontalAlignment: HorizontalAlignment.Fill
+                    verticalAlignment: VerticalAlignment.Fill
+                    layout: DockLayout {}
+                    background: Color.create(0,0,0,0.2)
+                    
+                    ActivityIndicator {
+                        visible: true
+                        running: searchParams.album.isLoading
+                        horizontalAlignment: HorizontalAlignment.Center
+                        verticalAlignment: VerticalAlignment.Center
+                        preferredWidth: ui.du(10)
+                        preferredHeight: ui.du(10)
+                    }
                 }
             }
             
@@ -194,14 +156,62 @@ Page {
                 visible: false
                 horizontalAlignment: HorizontalAlignment.Fill
                 verticalAlignment: VerticalAlignment.Fill
+                layout: DockLayout {}
+                
+                WebImageView {
+                    visible: searchParams.user.totalPage === 0 && !searchParams.user.isLoading
+                    url: "asset:///images/no_content.png"
+                    horizontalAlignment: HorizontalAlignment.Fill
+                    verticalAlignment: VerticalAlignment.Center
+                    scalingMethod: ScalingMethod.AspectFill
+                }
                 
                 ListView {
-                    id: anchorLv
+                    id: userLv
+                    horizontalAlignment: HorizontalAlignment.Fill
+                    verticalAlignment: VerticalAlignment.Fill
+                    bottomPadding: ui.du(14)
                     layoutProperties: StackLayoutProperties {
                         spaceQuota: 1
                     }
+                    
                     dataModel: ArrayDataModel {
                         id: userDm
+                    }
+                    
+                    listItemComponents: [
+                        ListItemComponent {
+                            type: ""
+                            UserItem {
+                                listItemData: ListItemData
+                            }
+                        }
+                    ]
+                    attachedObjects: [
+                        ListScrollStateHandler {
+                            onAtEndChanged: {
+                                if(atEnd && !userDm.isEmpty() && !searchParams.user.isLoading && searchParams.user.page < searchParams.user.totalPage) {
+                                    searchPage.search(searchParams.album.kw, 'user');
+                                }
+                            }
+                        }
+                    ]
+                }
+                
+                Container {
+                    visible: searchParams.user.isLoading
+                    horizontalAlignment: HorizontalAlignment.Fill
+                    verticalAlignment: VerticalAlignment.Fill
+                    layout: DockLayout {}
+                    background: Color.create(0,0,0,0.2)
+                    
+                    ActivityIndicator {
+                        visible: true
+                        running: searchParams.user.isLoading
+                        horizontalAlignment: HorizontalAlignment.Center
+                        verticalAlignment: VerticalAlignment.Center
+                        preferredWidth: ui.du(10)
+                        preferredHeight: ui.du(10)
                     }
                 }
             }
@@ -213,37 +223,31 @@ Page {
         Requester {
             id: albumRequester
             onBeforeSend: {
-                searchParams.album.isLoading = true;
+                updateSearchParams('album', { isLoading: true });
             }
             onFinished: {
                 searchPage.setListInfo('album', JSON.parse(data));
             }
             onError: {
-                searchParams.album.isLoading = false;
+                updateSearchParams('album', { isLoading: false });
                 _misc.showToast(error);
                 // 处理 page
-                var page = searchParams['album']['page'];
-                if(page > 1) {
-                    updateSearchParams('album', { page: page - 1 });
-                }
+                resetPage('album');
             }
         },
         Requester {
             id: userRequester
             onBeforeSend: {
-                searchParams.user.isLoading = true;
+                updateSearchParams('user', { isLoading: true });
             }
             onFinished: {
                 searchPage.setListInfo('user', JSON.parse(data));
             }
             onError: {
-                searchParams.user.isLoading = false;
+                updateSearchParams('user', { isLoading: false });
                 _misc.showToast(error);
                 // 处理 page
-                var page = searchParams['user']['page'];
-                if(page > 1) {
-                    updateSearchParams('user', { page: page - 1 });
-                }
+                resetPage('user');
             }
         }
     ]
@@ -255,6 +259,11 @@ Page {
      * type 类型 album、user、all
      */
     function search(kw, type) {
+        if(!kw || kw.trim() === '') {
+            _misc.showToast("请输入关键字进行搜索");
+            return;
+        }
+        
         if(type === 'all') {
             // 初始化
             searchParams = { // 搜索结束后保存
@@ -263,14 +272,14 @@ Page {
                     page: 1,
                     totalPage: 0,
                     numFound: 0,
-                    kw: undefined
+                    kw: kw
                 },
                 user: {
                     isLoading: false,
                     page: 1,
                     totalPage: 0,
                     numFound: 0,
-                    kw: undefined
+                    kw: kw
                 }
             }
 
@@ -283,9 +292,9 @@ Page {
             });
             
             if(type === 'album') {
-                common.apiSearch(albumRequester, type, kw, searchParams[type]['page'] + 1);
+                common.apiSearch(albumRequester, type, kw, searchParams[type]['page']);
             }else if(type === 'user') {
-                common.apiSearch(userRequester, type, kw, searchParams[type]['page'] + 1);
+                common.apiSearch(userRequester, type, kw, searchParams[type]['page']);
             }
         }
     }
@@ -293,8 +302,24 @@ Page {
     function setListInfo(type, data) {
         var response = data['response'];
         
-        var dm;
+        // 验证
+        if(!response) {
+            if(data['reason'] && data['reason'] === 'UnableSearch') {
+                _misc.showToast(qsTr("很抱歉，根据相关法律和政策，相关搜索结果未给与显示"));
+            }else {
+                _misc.showToast(qsTr("此关键字无法搜索"));
+            }
+            
+            updateSearchParams(type, {
+                isLoading: false
+            });
+            
+            resetPage(type);
+            
+            return;
+        }
         
+        var dm;
         if(type === 'album') {
             dm = albumDm;
         }else if(type === 'user') {
@@ -313,6 +338,13 @@ Page {
             totalPage: response.totalPage,
             numFound: response.numFound
         });
+    }
+    
+    function resetPage(type) {
+        var page = searchParams[type]['page'];
+        if(page > 1) {
+            updateSearchParams(type, { page: page - 1 });
+        }
     }
     
     function updateSearchParams(type, info) {

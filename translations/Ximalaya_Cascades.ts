@@ -2,6 +2,19 @@
 <!DOCTYPE TS>
 <TS version="2.0">
 <context>
+    <name>AlbumItem</name>
+    <message>
+        <location filename="../assets/pages/child/AlbumItem.qml" line="64"/>
+        <source>完结</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/child/AlbumItem.qml" line="122"/>
+        <source>集</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Common</name>
     <message>
         <location filename="../assets/common/Common.qml" line="38"/>
@@ -11,6 +24,52 @@
     <message>
         <location filename="../assets/common/Common.qml" line="38"/>
         <source>取消</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/common/Common.qml" line="49"/>
+        <source>万</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/common/Common.qml" line="51"/>
+        <source>亿</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>Copy of search</name>
+    <message>
+        <location filename="../assets/pages/Copy of search.qml" line="28"/>
+        <source>搜索专辑、主播</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/Copy of search.qml" line="71"/>
+        <source>专辑</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/Copy of search.qml" line="72"/>
+        <source>共</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/Copy of search.qml" line="72"/>
+        <source>个搜索结果</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>UserItem</name>
+    <message>
+        <location filename="../assets/pages/child/UserItem.qml" line="80"/>
+        <source>声音</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/child/UserItem.qml" line="87"/>
+        <source>粉丝</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -183,23 +242,18 @@
 <context>
     <name>search</name>
     <message>
-        <location filename="../assets/pages/search.qml" line="28"/>
+        <location filename="../assets/pages/search.qml" line="29"/>
         <source>搜索专辑、主播</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/search.qml" line="74"/>
+        <location filename="../assets/pages/search.qml" line="52"/>
         <source>专辑</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/search.qml" line="75"/>
-        <source>共</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/pages/search.qml" line="75"/>
-        <source>个搜索结果</source>
+        <location filename="../assets/pages/search.qml" line="56"/>
+        <source>主播</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
