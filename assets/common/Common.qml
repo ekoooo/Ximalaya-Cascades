@@ -53,6 +53,10 @@ QtObject {
         return rs;
     }
     
+    function isNotFree(itemInfo) {
+        return itemInfo['isPaid'] && !itemInfo['isFree'];
+    }
+    
     // ============ nav start ============
     function onPopTransitionEnded(nav, page) {
         page.destroy();
@@ -70,6 +74,10 @@ QtObject {
     function apiSearch(requester, core, kw, page) {
         // core: album 专辑 user 主播
         requester.send(qsTr(api.search).arg(core).arg(encodeURIComponent(kw)).arg(page.toString()));
+    }
+    function apiAlbumDetail(requester, albumId) {
+        requester.setHeaders({"Cookie": "1&_device=iPhone&bb10&6.3.45"});
+        requester.send(qsTr(api.albumDetail).arg(albumId.toString()));
     }
     // ============ api end ============
     function httpGetAsync(theUrl, callback) {

@@ -35,6 +35,9 @@ Page {
                 searchPage.search(textField.text, 'all');
             }
             textField.text: "音乐"
+            onCreationCompleted: {
+                searchPage.search(textField.text, 'all');
+            }
         }
     }
     
@@ -104,6 +107,7 @@ Page {
                     id: albumLv
                     property variant common_: common
                     
+                    scrollRole: ScrollRole.Main
                     horizontalAlignment: HorizontalAlignment.Fill
                     verticalAlignment: VerticalAlignment.Fill
                     bottomPadding: ui.du(14)
@@ -131,6 +135,10 @@ Page {
                             }
                         }
                     ]
+                    
+                    onTriggered: {
+                        goAlbumPage(albumDm.data(indexPath)['id']);
+                    }
                 }
                 Container {
                     visible: searchParams.album.isLoading
@@ -168,6 +176,8 @@ Page {
                 
                 ListView {
                     id: userLv
+                    
+                    scrollRole: ScrollRole.None
                     horizontalAlignment: HorizontalAlignment.Fill
                     verticalAlignment: VerticalAlignment.Fill
                     bottomPadding: ui.du(14)
@@ -249,8 +259,18 @@ Page {
                 // 处理 page
                 resetPage('user');
             }
+        },
+        ComponentDefinition {
+            id: albumPage
+            source: "asset:///pages/album.qml"
         }
     ]
+    
+    function goAlbumPage(albumId) {
+        var page = albumPage.createObject();
+        page.albumId = albumId;
+        nav.push(page);
+    }
     
     /**
      * 搜索

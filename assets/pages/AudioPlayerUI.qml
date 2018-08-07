@@ -149,6 +149,8 @@ Page {
                     scalingMethod: ScalingMethod.AspectFill
                 }
                 ListView {
+                    property variant common_: common
+                    
                     scrollRole: ScrollRole.Main
                     horizontalAlignment: HorizontalAlignment.Fill
                     verticalAlignment: VerticalAlignment.Fill
@@ -161,7 +163,7 @@ Page {
                             return;
                         }
                         // 付费声音处理
-                        if(!dm.data(indexPath)['isFree']) {
+                        if(common.isNotFree(dm.data(indexPath))) {
                             _misc.showToast(qsTr("此集为付费声音，无法播放"));
                             return;
                         }
@@ -179,6 +181,7 @@ Page {
                         ListItemComponent {
                             type: "item"
                             CustomListItem {
+                                id: trackItem
                                 dividerVisible: true
                                 Container {
                                     topPadding: ui.du(2)
@@ -200,9 +203,12 @@ Page {
                                             loadingImageSource: "asset:///images/audio_player/loading.png"
                                         }
                                         Label {
+                                            layoutProperties: StackLayoutProperties {
+                                                spaceQuota: 1
+                                            }
                                             text: ListItemData['title']
                                             textStyle {
-                                                color: ListItemData['isFree'] ? ui.palette.textOnPlain : Color.Gray
+                                                color: trackItem.ListItem.view.common_.isNotFree(ListItemData) ? Color.Gray : ui.palette.textOnPlain
                                             }
                                         }
                                     }
@@ -543,8 +549,8 @@ Page {
         isLoading = false;
     }
     function track404() {
-        _misc.showToast(qsTr("无法播放付费声音"));
         isLoading = false;
+        _misc.showToast(qsTr("无法播放付费声音"));
     }
     function preNextTrack() {
         isLoading = true;

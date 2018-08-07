@@ -173,7 +173,8 @@ void AudioPlayer::getNextAlbumFinished(QString data) {
 
     // 判断下一页是不是付费声音
     QMap<QString, QVariant> itemInfo = list.at(0).toMap();
-    if(!itemInfo["isFree"].toBool()) {
+
+    if(itemInfo["isPaid"].toBool() && !itemInfo["isFree"].toBool()) {
         qDebug() << "AudioPlayer::getNextAlbumFinished isFree" << itemInfo["isFree"].toBool();
         emit track404();
         return;
@@ -220,7 +221,7 @@ void AudioPlayer::go(QMap<QString, QVariant> trackItem) {
         QString playUrl = trackItem[audioPlayerSourceType].toString();
         qDebug() << "AudioPlayer::go playUrl:" << playUrl;
 
-        if(!trackItem["isFree"].toBool()) { // 付费声音
+        if(trackItem["isPaid"].toBool() && !trackItem["isFree"].toBool()) { // 付费声音
             qDebug() << "AudioPlayer::go isFree" << trackItem["isFree"].toBool();
             emit track404();
             return;
@@ -251,9 +252,9 @@ void AudioPlayer::next() {
         // 没有下一曲了，加载下一页的内容
         this->playNextAlbum();
     }else {
-        this->go(trackItem);
-
         emit preNextTrack(1);
+
+        this->go(trackItem);
     }
 }
 
@@ -265,9 +266,9 @@ void AudioPlayer::previous() {
         // 没有上一曲了，或者为收费声音
         emit albumEnd(-1);
     }else {
-        this->go(trackItem);
-
         emit preNextTrack(-1);
+
+        this->go(trackItem);
     }
 }
 
@@ -275,6 +276,7 @@ void AudioPlayer::startPlayTimer() {
     this->playTimer->stop();
     this->playTimer->setInterval(300);
     this->playTimer->start();
+    qDebug() << "AudioPlayer::startPlayTimer execute this->playTimer->start() ~~~~~";
 }
 void AudioPlayer::playTimerTimeout() {
     this->playTimer->stop();

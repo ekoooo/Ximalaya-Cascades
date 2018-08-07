@@ -79,7 +79,7 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/images/user_grade/individual_orangeV9.png) \
         $$quote($$BASEDIR/assets/main.qml) \
         $$quote($$BASEDIR/assets/main_bak.qml) \
-        $$quote($$BASEDIR/assets/pages/Copy of search.qml) \
+        $$quote($$BASEDIR/assets/pages/album.qml) \
         $$quote($$BASEDIR/assets/pages/audioPlayerUI.qml) \
         $$quote($$BASEDIR/assets/pages/child/AlbumItem.qml) \
         $$quote($$BASEDIR/assets/pages/child/ItemContainer.qml) \
