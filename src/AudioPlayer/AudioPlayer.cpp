@@ -219,10 +219,19 @@ void AudioPlayer::go(QMap<QString, QVariant> trackItem) {
          * playUrl32 e.g. 2.63mb
          * playPathAacv224 e.g. 2.04mb
          * playPathAacv164 e.g. 5.33mb
+         *
+         * playPathHq 高质量，有的没有
          */
         QString audioPlayerSourceType = Misc::getConfig("audioPlayerSourceType", "playUrl64");
-        QString playUrl = trackItem[audioPlayerSourceType].toString();
-        qDebug() << "AudioPlayer::go playUrl:" << playUrl;
+        QString playUrl;
+
+        if(audioPlayerSourceType == "playPathHq" && trackItem["playPathHq"].toString() == "") { // 如果没有高质量声音，那就设置为 playUrl64
+            audioPlayerSourceType = "playUrl64";
+        }
+
+        playUrl = trackItem[audioPlayerSourceType].toString();
+
+        qDebug() << "AudioPlayer::go source type:" << audioPlayerSourceType << ", play url:" << playUrl;
 
         if(trackItem["isPaid"].toBool() && !trackItem["isFree"].toBool()) { // 付费声音
             qDebug() << "AudioPlayer::go isFree" << trackItem["isFree"].toBool();

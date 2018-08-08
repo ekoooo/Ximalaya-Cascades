@@ -24,6 +24,8 @@ QtObject {
          * playUrl32 e.g. 2.63mb
          * playPathAacv224 e.g. 2.04mb
          * playPathAacv164 e.g. 5.33mb
+         * 
+         * playPathHq 高质量，有的没有
          */
         "audioPlayerSourceType": "audioPlayerSourceType",
         // 声音列表是否正序（每个专辑都要存）（cpp也有这个key，要一致）

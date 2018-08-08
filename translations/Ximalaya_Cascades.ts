@@ -117,12 +117,12 @@
     <name>audioPlayerUI</name>
     <message>
         <location filename="../assets/pages/audioPlayerUI.qml" line="54"/>
-        <source>演播：</source>
+        <source>主播：</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../assets/pages/audioPlayerUI.qml" line="62"/>
-        <source>正在播放：</source>
+        <source>播放：</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
