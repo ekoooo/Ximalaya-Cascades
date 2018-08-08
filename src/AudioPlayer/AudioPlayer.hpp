@@ -81,6 +81,7 @@ class AudioPlayer : public bb::multimedia::MediaPlayer {
         void mpMediaStateChanged(bb::multimedia::MediaState::Type mediaState);
         void mpDurationChanged(unsigned int duration);
         void mpPositionChanged(unsigned int position);
+        void mpPlaybackCompleted(); // 歌曲播放完毕
 
         void setAlbumInfo(const QVariant albumInfo);
         void getNextAlbumFinished(QString data);
