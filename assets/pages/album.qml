@@ -85,7 +85,7 @@ Page {
                                 value: true
                             },
                             Option {
-                                text: qsTr("倒叙")
+                                text: qsTr("倒序")
                                 value: false
                             }
                         ]

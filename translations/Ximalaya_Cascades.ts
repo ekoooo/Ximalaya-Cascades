@@ -73,42 +73,42 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="72"/>
+        <location filename="../assets/pages/album.qml" line="81"/>
         <source>顺序</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="75"/>
+        <location filename="../assets/pages/album.qml" line="84"/>
         <source>正序</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="79"/>
-        <source>倒叙</source>
+        <location filename="../assets/pages/album.qml" line="88"/>
+        <source>倒序</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="102"/>
+        <location filename="../assets/pages/album.qml" line="111"/>
         <source>翻页</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="130"/>
+        <location filename="../assets/pages/album.qml" line="139"/>
         <source>第</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="130"/>
+        <location filename="../assets/pages/album.qml" line="139"/>
         <source>页</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="149"/>
+        <location filename="../assets/pages/album.qml" line="158"/>
         <source>此集为付费声音，无法播放</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="205"/>
+        <location filename="../assets/pages/album.qml" line="214"/>
         <source>声音列表加载失败</source>
         <translation type="unfinished"></translation>
     </message>
