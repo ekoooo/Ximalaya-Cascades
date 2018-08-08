@@ -79,6 +79,11 @@ Page {
                 audioPlayer.previous();
             }
             enabled: !isLoading
+            shortcuts: [
+                Shortcut {
+                    key: "s"
+                }
+            ]
         },
         ActionItem {
             title: mediaState === MediaState.Started ? qsTr("暂停") : qsTr("播放")
@@ -96,6 +101,11 @@ Page {
                 }
             }
             enabled: !isLoading
+            shortcuts: [
+                Shortcut {
+                    key: "space"
+                }
+            ]
         },
         ActionItem {
             title: qsTr("下一集")
@@ -105,6 +115,11 @@ Page {
                 audioPlayer.next();
             }
             enabled: ! isLoading
+            shortcuts: [
+                Shortcut {
+                    key: "x"
+                }
+            ]
         },
         ActionItem {
             title: opVisible ? qsTr("关闭操作面板") : qsTr("打开操作面板")
@@ -579,8 +594,6 @@ Page {
     
     // 格式化时间戳为：mm:ss
     function formatTime(s) {
-        var minutes = Math.floor(s/1000/60);
-        var seconds = Math.floor(s/1000%60);
-        return qsTr("%1:%2").arg(minutes < 10 ? "0" + minutes : "" + minutes).arg(seconds < 10 ? "0" + seconds : "" + seconds);
+        return common.formatPlayerDuration(s);
     }
 }

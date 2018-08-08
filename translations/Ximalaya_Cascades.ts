@@ -17,23 +17,28 @@
 <context>
     <name>Common</name>
     <message>
-        <location filename="../assets/common/Common.qml" line="38"/>
+        <location filename="../assets/common/Common.qml" line="40"/>
         <source>确定</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="38"/>
+        <location filename="../assets/common/Common.qml" line="40"/>
         <source>取消</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="49"/>
+        <location filename="../assets/common/Common.qml" line="51"/>
         <source>万</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="51"/>
+        <location filename="../assets/common/Common.qml" line="53"/>
         <source>亿</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/common/Common.qml" line="68"/>
+        <source>%1:%2</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -58,22 +63,52 @@
 <context>
     <name>album</name>
     <message>
-        <location filename="../assets/pages/album.qml" line="20"/>
+        <location filename="../assets/pages/album.qml" line="22"/>
         <source>声音列表</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="24"/>
+        <location filename="../assets/pages/album.qml" line="26"/>
         <source>专辑信息</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="58"/>
+        <location filename="../assets/pages/album.qml" line="72"/>
+        <source>顺序</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/album.qml" line="75"/>
+        <source>正序</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/album.qml" line="79"/>
+        <source>倒叙</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/album.qml" line="102"/>
+        <source>翻页</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/album.qml" line="130"/>
+        <source>第</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/album.qml" line="130"/>
+        <source>页</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/album.qml" line="149"/>
         <source>此集为付费声音，无法播放</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="127"/>
+        <location filename="../assets/pages/album.qml" line="205"/>
         <source>声音列表加载失败</source>
         <translation type="unfinished"></translation>
     </message>
@@ -96,113 +131,108 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="84"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="89"/>
         <source>暂停</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="84"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="89"/>
         <source>播放</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="101"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="111"/>
         <source>下一集</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="110"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="125"/>
         <source>关闭操作面板</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="110"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="125"/>
         <source>打开操作面板</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="167"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="182"/>
         <source>此集为付费声音，无法播放</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="250"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="265"/>
         <source>停止</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="250"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="265"/>
         <source>定时关闭</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="275"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="290"/>
         <source>0.5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="282"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="297"/>
         <source>1.0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="289"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="304"/>
         <source>2.0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="296"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="311"/>
         <source>3.0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="319"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="334"/>
         <source>定时关闭已取消</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="327"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="342"/>
         <source>分钟后自动关闭</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="329"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="344"/>
         <source>定时关闭，剩余：</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="345"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="360"/>
         <source>上一页</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="360"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="375"/>
         <source>下一页</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="497"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="512"/>
         <source>无专辑信息，播放失败</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="545"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="560"/>
         <source>专辑播放完毕</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="547"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="562"/>
         <source>没有可播放的上一集</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="553"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="568"/>
         <source>无法播放付费声音</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="584"/>
-        <source>%1:%2</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -262,12 +292,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/search.qml" line="328"/>
+        <location filename="../assets/pages/search.qml" line="327"/>
         <source>很抱歉，根据相关法律和政策，相关搜索结果未给与显示</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/search.qml" line="330"/>
+        <location filename="../assets/pages/search.qml" line="329"/>
         <source>此关键字无法搜索</source>
         <translation type="unfinished"></translation>
     </message>

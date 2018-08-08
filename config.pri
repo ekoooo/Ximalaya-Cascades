@@ -67,6 +67,9 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/images/bb10/ic_show_vkb.png) \
         $$quote($$BASEDIR/assets/images/no_content.png) \
         $$quote($$BASEDIR/assets/images/pay_icon.png) \
+        $$quote($$BASEDIR/assets/images/play_in_track_item.png) \
+        $$quote($$BASEDIR/assets/images/sound_comments_icon.png) \
+        $$quote($$BASEDIR/assets/images/sound_duration_icon.png) \
         $$quote($$BASEDIR/assets/images/sound_playtimes_icon.png) \
         $$quote($$BASEDIR/assets/images/ting_default.png) \
         $$quote($$BASEDIR/assets/images/ting_np_icon.png) \
@@ -93,6 +96,7 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/pages/audioPlayerUI.qml) \
         $$quote($$BASEDIR/assets/pages/child/AlbumItem.qml) \
         $$quote($$BASEDIR/assets/pages/child/ItemContainer.qml) \
+        $$quote($$BASEDIR/assets/pages/child/TrackItem.qml) \
         $$quote($$BASEDIR/assets/pages/child/UserItem.qml) \
         $$quote($$BASEDIR/assets/pages/index.qml) \
         $$quote($$BASEDIR/assets/pages/search.qml)

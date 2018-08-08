@@ -20,7 +20,7 @@
 using namespace bb::multimedia;
 using namespace bb::data;
 
-QString AudioPlayer::albumInfoApi = "http://mobile.ximalaya.com/mobile/v1/album/track?albumId=%1&pageId=%2&pageSize=20&isAsc=true";
+QString AudioPlayer::albumInfoApi = "http://mobile.ximalaya.com/mobile/v1/album/track?albumId=%1&pageId=%2&pageSize=20&isAsc=%3";
 
 AudioPlayer::AudioPlayer() : bb::multimedia::MediaPlayer() {
     this->playTimer = new QTimer();
@@ -154,7 +154,10 @@ void AudioPlayer::playNextAlbum() {
     int currentPage = data["pageId"].toInt();
 
     if(currentPage < data["maxPageId"].toInt()) {
-        QString url = AudioPlayer::albumInfoApi.arg(list.at(0).toMap()["albumId"].toString()).arg(currentPage + 1);
+        QString albumId = list.at(0).toMap()["albumId"].toString();
+        QString isAsc = Misc::getConfig("isAsc::albumId::", "1") == "1" ? "true" : "false"; // 排序，缓存中取。
+        QString url = AudioPlayer::albumInfoApi.arg(albumId).arg(currentPage + 1).arg(isAsc);
+
         requester = new Requester();
         requester->send(url);
         connect(requester, SIGNAL(finished(QString)), this, SLOT(getNextAlbumFinished(QString)));

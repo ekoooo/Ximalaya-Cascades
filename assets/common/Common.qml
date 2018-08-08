@@ -25,7 +25,9 @@ QtObject {
          * playPathAacv224 e.g. 2.04mb
          * playPathAacv164 e.g. 5.33mb
          */
-        "audioPlayerSourceType": "audioPlayerSourceType"
+        "audioPlayerSourceType": "audioPlayerSourceType",
+        // 声音列表是否正序（每个专辑都要存）（cpp也有这个key，要一致）
+        "trackListIsAsc": "isAsc::albumId::"
     }
     
     // 快捷键
@@ -57,6 +59,15 @@ QtObject {
         return itemInfo['isPaid'] && !itemInfo['isFree'];
     }
     
+    /**
+     * 格式化时间戳为：mm:ss
+     */
+    function formatPlayerDuration(s) {
+        var minutes = Math.floor(s/1000/60);
+        var seconds = Math.floor(s/1000%60);
+        return qsTr("%1:%2").arg(minutes < 10 ? "0" + minutes : "" + minutes).arg(seconds < 10 ? "0" + seconds : "" + seconds);
+    }
+    
     // ============ nav start ============
     function onPopTransitionEnded(nav, page) {
         page.destroy();
@@ -69,7 +80,9 @@ QtObject {
     
     // ============ api start ============
     function apiAlbumInfo(requester, albumId, pageId) {
-        requester.send(qsTr(api.albumInfo).arg(albumId.toString()).arg(pageId.toString()));
+        var isAsc = _misc.getConfig(settingsKey.trackListIsAsc + albumId, "1") === "1";
+        
+        requester.send(qsTr(api.albumInfo).arg(albumId.toString()).arg(pageId.toString()).arg(isAsc.toString()));
     }
     function apiSearch(requester, core, kw, page) {
         // core: album 专辑 user 主播

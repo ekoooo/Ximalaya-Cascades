@@ -34,7 +34,7 @@ Page {
             textField.input.onSubmitted: {
                 searchPage.search(textField.text, 'all');
             }
-            textField.text: "音乐"
+            textField.text: "有声书"
             onCreationCompleted: {
                 searchPage.search(textField.text, 'all');
             }
@@ -95,9 +95,8 @@ Page {
                 horizontalAlignment: HorizontalAlignment.Fill
                 verticalAlignment: VerticalAlignment.Fill
                 layout: DockLayout {}
-                
                 WebImageView {
-                    visible: searchParams.album.totalPage === 0 && !searchParams.album.isLoading
+                    visible: searchParams.album.numFound === 0 && !searchParams.album.isLoading
                     url: "asset:///images/no_content.png"
                     horizontalAlignment: HorizontalAlignment.Fill
                     verticalAlignment: VerticalAlignment.Center
@@ -167,7 +166,7 @@ Page {
                 layout: DockLayout {}
                 
                 WebImageView {
-                    visible: searchParams.user.totalPage === 0 && !searchParams.user.isLoading
+                    visible: searchParams.user.numFound === 0 && !searchParams.user.isLoading
                     url: "asset:///images/no_content.png"
                     horizontalAlignment: HorizontalAlignment.Fill
                     verticalAlignment: VerticalAlignment.Center
@@ -348,7 +347,14 @@ Page {
         
         if(searchParams[type]['page'] === 1) {
             dm.clear();
-            dm.insert(0, response['docs']);
+            var docs = response['docs'];
+            // 如果是搜索专辑，然后有 top 专辑，则放在最前面
+            if(type === 'album') {
+                if(data.top && data.top.type === 'album') {
+                    docs.unshift(data.top.doc);
+                }
+            }
+            dm.insert(0, docs);
         }else {
             dm.append(response['docs'])
         }
@@ -356,7 +362,7 @@ Page {
         updateSearchParams(type, {
             isLoading: false,
             totalPage: response.totalPage,
-            numFound: response.numFound
+            numFound: response.showNumFound
         });
     }
     
