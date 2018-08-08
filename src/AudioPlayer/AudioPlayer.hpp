@@ -55,7 +55,7 @@ class AudioPlayer : public bb::multimedia::MediaPlayer {
         QMap<QString, QVariant> currentTrackInfo; // 当前播放的声音信息
 
         QMap<QString, QVariant> getTrackItemNyId(QString trackId);
-        QMap<QString, QVariant> getPreNextTrackItem(int flag); // -1 上一曲，1下一曲
+        QMap<QString, QVariant> getPreNextTrackItem(int flag); // -1 上一曲 1 下一曲
         void playNextAlbum();
 
         void go(QMap<QString, QVariant> trackItem);
@@ -92,7 +92,7 @@ class AudioPlayer : public bb::multimedia::MediaPlayer {
     signals:
         void albumInfoChanged(); // 专辑改变
         void currentTrackChanged(QString trackId); // 播放声音，信息改变
-        void albumEnd(int flag); // 专辑播放完了, -1，播放列表无上一集了，1，专辑播放完了
+        void albumEnd(int flag); // 专辑播放完了, -1 播放列表无上一集了 1 专辑播放完了
         void track404(); // 播放声音没找到
         void preNextTrack(int flag); // 上一集或者下一集
 
