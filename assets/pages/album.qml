@@ -137,11 +137,19 @@ Page {
                 listLoading = false;
                 _misc.showToast(error);
             }
+        },
+        QTimer {
+            id: initTimer
+            interval: 200
+            onTimeout: {
+                initTimer.stop();
+                albumPage.getAlbumInfo(1);
+            }
         }
     ]
     
     onAlbumIdChanged: {
-        albumPage.getAlbumInfo(1);
+        initTimer.start();
     }
     
     // 获取声音信息
