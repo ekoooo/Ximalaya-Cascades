@@ -40,6 +40,16 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/common/Common.qml) \
         $$quote($$BASEDIR/assets/components/RefreshHeader.qml) \
         $$quote($$BASEDIR/assets/images/album_tracks_icon.png) \
+        $$quote($$BASEDIR/assets/images/app/logo_110x110.png) \
+        $$quote($$BASEDIR/assets/images/app/logo_144x144.png) \
+        $$quote($$BASEDIR/assets/images/app/logo_86x86.png) \
+        $$quote($$BASEDIR/assets/images/app/logo_90x90.png) \
+        $$quote($$BASEDIR/assets/images/app/logo_96x96.png) \
+        $$quote($$BASEDIR/assets/images/app/welcome_1024x600.png) \
+        $$quote($$BASEDIR/assets/images/app/welcome_1440x1440.png) \
+        $$quote($$BASEDIR/assets/images/app/welcome_720x1280.png) \
+        $$quote($$BASEDIR/assets/images/app/welcome_720x720.png) \
+        $$quote($$BASEDIR/assets/images/app/welcome_768x1280.png) \
         $$quote($$BASEDIR/assets/images/audio_player/aco.png) \
         $$quote($$BASEDIR/assets/images/audio_player/add.png) \
         $$quote($$BASEDIR/assets/images/audio_player/af.png) \
@@ -148,6 +158,9 @@ lupdate_inclusion {
         $$quote($$BASEDIR/../assets/images/*.qml) \
         $$quote($$BASEDIR/../assets/images/*.js) \
         $$quote($$BASEDIR/../assets/images/*.qs) \
+        $$quote($$BASEDIR/../assets/images/app/*.qml) \
+        $$quote($$BASEDIR/../assets/images/app/*.js) \
+        $$quote($$BASEDIR/../assets/images/app/*.qs) \
         $$quote($$BASEDIR/../assets/images/audio_player/*.qml) \
         $$quote($$BASEDIR/../assets/images/audio_player/*.js) \
         $$quote($$BASEDIR/../assets/images/audio_player/*.qs) \

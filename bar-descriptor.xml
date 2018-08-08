@@ -26,7 +26,7 @@
 
     <!-- A universally unique application identifier. Must be unique across all BlackBerry 10 applications.
          Using a reverse DNS-style name as the id is recommended. (Eg. com.example.ExampleApplication.) Required. -->
-    <id>com.example.Ximalaya_Cascades</id>
+    <id>tech.lwl.ximalaya</id>
     <configuration name="Device-Debug">
        <platformArchitecture>armle-v7</platformArchitecture>
        <asset path="arm/o.le-v7-g/Ximalaya_Cascades" entry="true" type="Qnx/Elf">Ximalaya_Cascades</asset>
@@ -47,7 +47,6 @@
 
     <!-- The name that is displayed in the BlackBerry 10 application installer.
          May have multiple values for each language. See samples or xsd schema file. Optional. -->
-    <name>Ximalaya-Cascades</name>
 
     <!-- A string value of the format <0-999>.<0-999>.<0-999> that represents application version which can be used to check for application upgrade.
          Values can also be 1-part or 2-part. It is not necessary to have a 3-part value.
@@ -63,13 +62,29 @@
 
     <!-- Description, displayed in the BlackBerry 10 application installer.
          May have multiple values for each language. See samples or xsd schema file. Optional. -->
-    <description>The Ximalaya-Cascades application</description>
 
     <!-- Copyright information. Optional. -->
     <!-- <copyright></copyright> -->
 
     <!--  Name of author which is used for signing. Must match the developer name of your development certificate. -->
-    <author>Example Inc.</author>
+    <name>&#x559c;&#x9a6c;&#x62c9;&#x96c5;FM</name>
+    <icon>
+       <image>logo_110x110.png</image>
+       <image>logo_144x144.png</image>
+       <image>logo_86x86.png</image>
+       <image>logo_90x90.png</image>
+       <image>logo_96x96.png</image>
+    </icon>
+    <splashScreens>
+       <image>welcome_1024x600.png</image>
+       <image>welcome_1440x1440.png</image>
+       <image>welcome_720x1280.png</image>
+       <image>welcome_720x720.png</image>
+       <image>welcome_768x1280.png</image>
+    </splashScreens>
+    <category>core.media</category>
+    <description>&#x559c;&#x9a6c;&#x62c9;&#x96c5;FM&#x662f;&#x4e13;&#x4e1a;&#x7684;&#x97f3;&#x9891;&#x5206;&#x4eab;&#x5e73;&#x53f0;&#xff0c;&#x6c47;&#x96c6;&#x4e86;&#x6709;&#x58f0;&#x5c0f;&#x8bf4;&#xff0c;&#x6709;&#x58f0;&#x8bfb;&#x7269;&#xff0c;&#x6709;&#x58f0;&#x4e66;&#xff0c;&#x513f;&#x7ae5;&#x7761;&#x524d;&#x6545;&#x4e8b;&#xff0c;&#x76f8;&#x58f0;&#x5c0f;&#x54c1;&#xff0c;&#x9b3c;&#x6545;&#x4e8b;&#x7b49;&#x6570;&#x4ebf;&#x6761;&#x97f3;&#x9891;&#xff0c;&#x8d85;&#x8fc7;4.5&#x4ebf;&#x7528;&#x6237;&#x9009;&#x62e9;&#x7684;&#x7f51;&#x7edc;&#x7535;&#x53f0;&#x3002;&#x542c;&#x4e66;&#xff0c;&#x542c;&#x5c0f;&#x8bf4;&#x7b49;&#x6709;&#x58f0;&#x8bfb;&#x7269;&#xff0c;&#x5c31;&#x5728;&#x559c;&#x9a6c;&#x62c9;&#x96c5;FM&#x3002;&#x968f;&#x65f6;&#x968f;&#x5730;&#xff0c;&#x542c;&#x6211;&#x60f3;&#x542c;&#x3002;</description>
+    <author>ekoo</author>
 
     <!--  Unique author ID assigned by signing authority. Required if using debug tokens. -->
     <!-- <authorId>ABC1234YjsnUk235h</authorId> -->
@@ -80,17 +95,23 @@
     </initialWindow>
 
     <!--  The icon for the application, which should be 114x114. -->
-    <icon>
-        <image>icon.png</image>
-    </icon>
 
-    <asset path="icon.png">icon.png</asset>
     <asset path="assets">assets</asset>
 
     <!-- Locale support -->
     <asset path="translations" dest="qm">
         <include name="*.qm"/>
     </asset>
+    <asset path="assets/images/app/logo_110x110.png">logo_110x110.png</asset>
+    <asset path="assets/images/app/logo_144x144.png">logo_144x144.png</asset>
+    <asset path="assets/images/app/logo_86x86.png">logo_86x86.png</asset>
+    <asset path="assets/images/app/logo_90x90.png">logo_90x90.png</asset>
+    <asset path="assets/images/app/logo_96x96.png">logo_96x96.png</asset>
+    <asset path="assets/images/app/welcome_1024x600.png">welcome_1024x600.png</asset>
+    <asset path="assets/images/app/welcome_1440x1440.png">welcome_1440x1440.png</asset>
+    <asset path="assets/images/app/welcome_720x1280.png">welcome_720x1280.png</asset>
+    <asset path="assets/images/app/welcome_720x720.png">welcome_720x720.png</asset>
+    <asset path="assets/images/app/welcome_768x1280.png">welcome_768x1280.png</asset>
 
     <!-- Request permission to execute native code.  Required for native applications. -->
     <permission system="true">run_native</permission>
