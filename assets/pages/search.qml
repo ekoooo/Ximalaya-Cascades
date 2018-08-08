@@ -235,13 +235,14 @@ Page {
                 updateSearchParams('album', { isLoading: true });
             }
             onFinished: {
-                searchPage.setListInfo('album', JSON.parse(data));
+                try {
+                    searchPage.setListInfo('album', JSON.parse(data));
+                }catch(e) {
+                    resetError(qsTr("搜索专辑系统繁忙，请重试"), 'album');
+                }
             }
             onError: {
-                updateSearchParams('album', { isLoading: false });
-                _misc.showToast(error);
-                // 处理 page
-                resetPage('album');
+                resetError(error, 'album');
             }
         },
         Requester {
@@ -250,13 +251,14 @@ Page {
                 updateSearchParams('user', { isLoading: true });
             }
             onFinished: {
-                searchPage.setListInfo('user', JSON.parse(data));
+                try {
+                    searchPage.setListInfo('user', JSON.parse(data));
+                }catch(e) {
+                    resetError(qsTr("搜索主播系统繁忙，请重试"), 'user');
+                }
             }
             onError: {
-                updateSearchParams('user', { isLoading: false });
-                _misc.showToast(error);
-                // 处理 page
-                resetPage('user');
+                resetError(error, 'user');
             }
         },
         ComponentDefinition {
@@ -269,6 +271,14 @@ Page {
         var page = albumPage.createObject();
         page.albumId = albumId;
         nav.push(page);
+    }
+    
+    // 请求错误处理
+    function resetError(error, type) {
+        updateSearchParams(type, { isLoading: false });
+        _misc.showToast(error);
+        // 处理 page
+        resetPage(type);
     }
     
     /**
