@@ -292,12 +292,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/search.qml" line="327"/>
+        <location filename="../assets/pages/search.qml" line="241"/>
+        <source>搜索专辑系统繁忙，请重试</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/search.qml" line="257"/>
+        <source>搜索主播系统繁忙，请重试</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/search.qml" line="337"/>
         <source>很抱歉，根据相关法律和政策，相关搜索结果未给与显示</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/search.qml" line="329"/>
+        <location filename="../assets/pages/search.qml" line="339"/>
         <source>此关键字无法搜索</source>
         <translation type="unfinished"></translation>
     </message>
