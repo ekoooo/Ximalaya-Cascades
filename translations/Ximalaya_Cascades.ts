@@ -73,42 +73,42 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="74"/>
+        <location filename="../assets/pages/album.qml" line="76"/>
         <source>顺序</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="77"/>
+        <location filename="../assets/pages/album.qml" line="79"/>
         <source>正序</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="81"/>
+        <location filename="../assets/pages/album.qml" line="83"/>
         <source>倒序</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="104"/>
+        <location filename="../assets/pages/album.qml" line="106"/>
         <source>翻页</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="132"/>
+        <location filename="../assets/pages/album.qml" line="134"/>
         <source>第</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="132"/>
+        <location filename="../assets/pages/album.qml" line="134"/>
         <source>页</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="151"/>
+        <location filename="../assets/pages/album.qml" line="153"/>
         <source>此集为付费声音，无法播放</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="207"/>
+        <location filename="../assets/pages/album.qml" line="209"/>
         <source>声音列表加载失败</source>
         <translation type="unfinished"></translation>
     </message>
@@ -292,22 +292,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/search.qml" line="236"/>
+        <location filename="../assets/pages/search.qml" line="238"/>
         <source>搜索专辑系统繁忙，请重试</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/search.qml" line="252"/>
+        <location filename="../assets/pages/search.qml" line="254"/>
         <source>搜索主播系统繁忙，请重试</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/search.qml" line="332"/>
+        <location filename="../assets/pages/search.qml" line="334"/>
         <source>很抱歉，根据相关法律和政策，相关搜索结果未给与显示</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/search.qml" line="334"/>
+        <location filename="../assets/pages/search.qml" line="336"/>
         <source>此关键字无法搜索</source>
         <translation type="unfinished"></translation>
     </message>
