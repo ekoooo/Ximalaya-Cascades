@@ -55,6 +55,8 @@ void AudioPlayer::mpMediaStateChanged(bb::multimedia::MediaState::Type mediaStat
     }else if(mediaState == MediaState::Stopped) {
         nowPlayingConnection->revoke();
     }
+
+    qDebug() << "AudioPlayer::mpMediaStateChanged mediaState" << mediaState;
 }
 void AudioPlayer::mpDurationChanged(unsigned int duration) {
     nowPlayingConnection->setDuration(duration);
@@ -240,8 +242,8 @@ void AudioPlayer::go(QMap<QString, QVariant> trackItem) {
         }
 
         this->setSourceUrl(playUrl);
+        this->prepare();
         this->setNpInfo(trackItem);
-        // this->setVolume(1);
         this->startPlayTimer();
 
         // 保存当前信息
@@ -292,6 +294,7 @@ void AudioPlayer::startPlayTimer() {
 }
 void AudioPlayer::playTimerTimeout() {
     this->playTimer->stop();
+    this->setVolume(1);
     this->play();
 }
 
