@@ -31,6 +31,13 @@ Page {
             textField.input.keyLayout: KeyLayout.Text
             textField.input.submitKey: SubmitKey.Search
             textField.input.submitKeyFocusBehavior: SubmitKeyFocusBehavior.Lose
+            textField.onTouch: {
+                if(event.isUp()) {
+                    if(!textField.focused) { // 如果没有这个，用按钮滚动列表后会导致无法聚焦输入框
+                        textField.requestFocus();
+                    }
+                }
+            }
             textField.input.onSubmitted: {
                 searchPage.search(textField.text, 'all');
             }
@@ -52,31 +59,19 @@ Page {
             SegmentedControl {
                 options: [
                     Option {
+                        id: c1Sc
                         text: qsTr("专辑") + ' - ' + searchParams['album']['numFound']
                         value: "c1"
                     },
                     Option {
+                        id: c2Sc
                         text: qsTr("主播") + ' - ' + searchParams['user']['numFound']
                         value: "c2"
                     }
                 ]
-                onSelectedValueChanged: {
-                    if(selectedValue === 'c1') {
-                        c2.visible = false;
-                        c1.visible = true;
-                        
-                        userLv.scrollRole = ScrollRole.None;
-                        albumLv.scrollRole = ScrollRole.Main;
-                    }else if(selectedValue === 'c2') {
-                        c1.visible = false;
-                        c2.visible = true;
-                        
-                        albumLv.scrollRole = ScrollRole.None;
-                        userLv.scrollRole = ScrollRole.Main;
-                    }
-                }
             }
         }
+        
         // listContainer Container
         Container {
             id: listContainer
@@ -91,7 +86,7 @@ Page {
             // 专辑 Container
             Container {
                 id: c1
-                visible: true
+                visible: c1Sc.selected
                 horizontalAlignment: HorizontalAlignment.Fill
                 verticalAlignment: VerticalAlignment.Fill
                 layout: DockLayout {}
@@ -105,8 +100,8 @@ Page {
                 ListView {
                     id: albumLv
                     property variant common_: common
+                    visible: c1Sc.selected
                     
-                    scrollRole: ScrollRole.Main
                     horizontalAlignment: HorizontalAlignment.Fill
                     verticalAlignment: VerticalAlignment.Fill
                     bottomPadding: ui.du(14)
@@ -160,7 +155,7 @@ Page {
             // 声音 Container
             Container {
                 id: c2
-                visible: false
+                visible: c2Sc.selected
                 horizontalAlignment: HorizontalAlignment.Fill
                 verticalAlignment: VerticalAlignment.Fill
                 layout: DockLayout {}
@@ -176,7 +171,7 @@ Page {
                 ListView {
                     id: userLv
                     
-                    scrollRole: ScrollRole.None
+                    visible: c2Sc.selected
                     horizontalAlignment: HorizontalAlignment.Fill
                     verticalAlignment: VerticalAlignment.Fill
                     bottomPadding: ui.du(14)

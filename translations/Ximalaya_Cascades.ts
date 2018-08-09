@@ -282,22 +282,22 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/search.qml" line="55"/>
+        <location filename="../assets/pages/search.qml" line="56"/>
         <source>专辑</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/search.qml" line="59"/>
+        <location filename="../assets/pages/search.qml" line="61"/>
         <source>主播</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/search.qml" line="327"/>
+        <location filename="../assets/pages/search.qml" line="315"/>
         <source>很抱歉，根据相关法律和政策，相关搜索结果未给与显示</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/search.qml" line="329"/>
+        <location filename="../assets/pages/search.qml" line="317"/>
         <source>此关键字无法搜索</source>
         <translation type="unfinished"></translation>
     </message>
