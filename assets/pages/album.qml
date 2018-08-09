@@ -54,6 +54,8 @@ Page {
                 property variant common_: common
                 
                 visible: listSm.selected
+                scrollRole: listSm.selected ? ScrollRole.Main : ScrollRole.None
+                
                 horizontalAlignment: HorizontalAlignment.Fill
                 verticalAlignment: VerticalAlignment.Fill
                 bottomPadding: ui.du(14)

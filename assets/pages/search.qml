@@ -101,6 +101,7 @@ Page {
                     id: albumLv
                     property variant common_: common
                     visible: c1Sc.selected
+                    scrollRole: c1Sc.selected ? ScrollRole.Main : ScrollRole.None
                     
                     horizontalAlignment: HorizontalAlignment.Fill
                     verticalAlignment: VerticalAlignment.Fill
@@ -172,6 +173,7 @@ Page {
                     id: userLv
                     
                     visible: c2Sc.selected
+                    scrollRole: c2Sc.selected ? ScrollRole.Main : ScrollRole.None
                     horizontalAlignment: HorizontalAlignment.Fill
                     verticalAlignment: VerticalAlignment.Fill
                     bottomPadding: ui.du(14)
