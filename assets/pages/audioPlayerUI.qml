@@ -51,7 +51,7 @@ Page {
                     leftPadding: ui.du(2)
                     Container {
                         Label {
-                            text: qsTr("演播：") + (trackInfo['nickname'] || '无')
+                            text: qsTr("主播：") + (trackInfo['nickname'] || '无')
                             textStyle {
                                 base: SystemDefaults.TextStyles.SubtitleText
                             }
@@ -59,7 +59,7 @@ Page {
                     }
                     Container {
                         Label {
-                            text: qsTr("正在播放：") + (trackInfo['title'] || '无')
+                            text: qsTr("播放：") + (trackInfo['title'] || '无')
                             textStyle {
                                 base: SystemDefaults.TextStyles.SubtitleText
                             }
