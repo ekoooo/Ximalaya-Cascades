@@ -19,23 +19,16 @@ Page {
         kind: TitleBarKind.Segmented
         options: [
             Option {
+                id: listSm
                 text: qsTr("声音列表")
                 value: "list"
             },
             Option {
+                id: detailSm
                 text: qsTr("专辑信息")
                 value: "detail"
             }
         ]
-        onSelectedValueChanged: {
-            if(selectedValue === 'list') {
-                detailContainer.visible = false;
-                listContainer.visible = true;
-            }else {
-                listContainer.visible = false;
-                detailContainer.visible = true;
-            }
-        }
     }
     
     Container {
@@ -43,7 +36,7 @@ Page {
         // list
         Container {
             id: listContainer
-            visible: true
+            visible: listSm.selected
             horizontalAlignment: HorizontalAlignment.Fill
             verticalAlignment: VerticalAlignment.Fill
             layout: DockLayout {}
@@ -60,7 +53,7 @@ Page {
                 id: listLv
                 property variant common_: common
                 
-                scrollRole: ScrollRole.Main
+                visible: listSm.selected
                 horizontalAlignment: HorizontalAlignment.Fill
                 verticalAlignment: VerticalAlignment.Fill
                 bottomPadding: ui.du(14)
@@ -179,7 +172,7 @@ Page {
         // detail
         Container {
             id: detailContainer
-            visible: false
+            visible: detailSm.selected
             horizontalAlignment: HorizontalAlignment.Fill
             verticalAlignment: VerticalAlignment.Fill
             
