@@ -38,7 +38,9 @@ config_pri_assets {
     OTHER_FILES += \
         $$quote($$BASEDIR/assets/api.js) \
         $$quote($$BASEDIR/assets/common/Common.qml) \
+        $$quote($$BASEDIR/assets/components/Line.qml) \
         $$quote($$BASEDIR/assets/components/RefreshHeader.qml) \
+        $$quote($$BASEDIR/assets/images/album_cover_bg.png) \
         $$quote($$BASEDIR/assets/images/album_tracks_icon.png) \
         $$quote($$BASEDIR/assets/images/app/logo_110x110.png) \
         $$quote($$BASEDIR/assets/images/app/logo_144x144.png) \

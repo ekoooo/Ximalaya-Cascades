@@ -41,7 +41,7 @@ Page {
             textField.input.onSubmitted: {
                 searchPage.search(textField.text, 'all');
             }
-            textField.text: "歌曲"
+            textField.text: "有声的紫襟"
             onCreationCompleted: {
                 searchPage.search(textField.text, 'all');
             }
@@ -353,11 +353,9 @@ Page {
         if(searchParams[type]['page'] === 1) {
             dm.clear();
             var docs = response['docs'];
-            // 如果是搜索专辑，然后有 top 专辑，则放在最前面
-            if(type === 'album') {
-                if(data.top && data.top.type === 'album') {
-                    docs.unshift(data.top.doc);
-                }
+            // 有 top 专辑，则放在最前面
+            if((data.top && data.top.type === 'album' && type === 'album') || (data.top && data.top.type === 'user' && type === 'user')) {
+                docs.unshift(data.top.doc);
             }
             dm.insert(0, docs);
         }else {

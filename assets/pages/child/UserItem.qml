@@ -8,7 +8,7 @@ CustomListItem {
         rightPadding: ui.du(2)
         topPadding: ui.du(2)
         bottomPadding: ui.du(2)
-        preferredHeight: ui.du(16) // 14 + 2 + 2
+        preferredHeight: ui.du(16) // 12 + 2 + 2
         
         layout: StackLayout {
             orientation: LayoutOrientation.LeftToRight
