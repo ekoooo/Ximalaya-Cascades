@@ -31,7 +31,17 @@ Page {
     
     actionBarVisibility: ChromeVisibility.Compact
     
+    shortcuts: [
+        Shortcut {
+            key: common.shortCutKey.changeSegmented
+            onTriggered: {
+                segmentedControl.setSelectedIndex(listSm.selected ? 1 : 0);
+            }
+        }
+    ]
+    
     titleBar: TitleBar {
+        id: segmentedControl
         scrollBehavior: TitleBarScrollBehavior.Sticky
         kind: TitleBarKind.Segmented
         options: [
@@ -181,6 +191,7 @@ Page {
         // detail
         ScrollView {
             visible: detailSm.selected
+            scrollRole: detailSm.selected ? ScrollRole.Main : ScrollRole.None
             horizontalAlignment: HorizontalAlignment.Fill
             verticalAlignment: VerticalAlignment.Fill
             
@@ -284,7 +295,7 @@ Page {
                     
                     Label {
                         text: qsTr("简介")
-                        textStyle.base: SystemDefaults.TextStyles.BodyText
+                        textStyle.fontWeight: FontWeight.Bold
                     }
                     Label {
                         text: '　　' + (albumPage.album['shortIntro'] || albumPage.album['intro'] || '无')
@@ -302,7 +313,7 @@ Page {
                     
                     Label {
                         text: qsTr("主播介绍")
-                        textStyle.base: SystemDefaults.TextStyles.BodyText
+                        textStyle.fontWeight: FontWeight.Bold
                     }
                     // info
                     Container {
@@ -404,7 +415,7 @@ Page {
                     
                     Label {
                         text: qsTr("专辑标签")
-                        textStyle.base: SystemDefaults.TextStyles.BodyText
+                        textStyle.fontWeight: FontWeight.Bold
                     }
                     
                     Label {
@@ -488,7 +499,7 @@ Page {
         },
         QTimer {
             id: initTimer
-            interval: 200
+            interval: 300
             onTimeout: {
                 initTimer.stop();
                 

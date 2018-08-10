@@ -81,7 +81,7 @@ Page {
             enabled: !isLoading
             shortcuts: [
                 Shortcut {
-                    key: "s"
+                    key: common.shortCutKey.playPreTrack
                 }
             ]
         },
@@ -103,7 +103,7 @@ Page {
             enabled: !isLoading
             shortcuts: [
                 Shortcut {
-                    key: "space"
+                    key: common.shortCutKey.togglePlayerState
                 }
             ]
         },
@@ -117,7 +117,7 @@ Page {
             enabled: ! isLoading
             shortcuts: [
                 Shortcut {
-                    key: "x"
+                    key: common.shortCutKey.playNextTrack
                 }
             ]
         },
@@ -131,7 +131,7 @@ Page {
             }
             shortcuts: [
                 Shortcut {
-                    key: "h"
+                    key: common.shortCutKey.togglePlayerOp
                 }
             ]
         }
@@ -500,10 +500,10 @@ Page {
             if(trackId === -1) { // 如果是直接打开播放器，则取出相应的信息
                 playTrackId = currentPlayTrackId;
                 albumInfo = audioPlayer.albumInfo;
+                isLoading = false;
 
                 // 如果连播放器中都没有消息，则是新打开播放器，什么都没播放
                 if(!albumInfo) {
-                    isLoading = false;
                     return;
                 }
             }
@@ -515,12 +515,13 @@ Page {
             }
             
             audioPlayer.setAlbumInfo(albumInfo);
+            // 如果是暂停状态，直接进来，也会继续播放
             audioPlayer.go(playTrackId);
         }else {
             // 初始化信息
             albumInfo = audioPlayer.albumInfo;
             // 如果是暂停状态进来的，也继续播放
-            // audioPlayer.play();
+            audioPlayer.play();
             // 渲染界面
             render();
             renderList(albumInfo);

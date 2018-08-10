@@ -18,6 +18,41 @@ TabbedPane {
     // activeTab: indexTab // 默认 activeTab 为 主页
     activeTab: searchTab // 默认 activeTab 为 主页
     
+    shortcuts: [
+        Shortcut {
+            key: common.shortCutKey.openPlayer
+            onTriggered: {
+                if(nav.top.objectName !== "audioPlayer") {
+                    pushAudioPlayerUI(-1);
+                }
+            }
+        },
+        Shortcut {
+            key: common.shortCutKey.back
+            onTriggered: {
+                if(nav.count() !== 1) {
+                    nav.pop();
+                }
+            }
+        },
+        Shortcut {
+            key: common.shortCutKey.indexPage
+            onTriggered: {
+                if(nav.count() === 1) {
+                    activeTab = indexTab;
+                }
+            }
+        },
+        Shortcut {
+            key: common.shortCutKey.searhPage
+            onTriggered: {
+                if(nav.count() === 1) {
+                    activeTab = searchTab;
+                }
+            }
+        }
+    ]
+    
     Menu.definition: MenuDefinition {
         helpAction: HelpActionItem {
             title: qsTr("帮助")
@@ -155,7 +190,7 @@ TabbedPane {
     }
     function initAudioPlayerUIParams() {
         audioPlayerUIPage.audioPlayer = player;
-        audioPlayerUIPage.albumInfo = tabbedPane.albumInfo
+        audioPlayerUIPage.albumInfo = tabbedPane.albumInfo;
         audioPlayerUIPage.trackId = tabbedPane.trackId; // 注意顺序，trackId 赋值必须在最后面。
     }
 }

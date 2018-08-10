@@ -242,7 +242,6 @@ void AudioPlayer::go(QMap<QString, QVariant> trackItem) {
         }
 
         this->setSourceUrl(playUrl);
-        this->prepare();
         this->setNpInfo(trackItem);
         this->startPlayTimer();
 

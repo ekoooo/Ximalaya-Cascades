@@ -23,6 +23,15 @@ Page {
         }
     }
     
+    shortcuts: [
+        Shortcut {
+            key: common.shortCutKey.changeSegmented
+            onTriggered: {
+                segmentedControl.setSelectedIndex(c1Sc.selected ? 1 : 0);
+            }
+        }
+    ]
+    
     titleBar: TitleBar {
         kind: TitleBarKind.TextField
         kindProperties: TextFieldTitleBarKindProperties {
@@ -41,7 +50,7 @@ Page {
             textField.input.onSubmitted: {
                 searchPage.search(textField.text, 'all');
             }
-            textField.text: "有声的紫襟"
+            textField.text: "歌曲"
             onCreationCompleted: {
                 searchPage.search(textField.text, 'all');
             }
@@ -57,6 +66,7 @@ Page {
             
             horizontalAlignment: HorizontalAlignment.Fill
             SegmentedControl {
+                id: segmentedControl
                 options: [
                     Option {
                         id: c1Sc
