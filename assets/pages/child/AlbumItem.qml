@@ -32,7 +32,7 @@ CustomListItem {
             }
             
             WebImageView {
-                visible: listItemData['is_paid'] || listItemData['isPaid']
+                visible: listItemData['is_paid'] || listItemData['isPaid'] || false
                 url: "asset:///images/pay_icon.png"
                 horizontalAlignment: HorizontalAlignment.Left
                 verticalAlignment: VerticalAlignment.Top

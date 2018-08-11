@@ -108,107 +108,119 @@
 <context>
     <name>album</name>
     <message>
-        <location filename="../assets/pages/album.qml" line="50"/>
+        <location filename="../assets/pages/album.qml" line="52"/>
         <source>声音(%1)</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="56"/>
+        <location filename="../assets/pages/album.qml" line="58"/>
         <source>专辑信息</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="95"/>
+        <location filename="../assets/pages/album.qml" line="97"/>
         <source>顺序</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="98"/>
+        <location filename="../assets/pages/album.qml" line="100"/>
         <source>正序</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="102"/>
+        <location filename="../assets/pages/album.qml" line="104"/>
         <source>倒序</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="125"/>
+        <location filename="../assets/pages/album.qml" line="127"/>
         <source>翻页</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="151"/>
+        <location filename="../assets/pages/album.qml" line="153"/>
         <source>第</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="151"/>
+        <location filename="../assets/pages/album.qml" line="153"/>
         <source>页</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="170"/>
+        <location filename="../assets/pages/album.qml" line="172"/>
         <source>此集为付费声音，无法播放</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="261"/>
+        <location filename="../assets/pages/album.qml" line="263"/>
         <source>主播：</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="271"/>
+        <location filename="../assets/pages/album.qml" line="273"/>
         <source>分类：</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="280"/>
+        <location filename="../assets/pages/album.qml" line="282"/>
         <source>更新：</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="297"/>
+        <location filename="../assets/pages/album.qml" line="299"/>
         <source>简介</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="315"/>
+        <location filename="../assets/pages/album.qml" line="317"/>
         <source>主播介绍</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="381"/>
+        <location filename="../assets/pages/album.qml" line="387"/>
         <source>粉丝</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="391"/>
+        <location filename="../assets/pages/album.qml" line="397"/>
         <source>点击进入</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="417"/>
+        <location filename="../assets/pages/album.qml" line="423"/>
         <source>专辑标签</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="422"/>
+        <location filename="../assets/pages/album.qml" line="26"/>
+        <location filename="../assets/pages/album.qml" line="428"/>
         <source>无</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="464"/>
+        <location filename="../assets/pages/album.qml" line="24"/>
+        <source>专辑名</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/album.qml" line="25"/>
+        <location filename="../assets/pages/album.qml" line="30"/>
+        <source>昵称</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/album.qml" line="470"/>
         <source>专辑信息接口调用失败</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="467"/>
+        <location filename="../assets/pages/album.qml" line="473"/>
         <source>专辑信息获取失败</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="486"/>
+        <location filename="../assets/pages/album.qml" line="492"/>
         <source>声音列表加载失败</source>
         <translation type="unfinished"></translation>
     </message>
@@ -216,33 +228,98 @@
 <context>
     <name>artistIntro</name>
     <message>
-        <location filename="../assets/pages/artistIntro.qml" line="115"/>
+        <location filename="../assets/pages/artistIntro.qml" line="14"/>
+        <source>昵称</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/artistIntro.qml" line="17"/>
+        <source>无</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/artistIntro.qml" line="135"/>
         <source>关注：</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/artistIntro.qml" line="118"/>
+        <location filename="../assets/pages/artistIntro.qml" line="138"/>
         <source>粉丝：</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/artistIntro.qml" line="131"/>
+        <location filename="../assets/pages/artistIntro.qml" line="146"/>
+        <source>个人认证</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/artistIntro.qml" line="153"/>
         <source>机构认证：</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/artistIntro.qml" line="133"/>
+        <location filename="../assets/pages/artistIntro.qml" line="155"/>
         <source>认证：</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/artistIntro.qml" line="173"/>
+        <location filename="../assets/pages/artistIntro.qml" line="168"/>
+        <source>TA 的信息</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/artistIntro.qml" line="174"/>
+        <source>性别：</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/artistIntro.qml" line="179"/>
+        <source>男</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/artistIntro.qml" line="181"/>
+        <source>女</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/artistIntro.qml" line="189"/>
+        <source>简介：</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/artistIntro.qml" line="197"/>
+        <source>兴趣：</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/artistIntro.qml" line="217"/>
+        <source>TA 的专辑(%1)</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/artistIntro.qml" line="224"/>
+        <source>查看更多 ➤</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/artistIntro.qml" line="302"/>
         <source>主播信息异常，请重试</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/artistIntro.qml" line="176"/>
+        <location filename="../assets/pages/artistIntro.qml" line="305"/>
         <source>主播信息获取失败，请重试</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/artistIntro.qml" line="325"/>
+        <source>主播专辑异常，请重试</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/artistIntro.qml" line="328"/>
+        <source>主播专辑获取失败，请重试</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
