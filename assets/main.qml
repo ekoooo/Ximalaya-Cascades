@@ -113,6 +113,9 @@ TabbedPane {
             NavigationPane {
                 id: searchNav
                 Page.search {}
+//                Page.artistIntro {
+//                    uid: 1266964
+//                }
                 onPopTransitionEnded: common.onPopTransitionEnded(nav, page)
                 onPushTransitionEnded: common.onPushTransitionEnded(nav, page)
                 backButtonsVisible: tabbedPane.backButtonVisiable

@@ -23,7 +23,7 @@ CustomListItem {
             layout: DockLayout {}
             
             WebImageView {
-                url: listItemData['cover_path'] || ''
+                url: listItemData['cover_path'] || listItemData['coverLarge'] || ''
                 failImageSource: "asset:///images/ting_default.png"
                 loadingImageSource: "asset:///images/ting_default.png"
                 scalingMethod: ScalingMethod.AspectFill
@@ -32,7 +32,7 @@ CustomListItem {
             }
             
             WebImageView {
-                visible: listItemData['is_paid']
+                visible: listItemData['is_paid'] || listItemData['isPaid']
                 url: "asset:///images/pay_icon.png"
                 horizontalAlignment: HorizontalAlignment.Left
                 verticalAlignment: VerticalAlignment.Top
@@ -54,7 +54,7 @@ CustomListItem {
                     orientation: LayoutOrientation.LeftToRight
                 }
                 Container {
-                    visible: listItemData['is_finished'] == 2
+                    visible: listItemData['is_finished'] == 2 || listItemData['serialState'] == 2
                     background: ui.palette.primary
                     leftPadding: ui.du(0.4)
                     rightPadding: ui.du(0.4)
@@ -102,7 +102,7 @@ CustomListItem {
                 Container {
                     rightMargin: ui.du(2)
                     Label {
-                        text: common.parsePlayerNum(listItemData['play'])
+                        text: common.parsePlayerNum(listItemData['play'] || listItemData['playTimes'])
                         textStyle {
                             base: SystemDefaults.TextStyles.SmallText
                             color: Color.Gray

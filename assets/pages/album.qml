@@ -10,6 +10,8 @@ Page {
     property bool listLoading: false
     property bool detailLoading: false
     property bool isAsc
+    property variant from
+    
     // 当前页面的信息
     property variant currentAlbumInfo: {
         isInit: true,
@@ -19,13 +21,13 @@ Page {
     }
     // 专辑信息里面的字段
     property variant album: {
-        title: '-',
-        nickname: '-',
-        categoryName: '-',
+        title: qsTr("专辑名"),
+        nickname: qsTr("昵称"),
+        categoryName: qsTr("无"),
         lastUptrackAt: +new Date('1970/01/01')
     }
     property variant user: {
-        nickname: '-',
+        nickname: qsTr("昵称"),
         followers: 0
     }
     
@@ -323,7 +325,11 @@ Page {
                         
                         onTouch: {
                             if(event.isUp()) {
-                                _misc.showToast("进入主播界面，功能正在开发中...");
+                                if(from === 'artistIntroPage') {
+                                    nav.pop();
+                                }else {
+                                    goArtistIntroPage(albumPage.user['uid']);
+                                }
                             }
                         }
                         
@@ -506,6 +512,10 @@ Page {
                 albumPage.getAlbumInfo(1);
                 albumPage.getAlbumDetail();
             }
+        },
+        ComponentDefinition {
+            id: artistIntroPage
+            source: "asset:///pages/artistIntro.qml"
         }
     ]
     
@@ -523,5 +533,11 @@ Page {
     // 获取专辑信息
     function getAlbumDetail() {
         common.apiAlbumDetail(albumDetailRequester, albumId);
+    }
+    
+    function goArtistIntroPage(uid) {
+        var page = artistIntroPage.createObject();
+        page.uid = uid;
+        nav.push(page);
     }
 }

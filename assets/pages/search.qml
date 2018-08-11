@@ -50,7 +50,7 @@ Page {
             textField.input.onSubmitted: {
                 searchPage.search(textField.text, 'all');
             }
-            textField.text: "歌曲"
+            textField.text: "有声的"
             onCreationCompleted: {
                 searchPage.search(textField.text, 'all');
             }
@@ -163,7 +163,7 @@ Page {
                 }
             }
             
-            // 声音 Container
+            // 主播 Container
             Container {
                 id: c2
                 visible: c2Sc.selected
@@ -190,9 +190,18 @@ Page {
                     layoutProperties: StackLayoutProperties {
                         spaceQuota: 1
                     }
-                    
                     dataModel: ArrayDataModel {
                         id: userDm
+                    }
+                    
+                    onTriggered: {
+                        var item = userDm.data(indexPath);
+                        var uid = item['uid'];
+                        if(uid) {
+                            searchPage.goArtistiIntroPage(uid);
+                        }else {
+                            _misc.showToast(qsTr("未知数据格式，请告知开发者"));
+                        }
                     }
                     
                     listItemComponents: [
@@ -271,8 +280,18 @@ Page {
         ComponentDefinition {
             id: albumPage
             source: "asset:///pages/album.qml"
+        },
+        ComponentDefinition {
+            id: artistPage
+            source: "asset:///pages/artistIntro.qml"
         }
     ]
+    
+    function goArtistiIntroPage(uid) {
+        var page = artistPage.createObject();
+        page.uid = uid;
+        nav.push(page);
+    }
     
     function goAlbumPage(albumId) {
         var page = albumPage.createObject();

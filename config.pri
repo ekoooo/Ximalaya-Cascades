@@ -70,6 +70,8 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/images/no_content.png) \
         $$quote($$BASEDIR/assets/images/pay_icon.png) \
         $$quote($$BASEDIR/assets/images/play_in_track_item.png) \
+        $$quote($$BASEDIR/assets/images/radius.amd) \
+        $$quote($$BASEDIR/assets/images/radius.png) \
         $$quote($$BASEDIR/assets/images/sound_comments_icon.png) \
         $$quote($$BASEDIR/assets/images/sound_duration_icon.png) \
         $$quote($$BASEDIR/assets/images/sound_playtimes_icon.png) \
@@ -94,6 +96,7 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/images/user_grade/individual_orangeV9.png) \
         $$quote($$BASEDIR/assets/main.qml) \
         $$quote($$BASEDIR/assets/pages/album.qml) \
+        $$quote($$BASEDIR/assets/pages/artistIntro.qml) \
         $$quote($$BASEDIR/assets/pages/audioPlayerUI.qml) \
         $$quote($$BASEDIR/assets/pages/child/AlbumItem.qml) \
         $$quote($$BASEDIR/assets/pages/child/ItemContainer.qml) \

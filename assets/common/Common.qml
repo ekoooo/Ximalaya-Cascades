@@ -168,6 +168,12 @@ QtObject {
         requester.setHeaders({"Cookie": "1&_device=iPhone&bb10&6.3.45"});
         requester.send(qsTr(api.albumDetail).arg(albumId.toString()));
     }
+    function apiArtishIntro(requester, uid) {
+        requester.send(qsTr(api.artistIntro).arg(uid.toString()));
+    }
+    function apiArtistAlbums(requester, uid, pageId, pageSize) {
+        requester.send(qsTr(api.artistAlbums).arg(pageSize.toString()).arg(pageId.toString()).arg(uid.toString()));
+    }
     // ============ api end ============
     function httpGetAsync(theUrl, callback) {
         var xmlHttp = new XMLHttpRequest();
