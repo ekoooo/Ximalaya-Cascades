@@ -22,7 +22,7 @@ Container {
     }
     property bool isLast: false
     property bool isCenter: true
-    property int lineWidth: 4
+    property int lineWidth: 1
 
     background: ui.palette.plain
     topPadding: ui.du(3)

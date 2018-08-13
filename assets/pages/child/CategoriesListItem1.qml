@@ -17,7 +17,7 @@ ListItemComponent {
             }
             Container {
                 verticalAlignment: VerticalAlignment.Fill
-                preferredWidth: 4
+                preferredWidth: 6
                 background: ui.palette.primary
             }
             Label {
