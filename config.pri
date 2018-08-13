@@ -100,6 +100,11 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/pages/artistIntro.qml) \
         $$quote($$BASEDIR/assets/pages/audioPlayerUI.qml) \
         $$quote($$BASEDIR/assets/pages/child/AlbumItem.qml) \
+        $$quote($$BASEDIR/assets/pages/child/CategoriesItemButton.qml) \
+        $$quote($$BASEDIR/assets/pages/child/CategoriesLastViewContainer.qml) \
+        $$quote($$BASEDIR/assets/pages/child/CategoriesListItem0.qml) \
+        $$quote($$BASEDIR/assets/pages/child/CategoriesListItem1.qml) \
+        $$quote($$BASEDIR/assets/pages/child/CategoriesListViewListItem.qml) \
         $$quote($$BASEDIR/assets/pages/child/ItemContainer.qml) \
         $$quote($$BASEDIR/assets/pages/child/TrackItem.qml) \
         $$quote($$BASEDIR/assets/pages/child/UserItem.qml) \

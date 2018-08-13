@@ -13,10 +13,11 @@ TabbedPane {
     property variant albumInfo // 专辑信息
     property variant trackId // 声音ID
     // audioPlayerUI property end
+    property variant lastViewCategory: _misc.getConfig(common.settingsKey.lastViewCategory, "[]")
     
     showTabsOnActionBar: false
-    // activeTab: indexTab // 默认 activeTab 为 主页
-    activeTab: searchTab // 默认 activeTab 为 主页
+    activeTab: indexTab // 默认 activeTab 为 主页
+    // activeTab: searchTab // 默认 activeTab 为 主页
     
     shortcuts: [
         Shortcut {
@@ -113,9 +114,6 @@ TabbedPane {
             NavigationPane {
                 id: searchNav
                 Page.search {}
-//                Page.artistIntro {
-//                    uid: 1266964
-//                }
                 onPopTransitionEnded: common.onPopTransitionEnded(nav, page)
                 onPushTransitionEnded: common.onPushTransitionEnded(nav, page)
                 backButtonsVisible: tabbedPane.backButtonVisiable

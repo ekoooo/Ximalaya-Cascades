@@ -29,7 +29,9 @@ QtObject {
          */
         "audioPlayerSourceType": "audioPlayerSourceType",
         // 声音列表是否正序（每个专辑都要存）（cpp也有这个key，要一致）
-        "trackListIsAsc": "isAsc::albumId::"
+        "trackListIsAsc": "isAsc::albumId::",
+        // 主页最后浏览的三个分类
+        "lastViewCategory": "lastViewCategory"
     }
     
     // 快捷键
@@ -173,6 +175,9 @@ QtObject {
     }
     function apiArtistAlbums(requester, uid, pageId, pageSize) {
         requester.send(qsTr(api.artistAlbums).arg(pageSize.toString()).arg(pageId.toString()).arg(uid.toString()));
+    }
+    function apiCategories(requester) {
+        requester.send(api.categories);
     }
     // ============ api end ============
     function httpGetAsync(theUrl, callback) {

@@ -11,5 +11,7 @@ var Api = {
     // 主播信息
     "artistIntro": "http://mobile.ximalaya.com/mobile/v1/artist/intro?device=iPhone&toUid=%1",
     // 主播的专辑
-    "artistAlbums": "http://mobile.ximalaya.com/mobile/v1/artist/albums?device=iPhone&pageSize=%1&pageId=%2&toUid=%3"
+    "artistAlbums": "http://mobile.ximalaya.com/mobile/v1/artist/albums?device=iPhone&pageSize=%1&pageId=%2&toUid=%3",
+    // 分类
+    "categories": "http://mobile.ximalaya.com/mobile/discovery/v4/categories?channel=&device=iPhone&version=6.3.45"
 };

@@ -15,74 +15,82 @@
     </message>
 </context>
 <context>
+    <name>CategoriesListViewListItem</name>
+    <message>
+        <location filename="../assets/pages/child/CategoriesListViewListItem.qml" line="33"/>
+        <source>最近浏览</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>Common</name>
     <message>
-        <location filename="../assets/common/Common.qml" line="38"/>
+        <location filename="../assets/common/Common.qml" line="40"/>
         <source>返回</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="40"/>
+        <location filename="../assets/common/Common.qml" line="42"/>
         <source>打开播放器</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="42"/>
+        <location filename="../assets/common/Common.qml" line="44"/>
         <source>主页</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="44"/>
+        <location filename="../assets/common/Common.qml" line="46"/>
         <source>搜索</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="46"/>
+        <location filename="../assets/common/Common.qml" line="48"/>
         <source>切换分段控制器</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="48"/>
+        <location filename="../assets/common/Common.qml" line="50"/>
         <source>上一个声音</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="50"/>
+        <location filename="../assets/common/Common.qml" line="52"/>
         <source>下一个声音</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="52"/>
+        <location filename="../assets/common/Common.qml" line="54"/>
         <source>播放/暂停</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="54"/>
+        <location filename="../assets/common/Common.qml" line="56"/>
         <source>隐藏/显示 播放器操作面板</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="59"/>
+        <location filename="../assets/common/Common.qml" line="61"/>
         <source>确定</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="59"/>
+        <location filename="../assets/common/Common.qml" line="61"/>
         <source>取消</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="70"/>
+        <location filename="../assets/common/Common.qml" line="72"/>
         <source>万</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="72"/>
+        <location filename="../assets/common/Common.qml" line="74"/>
         <source>亿</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="87"/>
+        <location filename="../assets/common/Common.qml" line="89"/>
         <source>%1:%2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -228,17 +236,22 @@
 <context>
     <name>artistAlbumList</name>
     <message>
-        <location filename="../assets/pages/artistAlbumList.qml" line="23"/>
+        <location filename="../assets/pages/artistAlbumList.qml" line="15"/>
+        <source>全部专辑</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/artistAlbumList.qml" line="28"/>
         <source>共有%1张专辑</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/artistAlbumList.qml" line="97"/>
+        <location filename="../assets/pages/artistAlbumList.qml" line="102"/>
         <source>主播专辑列表异常，请重试</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/artistAlbumList.qml" line="100"/>
+        <location filename="../assets/pages/artistAlbumList.qml" line="105"/>
         <source>主播专辑列表获取失败，请重试</source>
         <translation type="unfinished"></translation>
     </message>
@@ -465,39 +478,57 @@
     </message>
 </context>
 <context>
+    <name>index</name>
+    <message>
+        <location filename="../assets/pages/index.qml" line="10"/>
+        <source>分类</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/index.qml" line="68"/>
+        <source>主页数据异常，请重试</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/index.qml" line="71"/>
+        <source>主页数据格式错误，请重试</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>main</name>
     <message>
-        <location filename="../assets/main.qml" line="58"/>
+        <location filename="../assets/main.qml" line="59"/>
         <source>帮助</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="64"/>
+        <location filename="../assets/main.qml" line="65"/>
         <source>设置</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="71"/>
+        <location filename="../assets/main.qml" line="72"/>
         <source>赞助</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="78"/>
+        <location filename="../assets/main.qml" line="79"/>
         <source>评价</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="85"/>
+        <location filename="../assets/main.qml" line="86"/>
         <source>关于</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="98"/>
+        <location filename="../assets/main.qml" line="99"/>
         <source>主页</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="111"/>
+        <location filename="../assets/main.qml" line="112"/>
         <source>搜索</source>
         <translation type="unfinished"></translation>
     </message>
