@@ -96,6 +96,7 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/images/user_grade/individual_orangeV9.png) \
         $$quote($$BASEDIR/assets/main.qml) \
         $$quote($$BASEDIR/assets/pages/album.qml) \
+        $$quote($$BASEDIR/assets/pages/artistAlbumList.qml) \
         $$quote($$BASEDIR/assets/pages/artistIntro.qml) \
         $$quote($$BASEDIR/assets/pages/audioPlayerUI.qml) \
         $$quote($$BASEDIR/assets/pages/child/AlbumItem.qml) \
@@ -122,12 +123,6 @@ config_pri_source_group1 {
         $$quote($$BASEDIR/src/WebImageView/WebImageView.hpp) \
         $$quote($$BASEDIR/src/applicationui.hpp)
 }
-
-INCLUDEPATH += $$quote($$BASEDIR/src/AudioPlayer) \
-    $$quote($$BASEDIR/src/Requester) \
-    $$quote($$BASEDIR/src/WebImageView) \
-    $$quote($$BASEDIR/src) \
-    $$quote($$BASEDIR/src/Misc)
 
 CONFIG += precompile_header
 

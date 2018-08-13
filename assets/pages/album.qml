@@ -266,6 +266,11 @@ Page {
                                     color: ui.palette.primary
                                 }
                             }
+                            onTouch: {
+                                if(event.isUp()) {
+                                    goArtistIntroPage(albumPage.user['uid']);
+                                }
+                            }
                         }
                         Container {
                             bottomMargin: infoContainer.textMargin
@@ -325,11 +330,7 @@ Page {
                         
                         onTouch: {
                             if(event.isUp()) {
-                                if(from === 'artistIntroPage') {
-                                    nav.pop();
-                                }else {
-                                    goArtistIntroPage(albumPage.user['uid']);
-                                }
+                                goArtistIntroPage(albumPage.user['uid']);
                             }
                         }
                         
@@ -397,7 +398,7 @@ Page {
                                     text: qsTr("点击进入")
                                     textStyle {
                                         base: SystemDefaults.TextStyles.SmallText
-                                        color: ui.palette.primary
+                                        color: Color.Gray
                                     }
                                 }
                             }
@@ -536,8 +537,12 @@ Page {
     }
     
     function goArtistIntroPage(uid) {
-        var page = artistIntroPage.createObject();
-        page.uid = uid;
-        nav.push(page);
+        if(from === 'artistIntroPage') {
+            nav.pop();
+        }else {
+            var page = artistIntroPage.createObject();
+            page.uid = uid;
+            nav.push(page);
+        }
     }
 }

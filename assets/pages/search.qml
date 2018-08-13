@@ -50,7 +50,7 @@ Page {
             textField.input.onSubmitted: {
                 searchPage.search(textField.text, 'all');
             }
-            textField.text: "经典歌"
+            textField.text: "有声的"
             onCreationCompleted: {
                 searchPage.search(textField.text, 'all');
             }

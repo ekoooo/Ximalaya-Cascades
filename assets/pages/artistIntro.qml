@@ -226,7 +226,7 @@ Page {
                                     textStyle.color: Color.Gray
                                     onTouch: {
                                         if(event.isUp()) {
-                                            _misc.showToast("查看更多");
+                                            goArtistAlbumListPage();
                                         }
                                     }
                                 }
@@ -347,6 +347,10 @@ Page {
         ComponentDefinition {
             id: albumPage
             source: "asset:///pages/album.qml"
+        },
+        ComponentDefinition {
+            id: artistAlbumListPage
+            source: "asset:///pages/artistAlbumList.qml"
         }
     ]
     
@@ -358,6 +362,12 @@ Page {
         var page = albumPage.createObject();
         page.albumId = albumId;
         page.from = 'artistIntroPage';
+        nav.push(page);
+    }
+    
+    function goArtistAlbumListPage() {
+        var page = artistAlbumListPage.createObject();
+        page.uid = uid;
         nav.push(page);
     }
 }

@@ -158,43 +158,43 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="273"/>
+        <location filename="../assets/pages/album.qml" line="278"/>
         <source>分类：</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="282"/>
+        <location filename="../assets/pages/album.qml" line="287"/>
         <source>更新：</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="299"/>
+        <location filename="../assets/pages/album.qml" line="304"/>
         <source>简介</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="317"/>
+        <location filename="../assets/pages/album.qml" line="322"/>
         <source>主播介绍</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="387"/>
+        <location filename="../assets/pages/album.qml" line="388"/>
         <source>粉丝</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="397"/>
+        <location filename="../assets/pages/album.qml" line="398"/>
         <source>点击进入</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="423"/>
+        <location filename="../assets/pages/album.qml" line="424"/>
         <source>专辑标签</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../assets/pages/album.qml" line="26"/>
-        <location filename="../assets/pages/album.qml" line="428"/>
+        <location filename="../assets/pages/album.qml" line="429"/>
         <source>无</source>
         <translation type="unfinished"></translation>
     </message>
@@ -210,18 +210,36 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="470"/>
+        <location filename="../assets/pages/album.qml" line="471"/>
         <source>专辑信息接口调用失败</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="473"/>
+        <location filename="../assets/pages/album.qml" line="474"/>
         <source>专辑信息获取失败</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/album.qml" line="492"/>
+        <location filename="../assets/pages/album.qml" line="493"/>
         <source>声音列表加载失败</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>artistAlbumList</name>
+    <message>
+        <location filename="../assets/pages/artistAlbumList.qml" line="23"/>
+        <source>共有%1张专辑</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/artistAlbumList.qml" line="97"/>
+        <source>主播专辑列表异常，请重试</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/artistAlbumList.qml" line="100"/>
+        <source>主播专辑列表获取失败，请重试</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
