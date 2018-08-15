@@ -27,10 +27,10 @@ Page {
             function itemType(data, indexPath) {
                 return 'displayStyleType:' + data.displayStyleType;
             }
-            listItemComponents: [categoriesListViewListItem, categoriesListItem0, categoriesListItem1]
+            listItemComponents: [categoriesListItem2, categoriesListItem0, categoriesListItem1]
             attachedObjects: [
-                CategoriesListViewListItem {
-                    id: categoriesListViewListItem
+                CategoriesListItem2 {
+                    id: categoriesListItem2
                 },
                 CategoriesListItem0 {
                     id: categoriesListItem0
