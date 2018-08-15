@@ -179,6 +179,13 @@ QtObject {
     function apiCategories(requester) {
         requester.send(api.categories);
     }
+    function apiKeywords(requester, categoryId) {
+        requester.send(qsTr(api.keywords).arg(categoryId.toString()));
+    }
+    function apiMetadatas(requester, categoryId) {
+        console.log(requester, categoryId, 2);
+        requester.send(qsTr(api.metadatas).arg(categoryId.toString()));
+    }
     // ============ api end ============
     function httpGetAsync(theUrl, callback) {
         var xmlHttp = new XMLHttpRequest();

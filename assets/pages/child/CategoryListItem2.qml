@@ -3,7 +3,7 @@ import bb.cascades 1.4
 ListItemComponent {
     type: "displayStyleType:-1"
     Container {
-        id: lastViewItemContainer
+        id: top
         Container {
             layout: StackLayout {
                 orientation: LayoutOrientation.LeftToRight
@@ -37,24 +37,33 @@ ListItemComponent {
             }
             Container {
                 id: lastViewBtnContainer
-                property variant lastViewBtnData: JSON.parse(lastViewItemContainer.ListItem.view.lastViewCategory)
+                property variant lastViewBtnData: JSON.parse(top.ListItem.view.lastViewCategory)
                 
                 horizontalAlignment: HorizontalAlignment.Center
                 verticalAlignment: VerticalAlignment.Center
                 layout: StackLayout {
                     orientation: LayoutOrientation.LeftToRight
                 }
-                CategoryItemButtonBox {
+                CategoryHistoryButton {
                     id: lastViewBtn1
                     label: "无"
+                    onClick: {
+                        lastViewBtnContainer.goCategoryDetailPage(0);
+                    }
                 }
-                CategoryItemButtonBox {
+                CategoryHistoryButton {
                     id: lastViewBtn2
                     label: "无"
+                    onClick: {
+                        lastViewBtnContainer.goCategoryDetailPage(1);
+                    }
                 }
-                CategoryItemButtonBox {
+                CategoryHistoryButton {
                     id: lastViewBtn3
                     label: "无"
+                    onClick: {
+                        lastViewBtnContainer.goCategoryDetailPage(2);
+                    }
                 }
                 
                 onLastViewBtnDataChanged: {
@@ -72,6 +81,15 @@ ListItemComponent {
                 
                 function getLabel(index) {
                     return lastViewBtnData[index]['itemType'] == 0 ? lastViewBtnData[index]['itemDetail']['title'] : lastViewBtnData[index]['itemDetail']['keywordName'];
+                }
+                
+                function goCategoryDetailPage(index) {
+                    var page = top.ListItem.view.categoryDetailPage.createObject();
+                    if(lastViewBtnData[index]['itemType'] === 1) {
+                        page.keywordId = lastViewBtnData[index]['itemDetail']['keywordId'];
+                    }
+                    page.categoryId = lastViewBtnData[index]['itemDetail']['categoryId'];
+                    top.ListItem.view.nav_.push(page);
                 }
             }
         }

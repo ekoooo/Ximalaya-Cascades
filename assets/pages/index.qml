@@ -17,6 +17,8 @@ Page {
         ListView {
             property variant btn: categoryItemButton
             property variant lastViewCategory: tabbedPane.lastViewCategory
+            property variant categoryDetailPage: categoryDetailPage
+            property variant nav_: nav
             
             bottomPadding: ui.du(14)
             enabled: false // 取消聚焦
@@ -41,6 +43,10 @@ Page {
                 ComponentDefinition {
                     id: categoryItemButton
                     content: CategoryItemButton {}
+                },
+                ComponentDefinition {
+                    id: categoryDetailPage
+                    source: "asset:///pages/categoryDetail.qml"
                 }
             ]
         }

@@ -99,9 +99,10 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/pages/artistAlbumList.qml) \
         $$quote($$BASEDIR/assets/pages/artistIntro.qml) \
         $$quote($$BASEDIR/assets/pages/audioPlayerUI.qml) \
+        $$quote($$BASEDIR/assets/pages/categoryDetail.qml) \
         $$quote($$BASEDIR/assets/pages/child/AlbumItem.qml) \
+        $$quote($$BASEDIR/assets/pages/child/CategoryHistoryButton.qml) \
         $$quote($$BASEDIR/assets/pages/child/CategoryItemButton.qml) \
-        $$quote($$BASEDIR/assets/pages/child/CategoryItemButtonBox.qml) \
         $$quote($$BASEDIR/assets/pages/child/CategoryListItem0.qml) \
         $$quote($$BASEDIR/assets/pages/child/CategoryListItem1.qml) \
         $$quote($$BASEDIR/assets/pages/child/CategoryListItem2.qml) \

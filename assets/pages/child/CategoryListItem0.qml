@@ -23,6 +23,7 @@ ListItemComponent {
                 var b;
                 for(var i = 0; i < len; i++) {
                     b = top.ListItem.view.btn.createObject();
+                    b.categoryDetailPage = top.ListItem.view.categoryDetailPage;
                     b.info = itemList[i];
                     b.isLast = ((i + 1) % 4 === 0);
                     add(b);

@@ -20,6 +20,7 @@ Container {
         isDisplayCornerMark: false,
         coverPath: ''
     }
+    property variant categoryDetailPage
     property bool isLast: false
     property bool isCenter: true
     property int lineWidth: 1
@@ -35,8 +36,15 @@ Container {
     horizontalAlignment: HorizontalAlignment.Fill
     onTouch: {
         if(event.isUp()) {
-            // 1. 跳转
-            // 2. 保存最近浏览
+            // - 跳转
+            var page = categoryDetailPage.createObject();
+            if(info['itemType'] === 1) {
+                page.keywordId = info['itemDetail']['keywordId'];
+            }
+            page.categoryId = info['itemDetail']['categoryId'];
+            nav.push(page);
+            
+            // - 保存最近浏览
             var lastViewArr = JSON.parse(tabbedPane.lastViewCategory);
             // 判断是否存在
             for(var i = 0; i < lastViewArr.length; i++) {

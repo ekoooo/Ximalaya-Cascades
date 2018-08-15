@@ -17,7 +17,7 @@ var Api = {
     // 一级搜索条件
     "keywords": "http://mobile.ximalaya.com/mobile/discovery/v1/category/keywords?device=iPhone&categoryId=%1",
     // 二级搜索条件
-    "metadatas": "http://mobile.ximalaya.com/mobile/discovery/v2/category/metadatas?device=iPhone&version=6.3.45&categoryId=&1",
+    "metadatas": "http://mobile.ximalaya.com/mobile/discovery/v2/category/metadatas?device=iPhone&version=6.3.45&categoryId=%1",
     /**
      * 一级搜索条件列表，不需要 metadatas 参数
      * 二级搜索条件列表，不需要 keywordId 参数，如果是搜索全部，则 metadatas 为空
