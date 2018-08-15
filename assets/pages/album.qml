@@ -468,7 +468,7 @@ Page {
                         albumPage.album = detail['data']['album'];
                         albumPage.user = detail['data']['user'];
                     }else {
-                        _misc.showToast(qsTr("专辑信息接口调用失败"));
+                        _misc.showToast(detail['msg'] || qsTr("专辑信息接口调用失败"));
                     }
                 }catch(e) {
                     _misc.showToast(qsTr("专辑信息获取失败"));

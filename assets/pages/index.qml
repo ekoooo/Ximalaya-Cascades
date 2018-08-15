@@ -65,7 +65,7 @@ Page {
                         dm.clear();
                         dm.insert(0, list);
                     }else {
-                        _misc.showToast(qsTr("主页数据异常，请重试"));
+                        _misc.showToast(rt['msg'] || qsTr("主页数据异常，请重试"));
                     }
                 }catch (e) {
                     _misc.showToast(qsTr("主页数据格式错误，请重试"));

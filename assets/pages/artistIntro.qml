@@ -299,7 +299,7 @@ Page {
                     if(rt.ret === 0) {
                         artistIntroPage.introInfo = rt;
                     }else {
-                        _misc.showToast(qsTr("主播信息异常，请重试"));
+                        _misc.showToast(rt['msg'] || qsTr("主播信息异常，请重试"));
                     }
                 }catch (e) {
                     _misc.showToast(qsTr("主播信息获取失败，请重试"));
@@ -322,7 +322,7 @@ Page {
                     if(rt.ret === 0) {
                         artistIntroPage.artistInfo = rt;
                     }else {
-                        _misc.showToast(qsTr("主播专辑异常，请重试"));
+                        _misc.showToast(rt['msg'] || qsTr("主播专辑异常，请重试"));
                     }
                 }catch (e) {
                     _misc.showToast(qsTr("主播专辑获取失败，请重试"));
