@@ -15,7 +15,7 @@ Page {
         layout: DockLayout {}
         
         ListView {
-            property variant btn: categoriesItemButton
+            property variant btn: categoryItemButton
             property variant lastViewCategory: tabbedPane.lastViewCategory
             
             bottomPadding: ui.du(14)
@@ -27,20 +27,20 @@ Page {
             function itemType(data, indexPath) {
                 return 'displayStyleType:' + data.displayStyleType;
             }
-            listItemComponents: [categoriesListItem2, categoriesListItem0, categoriesListItem1]
+            listItemComponents: [categoryListItem2, categoryListItem0, categoryListItem1]
             attachedObjects: [
-                CategoriesListItem2 {
-                    id: categoriesListItem2
+                CategoryListItem2 {
+                    id: categoryListItem2
                 },
-                CategoriesListItem0 {
-                    id: categoriesListItem0
+                CategoryListItem0 {
+                    id: categoryListItem0
                 },
-                CategoriesListItem1 {
-                    id: categoriesListItem1
+                CategoryListItem1 {
+                    id: categoryListItem1
                 },
                 ComponentDefinition {
-                    id: categoriesItemButton
-                    content: CategoriesItemButton {}
+                    id: categoryItemButton
+                    content: CategoryItemButton {}
                 }
             ]
         }

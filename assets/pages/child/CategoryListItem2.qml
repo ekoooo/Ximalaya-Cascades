@@ -44,15 +44,15 @@ ListItemComponent {
                 layout: StackLayout {
                     orientation: LayoutOrientation.LeftToRight
                 }
-                CategoriesItemButtonBox {
+                CategoryItemButtonBox {
                     id: lastViewBtn1
                     label: "无"
                 }
-                CategoriesItemButtonBox {
+                CategoryItemButtonBox {
                     id: lastViewBtn2
                     label: "无"
                 }
-                CategoriesItemButtonBox {
+                CategoryItemButtonBox {
                     id: lastViewBtn3
                     label: "无"
                 }
