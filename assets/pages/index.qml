@@ -19,6 +19,7 @@ Page {
             property variant lastViewCategory: tabbedPane.lastViewCategory
             
             bottomPadding: ui.du(14)
+            enabled: false // 取消聚焦
             
             dataModel: ArrayDataModel {
                 id: dm
