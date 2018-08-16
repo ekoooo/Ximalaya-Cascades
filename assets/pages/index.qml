@@ -20,6 +20,8 @@ Page {
             property variant categoryDetailPage: categoryDetailPage
             property variant nav_: nav
             
+            horizontalAlignment: HorizontalAlignment.Fill
+            verticalAlignment: VerticalAlignment.Fill
             bottomPadding: ui.du(14)
             enabled: false // 取消聚焦
             
@@ -51,6 +53,22 @@ Page {
             ]
         }
         
+        // loading
+        Container {
+            visible: isLoading
+            horizontalAlignment: HorizontalAlignment.Fill
+            verticalAlignment: VerticalAlignment.Fill
+            background: Color.create(0,0,0,0.2)
+            layout: DockLayout {}
+            
+            ActivityIndicator {
+                running: isLoading
+                preferredHeight: ui.du(10)
+                preferredWidth: ui.du(10)
+                horizontalAlignment: HorizontalAlignment.Center
+                verticalAlignment: VerticalAlignment.Center
+            }
+        }
     }
     
     attachedObjects: [

@@ -15,9 +15,9 @@
     </message>
 </context>
 <context>
-    <name>CategoriesListViewListItem</name>
+    <name>CategoryListItem2</name>
     <message>
-        <location filename="../assets/pages/child/CategoriesListViewListItem.qml" line="33"/>
+        <location filename="../assets/pages/child/CategoryListItem2.qml" line="33"/>
         <source>最近浏览</source>
         <translation type="unfinished"></translation>
     </message>
@@ -478,6 +478,14 @@
     </message>
 </context>
 <context>
+    <name>categoryDetail</name>
+    <message>
+        <location filename="../assets/pages/categoryDetail.qml" line="23"/>
+        <source>获取 keywords 失败，请重试</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>index</name>
     <message>
         <location filename="../assets/pages/index.qml" line="10"/>
@@ -485,12 +493,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/index.qml" line="68"/>
+        <location filename="../assets/pages/index.qml" line="93"/>
         <source>主页数据异常，请重试</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/index.qml" line="71"/>
+        <location filename="../assets/pages/index.qml" line="96"/>
         <source>主页数据格式错误，请重试</source>
         <translation type="unfinished"></translation>
     </message>

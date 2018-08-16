@@ -183,7 +183,6 @@ QtObject {
         requester.send(qsTr(api.keywords).arg(categoryId.toString()));
     }
     function apiMetadatas(requester, categoryId) {
-        console.log(requester, categoryId, 2);
         requester.send(qsTr(api.metadatas).arg(categoryId.toString()));
     }
     // ============ api end ============

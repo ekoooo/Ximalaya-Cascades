@@ -107,6 +107,8 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/pages/child/CategoryListItem1.qml) \
         $$quote($$BASEDIR/assets/pages/child/CategoryListItem2.qml) \
         $$quote($$BASEDIR/assets/pages/child/ItemContainer.qml) \
+        $$quote($$BASEDIR/assets/pages/child/KeywordsListView.qml) \
+        $$quote($$BASEDIR/assets/pages/child/MetadatasContainer.qml) \
         $$quote($$BASEDIR/assets/pages/child/TrackItem.qml) \
         $$quote($$BASEDIR/assets/pages/child/UserItem.qml) \
         $$quote($$BASEDIR/assets/pages/index.qml) \
