@@ -31,6 +31,7 @@ Page {
                 keywordId: categoryDetailPage.keywordId
                 onSelected: {
                     categoryDetailPage.keywordId = keywordId;
+                    metadatasContainer.visible = !keywordId;
                 }
             }
             MetadatasContainer {
