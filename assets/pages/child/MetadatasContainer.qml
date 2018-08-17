@@ -4,6 +4,7 @@ Container {
     id: container
     visible: false
     
+    property bool setVisible
     property variant metadatas
     property variant boxHeight: ui.du(5)
     property variant padding: ui.du(1)
@@ -175,6 +176,9 @@ Container {
         
         dm.clear();
         dm.insert(0, list);
+        
+        // update ui
         lv.updateHeight();
+        container.visible = setVisible;
     }
 }

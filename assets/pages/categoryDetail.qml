@@ -15,7 +15,7 @@ Page {
     actionBarVisibility: ChromeVisibility.Compact
     titleBar: TitleBar {
         id: titleBar
-        title: " "
+        title: qsTr("加载中...")
         scrollBehavior: TitleBarScrollBehavior.Sticky
     }
     
@@ -35,7 +35,7 @@ Page {
             }
             MetadatasContainer {
                 id: metadatasContainer
-                visible: !categoryDetailPage.keywordId
+                setVisible: !categoryDetailPage.keywordId
                 onSelected: {
                     categoryDetailPage.metadatas = metadatasInfo;
                 }
