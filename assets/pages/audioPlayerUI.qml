@@ -160,7 +160,7 @@ Page {
                     visible: !listAlbumInfo
                     url: "asset:///images/no_content.png"
                     horizontalAlignment: HorizontalAlignment.Fill
-                    verticalAlignment: VerticalAlignment.Center
+                    verticalAlignment: VerticalAlignment.Fill
                     scalingMethod: ScalingMethod.AspectFill
                 }
                 ListView {

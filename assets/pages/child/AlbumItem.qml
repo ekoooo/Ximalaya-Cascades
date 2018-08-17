@@ -102,7 +102,7 @@ CustomListItem {
                 Container {
                     rightMargin: ui.du(2)
                     Label {
-                        text: common.parsePlayerNum(listItemData['play'] || listItemData['playTimes'])
+                        text: common.parsePlayerNum(listItemData['play'] || listItemData['playTimes'] || listItemData['playsCounts'])
                         textStyle {
                             base: SystemDefaults.TextStyles.SmallText
                             color: Color.Gray

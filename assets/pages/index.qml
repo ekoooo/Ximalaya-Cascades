@@ -8,7 +8,7 @@ Page {
     
     titleBar: TitleBar {
         title: qsTr("分类")
-        scrollBehavior: TitleBarScrollBehavior.NonSticky
+        scrollBehavior: TitleBarScrollBehavior.Sticky
     }
     
     Container {
@@ -24,6 +24,7 @@ Page {
             verticalAlignment: VerticalAlignment.Fill
             bottomPadding: ui.du(14)
             enabled: false // 取消聚焦
+            scrollRole: ScrollRole.Main
             
             dataModel: ArrayDataModel {
                 id: dm

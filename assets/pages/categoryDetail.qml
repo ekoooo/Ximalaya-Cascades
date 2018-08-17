@@ -63,7 +63,7 @@ Page {
                 visible: totalCount == 0 && !listLoading
                 url: "asset:///images/no_content.png"
                 horizontalAlignment: HorizontalAlignment.Fill
-                verticalAlignment: VerticalAlignment.Center
+                verticalAlignment: VerticalAlignment.Fill
                 scalingMethod: ScalingMethod.AspectFill
                 layoutProperties: StackLayoutProperties {
                     spaceQuota: 1

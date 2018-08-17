@@ -50,10 +50,10 @@ Page {
             textField.input.onSubmitted: {
                 searchPage.search(textField.text, 'all');
             }
-            textField.text: "歌曲"
-            onCreationCompleted: {
-                searchPage.search(textField.text, 'all');
-            }
+//            textField.text: "歌曲"
+//            onCreationCompleted: {
+//                searchPage.search(textField.text, 'all');
+//            }
         }
     }
     
@@ -104,7 +104,7 @@ Page {
                     visible: searchParams.album.numFound === 0 && !searchParams.album.isLoading
                     url: "asset:///images/no_content.png"
                     horizontalAlignment: HorizontalAlignment.Fill
-                    verticalAlignment: VerticalAlignment.Center
+                    verticalAlignment: VerticalAlignment.Fill
                     scalingMethod: ScalingMethod.AspectFill
                 }
                 ListView {
@@ -175,7 +175,7 @@ Page {
                     visible: searchParams.user.numFound === 0 && !searchParams.user.isLoading
                     url: "asset:///images/no_content.png"
                     horizontalAlignment: HorizontalAlignment.Fill
-                    verticalAlignment: VerticalAlignment.Center
+                    verticalAlignment: VerticalAlignment.Fill
                     scalingMethod: ScalingMethod.AspectFill
                 }
                 

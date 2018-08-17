@@ -17,7 +17,7 @@
 <context>
     <name>CategoryListItem2</name>
     <message>
-        <location filename="../assets/pages/child/CategoryListItem2.qml" line="33"/>
+        <location filename="../assets/pages/child/CategoryListItem2.qml" line="35"/>
         <source>最近浏览</source>
         <translation type="unfinished"></translation>
     </message>
@@ -490,17 +490,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/categoryDetail.qml" line="141"/>
+        <location filename="../assets/pages/categoryDetail.qml" line="142"/>
         <source>获取 keywords 失败，请重试</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/categoryDetail.qml" line="155"/>
+        <location filename="../assets/pages/categoryDetail.qml" line="156"/>
         <source>获取 metadatas 失败，请重试</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/categoryDetail.qml" line="183"/>
+        <location filename="../assets/pages/categoryDetail.qml" line="184"/>
         <source>获取列表数据失败，请重试</source>
         <translation type="unfinished"></translation>
     </message>

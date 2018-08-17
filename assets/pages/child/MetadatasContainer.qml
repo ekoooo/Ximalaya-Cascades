@@ -6,7 +6,7 @@ Container {
     
     property bool setVisible
     property variant metadatas
-    property variant boxHeight: ui.du(5)
+    property variant boxHeight: ui.du(6)
     property variant padding: ui.du(1)
     property variant activeInfo: { // 当前选中的
         
