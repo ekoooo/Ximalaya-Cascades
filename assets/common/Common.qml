@@ -36,24 +36,26 @@ QtObject {
     
     // 快捷键
     property variant shortCutKey: {
-        "back": "f",
+        "back": "F",
         "backLabel": qsTr("返回"),
-        "openPlayer": "o",
+        "openPlayer": "O",
         "openPlayerLabel": qsTr("打开播放器"),
-        "indexPage": "i",
+        "indexPage": "I",
         "indexPageLabel": qsTr("主页"),
-        "searhPage": "a",
+        "searhPage": "A",
         "searhPageLabel": qsTr("搜索"),
-        "changeSegmented": "c",
+        "changeSegmented": "C",
         "changeSegmentedLabel": qsTr("切换分段控制器"),
-        "playPreTrack": "s",
+        "playPreTrack": "S",
         "playPreTrackLabel": qsTr("上一个声音"),
-        "playNextTrack": "x",
+        "playNextTrack": "X",
         "playNextTrackLabel": qsTr("下一个声音"),
-        "togglePlayerState": "space",
+        "togglePlayerState": "Space",
         "togglePlayerStateLabel": qsTr("播放/暂停"),
-        "togglePlayerOp": "h",
-        "togglePlayerOpLabel": qsTr("隐藏/显示 播放器操作面板")
+        "togglePlayerOp": "H",
+        "togglePlayerOpLabel": qsTr("隐藏/显示 播放器操作面板"),
+        "toggleMetaPanel": "H",
+        "toggleMetaPanelLabel": qsTr("隐藏/显示 二级搜索条件")
     }
     
     // 打开对话框

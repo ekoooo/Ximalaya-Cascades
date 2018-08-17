@@ -24,10 +24,12 @@ Container {
     ListView {
         id: lv
         property variant item_: item
+        scrollIndicatorMode: ScrollIndicatorMode.None
+        scrollRole: ScrollRole.None
+        
         dataModel: ArrayDataModel {
             id: dm
         }
-        
         listItemComponents: [
             ListItemComponent {
                 type: ''

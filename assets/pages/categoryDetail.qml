@@ -17,7 +17,24 @@ Page {
         id: titleBar
         title: qsTr("加载中...")
         scrollBehavior: TitleBarScrollBehavior.Sticky
+        
+        acceptAction: ActionItem {
+            enabled: !categoryDetailPage.keywordId
+            title: common.shortCutKey.toggleMetaPanel + ' '  + (metadatasContainer.visible ? '⇉' : '⇊')
+            onTriggered: {
+                toggleMetaPanel();
+            }
+        }
     }
+    
+    shortcuts: [
+        Shortcut {
+            key: common.shortCutKey.toggleMetaPanel
+            onTriggered: {
+                toggleMetaPanel();
+            }
+        }
+    ]
     
     Container {
         layout: DockLayout {}
@@ -56,6 +73,7 @@ Page {
             ListView {
                 visible: totalCount != 0
                 property variant common_: common
+                scrollRole: ScrollRole.Main
                 
                 function itemType(data, indexPath) {
                     return data.__type || 'item';
@@ -210,6 +228,12 @@ Page {
         
         if(!keywordId) { // 搜索全部
             common.apiMetadataAlbums(listRequester, categoryId, '', 1);
+        }
+    }
+    
+    function toggleMetaPanel() {
+        if(!categoryDetailPage.keywordId) {
+            metadatasContainer.visible = !metadatasContainer.visible;
         }
     }
 }
