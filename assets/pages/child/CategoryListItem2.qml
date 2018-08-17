@@ -2,8 +2,10 @@ import bb.cascades 1.4
 
 ListItemComponent {
     type: "displayStyleType:-1"
-    Container {
+    ScrollView {
         id: top
+        scrollViewProperties.scrollMode: ScrollMode.Horizontal
+        
         Container {
             layout: StackLayout {
                 orientation: LayoutOrientation.LeftToRight
@@ -92,10 +94,6 @@ ListItemComponent {
                     top.ListItem.view.nav_.push(page);
                 }
             }
-        }
-        Divider {
-            opacity: 0
-            topMargin: 0
         }
     }
 }

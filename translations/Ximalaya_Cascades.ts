@@ -70,27 +70,32 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="61"/>
+        <location filename="../assets/common/Common.qml" line="58"/>
+        <source>隐藏/显示 二级搜索条件</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/common/Common.qml" line="63"/>
         <source>确定</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="61"/>
+        <location filename="../assets/common/Common.qml" line="63"/>
         <source>取消</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="72"/>
+        <location filename="../assets/common/Common.qml" line="74"/>
         <source>万</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="74"/>
+        <location filename="../assets/common/Common.qml" line="76"/>
         <source>亿</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="89"/>
+        <location filename="../assets/common/Common.qml" line="91"/>
         <source>%1:%2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -480,17 +485,22 @@
 <context>
     <name>categoryDetail</name>
     <message>
-        <location filename="../assets/pages/categoryDetail.qml" line="122"/>
+        <location filename="../assets/pages/categoryDetail.qml" line="18"/>
+        <source>加载中...</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/categoryDetail.qml" line="141"/>
         <source>获取 keywords 失败，请重试</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/categoryDetail.qml" line="136"/>
+        <location filename="../assets/pages/categoryDetail.qml" line="155"/>
         <source>获取 metadatas 失败，请重试</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/categoryDetail.qml" line="164"/>
+        <location filename="../assets/pages/categoryDetail.qml" line="183"/>
         <source>获取列表数据失败，请重试</source>
         <translation type="unfinished"></translation>
     </message>

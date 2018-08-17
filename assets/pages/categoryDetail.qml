@@ -74,6 +74,7 @@ Page {
                 visible: totalCount != 0
                 property variant common_: common
                 scrollRole: ScrollRole.Main
+                implicitLayoutAnimationsEnabled: false
                 
                 function itemType(data, indexPath) {
                     return data.__type || 'item';

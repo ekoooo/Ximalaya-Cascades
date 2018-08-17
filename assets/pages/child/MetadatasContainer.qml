@@ -20,6 +20,7 @@ Container {
     background: ui.palette.plain
     topPadding: padding
     bottomPadding: padding
+    implicitLayoutAnimationsEnabled: false
     
     ListView {
         id: lv
