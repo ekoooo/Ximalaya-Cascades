@@ -185,6 +185,30 @@ QtObject {
     function apiMetadatas(requester, categoryId) {
         requester.send(qsTr(api.metadatas).arg(categoryId.toString()));
     }
+    function apiKeywordAlbums(requester, categoryId, keywordId, pageId) {
+        requester.send(qsTr(api.keywordAlbums).arg(categoryId.toString()).arg(keywordId.toString()).arg(pageId.toString()));
+    }
+    function apiMetadataAlbums(requester, categoryId, metadatas, pageId) {
+        // hot, recent, classic
+        // 最火，最近更新(calcDimension:1)，经典(calcDimension:2)
+        var calcDimension = 'hot';
+        if(metadatas) {
+            var metadatasArr = metadatas.split(',');
+            var newArr = [];
+            for(var i = 0; i < metadatasArr.length; i++) {
+                if(metadatasArr[i] === 'calcDimension:1') {
+                    calcDimension = 'recent';
+                }else if(metadatasArr[i] === 'calcDimension:2') {
+                    calcDimension = 'classic';
+                }else {
+                    newArr.push(metadatasArr[i]);
+                }
+            }
+            metadatas = newArr.join(',');
+        }
+        
+        requester.send(qsTr(api.metadataAlbums).arg(categoryId.toString()).arg(metadatas).arg(pageId.toString()).arg(calcDimension));
+    }
     // ============ api end ============
     function httpGetAsync(theUrl, callback) {
         var xmlHttp = new XMLHttpRequest();

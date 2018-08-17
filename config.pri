@@ -112,7 +112,8 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/pages/child/TrackItem.qml) \
         $$quote($$BASEDIR/assets/pages/child/UserItem.qml) \
         $$quote($$BASEDIR/assets/pages/index.qml) \
-        $$quote($$BASEDIR/assets/pages/search.qml)
+        $$quote($$BASEDIR/assets/pages/search.qml) \
+        $$quote($$BASEDIR/assets/pages/test.qml)
 }
 
 config_pri_source_group1 {

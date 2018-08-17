@@ -4,6 +4,7 @@ Container {
     id: listViewContainer
     visible: false
     property variant keywords
+    property alias keywordId: lv.keywordId_
     property variant boxHeight: ui.du(8)
     
     background: ui.palette.plain
@@ -12,6 +13,7 @@ Container {
     signal selected(variant keywordId);
     
     ListView {
+        id: lv
         property variant boxHeight_: boxHeight
         property variant keywordId_ // 当前选中的 keywordId
         

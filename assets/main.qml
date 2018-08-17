@@ -100,10 +100,10 @@ TabbedPane {
             imageSource: "asset:///images/bb10/ic_home.png"
             NavigationPane {
                 id: indexNav
-                //Page.index {}
-                Page.categoryDetail {
-                    categoryId: 12
-                }
+                Page.index {}
+//                Page.categoryDetail {
+//                    categoryId: 12
+//                }
                 onPopTransitionEnded: common.onPopTransitionEnded(nav, page)
                 onPushTransitionEnded: common.onPushTransitionEnded(nav, page)
                 backButtonsVisible: tabbedPane.backButtonVisiable

@@ -18,9 +18,8 @@ var Api = {
     "keywords": "http://mobile.ximalaya.com/mobile/discovery/v1/category/keywords?device=iPhone&categoryId=%1",
     // 二级搜索条件
     "metadatas": "http://mobile.ximalaya.com/mobile/discovery/v2/category/metadatas?device=iPhone&version=6.3.45&categoryId=%1",
-    /**
-     * 一级搜索条件列表，不需要 metadatas 参数
-     * 二级搜索条件列表，不需要 keywordId 参数，如果是搜索全部，则 metadatas 为空
-     */
-    "categoryKeywordAlbums": "http://mobile.ximalaya.com/mobile/discovery/v3/category/keyword/albums?calcDimension=hot&device=iPhone&operator=3&version=6.3.45&pageSize=20&categoryId=%1&keywordId=%2&metadatas=%3&pageId=%4"
+    // 搜索一级
+    "keywordAlbums": "http://mobile.ximalaya.com/mobile/discovery/v3/category/keyword/albums?device=iPhone&operator=3&status=0&version=6.3.45&pageSize=20&calcDimension=hot&categoryId=%1&keywordId=%2&pageId=%3",
+    // 搜索二级
+    "metadataAlbums": "http://mobile.ximalaya.com/mobile/discovery/v2/category/metadata/albums?device=iPhone&status=0&version=6.3.45&pageSize=20&categoryId=%1&metadatas=%2&pageId=%3&calcDimension=%4"
 };

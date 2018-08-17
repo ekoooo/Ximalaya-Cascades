@@ -85,10 +85,10 @@ ListItemComponent {
                 
                 function goCategoryDetailPage(index) {
                     var page = top.ListItem.view.categoryDetailPage.createObject();
+                    page.categoryId = lastViewBtnData[index]['itemDetail']['categoryId'];
                     if(lastViewBtnData[index]['itemType'] === 1) {
                         page.keywordId = lastViewBtnData[index]['itemDetail']['keywordId'];
                     }
-                    page.categoryId = lastViewBtnData[index]['itemDetail']['categoryId'];
                     top.ListItem.view.nav_.push(page);
                 }
             }

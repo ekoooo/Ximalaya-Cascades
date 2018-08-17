@@ -480,8 +480,18 @@
 <context>
     <name>categoryDetail</name>
     <message>
-        <location filename="../assets/pages/categoryDetail.qml" line="23"/>
+        <location filename="../assets/pages/categoryDetail.qml" line="122"/>
         <source>获取 keywords 失败，请重试</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/categoryDetail.qml" line="136"/>
+        <source>获取 metadatas 失败，请重试</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/categoryDetail.qml" line="164"/>
+        <source>获取列表数据失败，请重试</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -536,7 +546,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="112"/>
+        <location filename="../assets/main.qml" line="115"/>
         <source>搜索</source>
         <translation type="unfinished"></translation>
     </message>

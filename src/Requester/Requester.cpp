@@ -139,7 +139,7 @@ void Requester::replyFinished() {
     QNetworkReply *reply = qobject_cast<QNetworkReply*>(sender());
     QVariant fromCache = reply->attribute(QNetworkRequest::SourceIsFromCacheAttribute);
 
-    qDebug() << "Http:" << reply->url() << "fromCache:" << fromCache.toBool();
+    qDebug() << "fromCache:" << fromCache.toBool() << "Http:" << reply->url() ;
 
     if(reply->error() == QNetworkReply::NoError) {
         QTextCodec *codec = QTextCodec::codecForLocale();

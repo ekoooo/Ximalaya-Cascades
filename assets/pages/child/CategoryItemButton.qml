@@ -38,10 +38,10 @@ Container {
         if(event.isUp()) {
             // - 跳转
             var page = categoryDetailPage.createObject();
+            page.categoryId = info['itemDetail']['categoryId'];
             if(info['itemType'] === 1) {
                 page.keywordId = info['itemDetail']['keywordId'];
             }
-            page.categoryId = info['itemDetail']['categoryId'];
             nav.push(page);
             
             // - 保存最近浏览
