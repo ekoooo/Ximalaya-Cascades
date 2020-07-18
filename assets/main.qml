@@ -58,13 +58,13 @@ TabbedPane {
         helpAction: HelpActionItem {
             title: qsTr("帮助")
             onTriggered: {
-                
+                nav.push(helpPage.createObject());
             }
         }
         settingsAction: SettingsActionItem {
             title: qsTr("设置")
             onTriggered: {
-                
+                nav.push(settingsPage.createObject());
             }
         }
         actions: [
@@ -72,21 +72,21 @@ TabbedPane {
                 title: qsTr("赞助")
                 imageSource: "asset:///images/bb10/ic_contact.png"
                 onTriggered: {
-                    
+                    nav.push(sponsorInfoPage.createObject());
                 }
             },
             ActionItem {
-                title: qsTr("评价")
+                title: qsTr("关于作者")
                 imageSource: "asset:///images/bb10/ic_edit_bookmarks.png"
                 onTriggered: {
-                    _misc.invokeBBWorld(common.bbwAddr);
+                    _misc.invokeBrowser(common.authorWebSite);
                 }
             },
             ActionItem {
                 title: qsTr("关于")
                 imageSource: "asset:///images/bb10/ic_info.png"
                 onTriggered: {
-                    
+                    nav.push(aboutPage.createObject());
                 }
             }
         ]
@@ -101,9 +101,6 @@ TabbedPane {
             NavigationPane {
                 id: indexNav
                 Page.index {}
-//                Page.categoryDetail {
-//                    categoryId: 12
-//                }
                 onPopTransitionEnded: common.onPopTransitionEnded(nav, page)
                 onPushTransitionEnded: common.onPushTransitionEnded(nav, page)
                 backButtonsVisible: tabbedPane.backButtonVisiable
@@ -125,6 +122,10 @@ TabbedPane {
     ]
     
     attachedObjects: [
+        ComponentDefinition {
+            id: helpPage
+            source: "asset:///pages/help.qml"
+        },
         AudioPlayer {
             id: player
             onPositionChanged: {
@@ -167,8 +168,45 @@ TabbedPane {
                 tabbedPane.initAudioPlayerUIParams();
             }
         },
+        QTimer {
+            id: messageTimer
+            interval: 2000
+            onTimeout: {
+                messageTimer.stop();
+                common.apiMessage(messageRequester);
+            }
+        },
+        Requester {
+            id: messageRequester
+            onFinished: {
+                messageTimer.stop();
+                
+                var rs = JSON.parse(data);
+                var info = rs.info;
+                var isFirstShow = _misc.getConfig(common.settingsKey.developerMessageVersion, "0") != info['version'];
+                
+                if(rs.code === 200 && (isFirstShow || info['always'])) {
+                    // 弹出消息
+                    common.openDialog(info['title'], info['body'] + '' + info['date']);
+                    // 存储最新的消息版本，只提示一次
+                    _misc.setConfig(common.settingsKey.developerMessageVersion, info['version']);
+                }
+            }
+        },
         Common {
             id: common
+        },
+        ComponentDefinition {
+            id: aboutPage
+            source: "asset:///pages/about.qml"
+        },
+        ComponentDefinition {
+            id: settingsPage
+            source: "asset:///pages/settings.qml"
+        },
+        ComponentDefinition {
+            id: sponsorInfoPage
+            source: "asset:///pages/sponsorInfo.qml"
         }
     ]
     
@@ -177,6 +215,8 @@ TabbedPane {
         _misc.setTheme(_misc.getConfig(common.settingsKey.theme, "Bright"));
         // 默认播放最高质量的声音
         _misc.setConfig(common.settingsKey.audioPlayerSourceType, "playPathHq");
+        // 读取消息
+        messageTimer.start();
     }
     
     /**

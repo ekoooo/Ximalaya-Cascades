@@ -44,6 +44,8 @@ class Misc : public QObject {
         Q_INVOKABLE void invokeBrowser(QString url);
         Q_INVOKABLE void invokeBBWorld(QString appurl);
         Q_INVOKABLE void invokeMail(QString emailTo, QString subject, QString body);
+
+        Q_INVOKABLE static QVariantMap getHardwareInfo();
     private:
         static SystemToast *toast;
         InvokeManager *invokeManager;

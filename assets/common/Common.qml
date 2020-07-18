@@ -4,7 +4,10 @@ import "asset:///api.js" as Api
 QtObject {
     property variant api: Api.Api
     property variant bbwAddr: "appworld://content/xxxxx"
+    property variant authorWebSite: "http://lwl.tech/"
     property variant developerEmail: "954408050@qq.com"
+    property variant version:  Application.applicationVersion
+    property variant hardwareInfo: _misc.getHardwareInfo()
     
     // 设置 key
     property variant settingsKey: {
@@ -36,6 +39,10 @@ QtObject {
     
     // 快捷键
     property variant shortCutKey: {
+        "shortCutList": ['back', 'openPlayer', 'indexPage', 'searhPage', 
+        'changeSegmented', 'playPreTrack', 'playNextTrack', 'togglePlayerState', 'togglePlayerOp', 
+        'toggleMetaPanel'],
+        
         "back": "F",
         "backLabel": qsTr("返回"),
         "openPlayer": "O",
@@ -45,7 +52,7 @@ QtObject {
         "searhPage": "A",
         "searhPageLabel": qsTr("搜索"),
         "changeSegmented": "C",
-        "changeSegmentedLabel": qsTr("切换分段控制器"),
+        "changeSegmentedLabel": qsTr("搜索页、专辑页切换 Tab"),
         "playPreTrack": "S",
         "playPreTrackLabel": qsTr("上一个声音"),
         "playNextTrack": "X",
@@ -151,14 +158,26 @@ QtObject {
     // ============ nav start ============
     function onPopTransitionEnded(nav, page) {
         page.destroy();
+        
+        Application.menuEnabled = true;
     }
     
     function onPushTransitionEnded(nav, page) {
-    
+        // 帮助、赞助、关于、设置 页面禁止再打开 application menu
+        Application.menuEnabled = ['helpPage', 'sponsorPage', 'aboutPage', 'settingsPage', 'sponsorInfoPage'].indexOf(page.objectName) === -1;
     }
     // ============ nav end ============
     
     // ============ api start ============
+    // 开发者消息
+    function apiMessage(requester) {
+        requester.setHeaders({
+            "appinfo": getHardwareInfo()
+        });
+    
+        requester.send(api.message);
+    }
+    
     function apiAlbumInfo(requester, albumId, pageId) {
         var isAsc = _misc.getConfig(settingsKey.trackListIsAsc + albumId, "1") === "1";
         
@@ -212,6 +231,12 @@ QtObject {
         requester.send(qsTr(api.metadataAlbums).arg(categoryId.toString()).arg(metadatas).arg(pageId.toString()).arg(calcDimension));
     }
     // ============ api end ============
+    function getHardwareInfo() {
+        var info = hardwareInfo;
+        info.version = version;
+        return JSON.stringify(info);
+    }
+    
     function httpGetAsync(theUrl, callback) {
         var xmlHttp = new XMLHttpRequest();
         xmlHttp.onreadystatechange = function() { 

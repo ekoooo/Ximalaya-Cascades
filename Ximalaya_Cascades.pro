@@ -5,5 +5,6 @@ LIBS += -lbbsystem
 LIBS += -lbbdata
 LIBS += -lbb
 LIBS += -lbbmultimedia
+LIBS += -lbbdevice
 
 include(config.pri)

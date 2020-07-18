@@ -70,6 +70,8 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/images/no_content.png) \
         $$quote($$BASEDIR/assets/images/pay_icon.png) \
         $$quote($$BASEDIR/assets/images/play_in_track_item.png) \
+        $$quote($$BASEDIR/assets/images/qr_alipay.png) \
+        $$quote($$BASEDIR/assets/images/qr_wxpay.png) \
         $$quote($$BASEDIR/assets/images/radius.amd) \
         $$quote($$BASEDIR/assets/images/radius.png) \
         $$quote($$BASEDIR/assets/images/sound_comments_icon.png) \
@@ -95,6 +97,7 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/images/user_grade/individual_orangeV8.png) \
         $$quote($$BASEDIR/assets/images/user_grade/individual_orangeV9.png) \
         $$quote($$BASEDIR/assets/main.qml) \
+        $$quote($$BASEDIR/assets/pages/about.qml) \
         $$quote($$BASEDIR/assets/pages/album.qml) \
         $$quote($$BASEDIR/assets/pages/artistAlbumList.qml) \
         $$quote($$BASEDIR/assets/pages/artistIntro.qml) \
@@ -111,8 +114,11 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/pages/child/MetadatasContainer.qml) \
         $$quote($$BASEDIR/assets/pages/child/TrackItem.qml) \
         $$quote($$BASEDIR/assets/pages/child/UserItem.qml) \
+        $$quote($$BASEDIR/assets/pages/help.qml) \
         $$quote($$BASEDIR/assets/pages/index.qml) \
-        $$quote($$BASEDIR/assets/pages/search.qml)
+        $$quote($$BASEDIR/assets/pages/search.qml) \
+        $$quote($$BASEDIR/assets/pages/settings.qml) \
+        $$quote($$BASEDIR/assets/pages/sponsorInfo.qml)
 }
 
 config_pri_source_group1 {

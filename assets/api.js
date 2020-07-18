@@ -2,6 +2,8 @@
  * 喜马拉雅FM API
  */
 var Api = {
+    // 开发者消息
+    "message": "http://lwl.tech/app/ximalaya/message",
     // 专辑列表（cpp也有这个地址，要一致）
     "albumInfo": "http://mobile.ximalaya.com/mobile/v1/album/track?albumId=%1&pageId=%2&pageSize=20&isAsc=%3",
     // 搜索 &core=%1&kw=%2&page=%3 core: album 专辑 user 主播
