@@ -8,6 +8,7 @@ QtObject {
     property variant developerEmail: "954408050@qq.com"
     property variant version:  Application.applicationVersion
     property variant hardwareInfo: _misc.getHardwareInfo()
+    property variant sourceTypeArr: ['playUrl64', 'playUrl32', 'playPathAacv224', 'playPathAacv164', 'playPathHq']
     
     // 设置 key
     property variant settingsKey: {
@@ -23,12 +24,12 @@ QtObject {
         "audioPlayerOpVisible": "audioPlayerOpVisible",
         /**
          * 播放声音源
-         * playUrl64 e.g. 5.26mb // 默认
+         * playUrl64 e.g. 5.26mb
          * playUrl32 e.g. 2.63mb
          * playPathAacv224 e.g. 2.04mb
          * playPathAacv164 e.g. 5.33mb
          * 
-         * playPathHq 高质量，有的没有
+         * playPathHq 高质量，有的没有 // 默认
          */
         "audioPlayerSourceType": "audioPlayerSourceType",
         // 声音列表是否正序（每个专辑都要存）（cpp也有这个key，要一致）

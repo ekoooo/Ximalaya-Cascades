@@ -18,6 +18,9 @@ Page {
         if(init) {
             backButtonVisiableToggleButton.checked = _misc.getConfig(common.settingsKey.backButtonVisiable, "1") === "1";
             themeToggleButton.checked = _misc.getConfig(common.settingsKey.theme, "Light") === "Dark";
+
+            var sourceType = _misc.getConfig(common.settingsKey.audioPlayerSourceType, "playPathHq");
+            playSourceDropDown.setSelectedIndex(common.sourceTypeArr.indexOf(sourceType));
         }
         
         imageCacheSize = _misc.webImageViewCacheSize();
@@ -67,6 +70,47 @@ Page {
                         multiline: true
                     }
                 }
+                Divider {}
+            }
+            
+            // 播放音质设置
+            Container {
+                Header {
+                    title: qsTr("设置播放源音质")
+                }
+                
+                ItemContainer {
+                    DropDown {
+                        id: playSourceDropDown
+                        title: qsTr("音质")
+                        options: []
+                        onCreationCompleted: {
+                            var sourceTypeArr = common.sourceTypeArr;
+                            
+                            for(var i = 0; i < sourceTypeArr.length; i++) {
+                                var option = dropDownOption.createObject();
+                                dropDownOption.createObject();
+                                option.text = sourceTypeArr[i];
+                                option.value = sourceTypeArr[i];
+                                
+                                add(option);
+                            }
+                        }
+                        onSelectedValueChanged: {
+                            _misc.setConfig(common.settingsKey.audioPlayerSourceType, selectedValue);
+                        }
+                        
+                        attachedObjects: [
+                            ComponentDefinition {
+                                id: dropDownOption
+                                Option {
+                                    
+                                }
+                            }
+                        ]
+                    }
+                }
+                
                 Divider {}
             }
             

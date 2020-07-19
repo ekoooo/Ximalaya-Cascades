@@ -217,14 +217,14 @@ void AudioPlayer::go(QMap<QString, QVariant> trackItem) {
     if(!trackItem.isEmpty()) {
         /**
          * 播放源和大小
-         * playUrl64 e.g. 5.26mb // 默认
+         * playUrl64 e.g. 5.26mb
          * playUrl32 e.g. 2.63mb
          * playPathAacv224 e.g. 2.04mb
          * playPathAacv164 e.g. 5.33mb
          *
-         * playPathHq 高质量，有的没有
+         * playPathHq 高质量，有的没有  // 默认
          */
-        QString audioPlayerSourceType = Misc::getConfig("audioPlayerSourceType", "playUrl64");
+        QString audioPlayerSourceType = Misc::getConfig("audioPlayerSourceType", "playPathHq");
         QString playUrl;
 
         if(audioPlayerSourceType == "playPathHq" && trackItem["playPathHq"].toString() == "") { // 如果没有高质量声音，那就设置为 playUrl64

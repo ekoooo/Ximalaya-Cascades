@@ -213,8 +213,6 @@ TabbedPane {
     onCreationCompleted: {
         // 设置主题
         _misc.setTheme(_misc.getConfig(common.settingsKey.theme, "Bright"));
-        // 默认播放最高质量的声音
-        _misc.setConfig(common.settingsKey.audioPlayerSourceType, "playPathHq");
         // 读取消息
         messageTimer.start();
     }

@@ -25,77 +25,77 @@
 <context>
     <name>Common</name>
     <message>
-        <location filename="../assets/common/Common.qml" line="47"/>
+        <location filename="../assets/common/Common.qml" line="48"/>
         <source>返回</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="49"/>
+        <location filename="../assets/common/Common.qml" line="50"/>
         <source>打开播放器</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="51"/>
+        <location filename="../assets/common/Common.qml" line="52"/>
         <source>主页</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="53"/>
+        <location filename="../assets/common/Common.qml" line="54"/>
         <source>搜索</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="55"/>
+        <location filename="../assets/common/Common.qml" line="56"/>
         <source>搜索页、专辑页切换 Tab</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="57"/>
+        <location filename="../assets/common/Common.qml" line="58"/>
         <source>上一个声音</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="59"/>
+        <location filename="../assets/common/Common.qml" line="60"/>
         <source>下一个声音</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="61"/>
+        <location filename="../assets/common/Common.qml" line="62"/>
         <source>播放/暂停</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="63"/>
+        <location filename="../assets/common/Common.qml" line="64"/>
         <source>隐藏/显示 播放器操作面板</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="65"/>
+        <location filename="../assets/common/Common.qml" line="66"/>
         <source>隐藏/显示 二级搜索条件</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="70"/>
+        <location filename="../assets/common/Common.qml" line="71"/>
         <source>确定</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="70"/>
+        <location filename="../assets/common/Common.qml" line="71"/>
         <source>取消</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="81"/>
+        <location filename="../assets/common/Common.qml" line="82"/>
         <source>万</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="83"/>
+        <location filename="../assets/common/Common.qml" line="84"/>
         <source>亿</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/common/Common.qml" line="98"/>
+        <location filename="../assets/common/Common.qml" line="99"/>
         <source>%1:%2</source>
         <translation type="unfinished"></translation>
     </message>
@@ -668,63 +668,73 @@
 <context>
     <name>settings</name>
     <message>
-        <location filename="../assets/pages/settings.qml" line="35"/>
+        <location filename="../assets/pages/settings.qml" line="38"/>
         <source>视觉设置</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="43"/>
+        <location filename="../assets/pages/settings.qml" line="46"/>
         <source>应用暗色主题</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="62"/>
+        <location filename="../assets/pages/settings.qml" line="65"/>
         <source>与文章护眼模式相互独立，护眼模式直接在文章页中可设置</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="76"/>
+        <location filename="../assets/pages/settings.qml" line="79"/>
+        <source>设置播放源音质</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/settings.qml" line="85"/>
+        <source>音质</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/settings.qml" line="120"/>
         <source>返回按钮</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="84"/>
+        <location filename="../assets/pages/settings.qml" line="128"/>
         <source>是否显示返回按钮</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="108"/>
+        <location filename="../assets/pages/settings.qml" line="152"/>
         <source>应用缓存</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="116"/>
+        <location filename="../assets/pages/settings.qml" line="160"/>
         <source>图片缓存</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="134"/>
+        <location filename="../assets/pages/settings.qml" line="178"/>
         <source>数据缓存</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="147"/>
+        <location filename="../assets/pages/settings.qml" line="191"/>
         <source>图片最大缓存：100MB。数据最大缓存：100MB</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="161"/>
+        <location filename="../assets/pages/settings.qml" line="205"/>
         <source>清空缓存</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="179"/>
-        <location filename="../assets/pages/settings.qml" line="197"/>
+        <location filename="../assets/pages/settings.qml" line="223"/>
+        <location filename="../assets/pages/settings.qml" line="241"/>
         <source>重置应用</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/settings.qml" line="183"/>
+        <location filename="../assets/pages/settings.qml" line="227"/>
         <source>重置应用将恢复默认设置，以及清空缓存</source>
         <translation type="unfinished"></translation>
     </message>
