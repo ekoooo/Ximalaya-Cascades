@@ -95,6 +95,7 @@ void Requester::send(QUrl url) {
     // 默认 header
     request.setRawHeader("Accept", "application/json");
     request.setRawHeader("Content-Type", "application/json");
+    request.setRawHeader("User-Agent", "Mozilla/5.0 (Linux; Android 8.0.0; SM-G960F Build/R16NW) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.84 Mobile Safari/537.36");
     // 参数 header
     QMap<QString, QVariant> headers = this->mHeaders.toMap();
     QMapIterator<QString, QVariant> headersIt(headers);
