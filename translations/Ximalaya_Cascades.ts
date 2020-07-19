@@ -430,82 +430,82 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="182"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="184"/>
         <source>此集为付费声音，无法播放</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="265"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="270"/>
         <source>停止</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="265"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="270"/>
         <source>定时关闭</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="290"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="295"/>
         <source>0.5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="297"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="302"/>
         <source>1.0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="304"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="309"/>
         <source>2.0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="311"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="316"/>
         <source>3.0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="334"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="339"/>
         <source>定时关闭已取消</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="342"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="347"/>
         <source>分钟后自动关闭</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="344"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="349"/>
         <source>定时关闭，剩余：</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="360"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="365"/>
         <source>上一页</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="375"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="380"/>
         <source>下一页</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="512"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="517"/>
         <source>无专辑信息，播放失败</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="561"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="571"/>
         <source>专辑播放完毕</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="563"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="573"/>
         <source>没有可播放的上一集</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="569"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="579"/>
         <source>无法播放付费声音</source>
         <translation type="unfinished"></translation>
     </message>

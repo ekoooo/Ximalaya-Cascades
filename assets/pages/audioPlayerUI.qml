@@ -164,7 +164,9 @@ Page {
                     scalingMethod: ScalingMethod.AspectFill
                 }
                 ListView {
+                    id: listView
                     property variant common_: common
+                    property variant trackId_: trackId
                     
                     scrollRole: ScrollRole.Main
                     horizontalAlignment: HorizontalAlignment.Fill
@@ -198,36 +200,37 @@ Page {
                             CustomListItem {
                                 id: trackItem
                                 dividerVisible: true
-                                Container {
-                                    topPadding: ui.du(2)
-                                    bottomPadding: ui.du(2)
-                                    leftPadding: ui.du(2)
-                                    rightPadding: ui.du(2)
-                                    verticalAlignment: VerticalAlignment.Center
-                                    
-                                    Container {
-                                        layout: StackLayout {
-                                            orientation: LayoutOrientation.LeftToRight
-                                        }
-                                        WebImageView {
-                                            url: ListItemData['coverSmall']
-                                            preferredWidth: ui.du(5)
-                                            preferredHeight: ui.du(5)
-                                            scalingMethod: ScalingMethod.AspectFill
-                                            failImageSource: "asset:///images/audio_player/loading.png"
-                                            loadingImageSource: "asset:///images/audio_player/loading.png"
-                                        }
-                                        Label {
-                                            layoutProperties: StackLayoutProperties {
-                                                spaceQuota: 1
-                                            }
-                                            text: ListItemData['title']
-                                            textStyle {
-                                                color: trackItem.ListItem.view.common_.isNotFree(ListItemData) ? Color.Gray : ui.palette.textOnPlain
-                                            }
-                                        }
-                                    }
-                                }
+                                 Container {
+                                     topPadding: ui.du(2)
+                                     bottomPadding: ui.du(2)
+                                     leftPadding: ui.du(2)
+                                     rightPadding: ui.du(2)
+                                     verticalAlignment: VerticalAlignment.Center
+                                     Container {
+                                         layout: StackLayout {
+                                             orientation: LayoutOrientation.LeftToRight
+                                         }
+                                         WebImageView {
+                                             url: ListItemData['coverSmall']
+                                             preferredWidth: ui.du(5)
+                                             preferredHeight: ui.du(5)
+                                             scalingMethod: ScalingMethod.AspectFill
+                                             failImageSource: "asset:///images/audio_player/loading.png"
+                                             loadingImageSource: "asset:///images/audio_player/loading.png"
+                                         }
+                                         Label {
+                                             layoutProperties: StackLayoutProperties {
+                                                 spaceQuota: 1
+                                             }
+                                             text: ListItemData['title']
+                                             textStyle {
+                                                 color: trackItem.ListItem.view.common_.isNotFree(ListItemData) 
+                                                     ? Color.Gray 
+                                                     : trackItem.ListItem.view.trackId_ == ListItemData['trackId'] ? ui.palette.primarySoft : ui.palette.textOnPlain
+                                             }
+                                         }
+                                     }
+                                 }
                             }
                         }
                     ]
@@ -530,9 +533,27 @@ Page {
         }
     }
     
+    // 设置列表滚动位置
+    function setListViewScollPosition(trackId, dm) {
+        for(var i = 0; i < dm.size(); i++) {
+            if(dm.data([i])['trackId'] == trackId) {
+                listView.scrollToItem([i]);
+                break;
+            }
+        }
+    }
+    
     // connect start 
     function currentTrackChanged(trackId) {
+        // 设置列表滚动位置
+        setListViewScollPosition(trackId, dm);
+        
+        // 用于显示当前播放
+        listView.trackId_ = trackId;
+        
+        // ???
         trackId = audioPlayer.trackId;
+        
         render();
     }
     function positionChanged(p) {
