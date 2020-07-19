@@ -435,77 +435,77 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="270"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="268"/>
         <source>停止</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="270"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="268"/>
         <source>定时关闭</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="295"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="293"/>
         <source>0.5</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="302"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="300"/>
         <source>1.0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="309"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="307"/>
         <source>2.0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="316"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="314"/>
         <source>3.0</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="339"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="337"/>
         <source>定时关闭已取消</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="347"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="345"/>
         <source>分钟后自动关闭</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="349"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="347"/>
         <source>定时关闭，剩余：</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="365"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="363"/>
         <source>上一页</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="380"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="378"/>
         <source>下一页</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="517"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="515"/>
         <source>无专辑信息，播放失败</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="571"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="582"/>
         <source>专辑播放完毕</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="573"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="584"/>
         <source>没有可播放的上一集</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/audioPlayerUI.qml" line="579"/>
+        <location filename="../assets/pages/audioPlayerUI.qml" line="590"/>
         <source>无法播放付费声音</source>
         <translation type="unfinished"></translation>
     </message>
