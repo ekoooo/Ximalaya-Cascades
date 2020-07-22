@@ -157,7 +157,7 @@ void AudioPlayer::playPreAlbum() {
 
     if(currentPage - 1 > 0) {
         QString albumId = list.at(0).toMap()["albumId"].toString();
-        QString isAsc = Misc::getConfig("isAsc::albumId::", "1") == "1" ? "true" : "false"; // 排序，缓存中取。
+        QString isAsc = Misc::getConfig("isAsc::albumId::" + albumId, "1") == "1" ? "true" : "false"; // 排序，缓存中取。
         QString url = AudioPlayer::albumInfoApi.arg(albumId).arg(currentPage - 1).arg(isAsc);
 
         requester = new Requester();
@@ -203,7 +203,7 @@ void AudioPlayer::playNextAlbum() {
 
     if(currentPage < data["maxPageId"].toInt()) {
         QString albumId = list.at(0).toMap()["albumId"].toString();
-        QString isAsc = Misc::getConfig("isAsc::albumId::", "1") == "1" ? "true" : "false"; // 排序，缓存中取。
+        QString isAsc = Misc::getConfig("isAsc::albumId::" + albumId, "1") == "1" ? "true" : "false"; // 排序，缓存中取。
         QString url = AudioPlayer::albumInfoApi.arg(albumId).arg(currentPage + 1).arg(isAsc);
 
         requester = new Requester();
