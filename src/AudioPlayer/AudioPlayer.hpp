@@ -57,6 +57,7 @@ class AudioPlayer : public bb::multimedia::MediaPlayer {
         QMap<QString, QVariant> getTrackItemNyId(QString trackId);
         QMap<QString, QVariant> getPreNextTrackItem(int flag); // -1 上一曲 1 下一曲
         void playNextAlbum();
+        void playPreAlbum();
 
         void go(QMap<QString, QVariant> trackItem);
         void setNpInfo(QMap<QString, QVariant> trackItem);
@@ -86,6 +87,9 @@ class AudioPlayer : public bb::multimedia::MediaPlayer {
         void setAlbumInfo(const QVariant albumInfo);
         void getNextAlbumFinished(QString data);
         void getNextAlbumError(QString errorMsg);
+
+        void getPreAlbumFinished(QString data);
+        void getPreAlbumError(QString errorMsg);
 
         void playTimerTimeout();
         void exitTimerTimeout();

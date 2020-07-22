@@ -148,6 +148,52 @@ QMap<QString, QVariant> AudioPlayer::getPreNextTrackItem(int flag) {
     return rt;
 }
 
+// 获取上一页专辑信息
+void AudioPlayer::playPreAlbum() {
+    QMap<QString, QVariant> info = this->mAlbumInfo.toMap();
+    QMap<QString, QVariant> data = info["data"].toMap();
+    QList<QVariant> list = data["list"].toList();
+    int currentPage = data["pageId"].toInt();
+
+    if(currentPage - 1 > 0) {
+        QString albumId = list.at(0).toMap()["albumId"].toString();
+        QString isAsc = Misc::getConfig("isAsc::albumId::", "1") == "1" ? "true" : "false"; // 排序，缓存中取。
+        QString url = AudioPlayer::albumInfoApi.arg(albumId).arg(currentPage - 1).arg(isAsc);
+
+        requester = new Requester();
+        requester->send(url);
+        connect(requester, SIGNAL(finished(QString)), this, SLOT(getPreAlbumFinished(QString)));
+        connect(requester, SIGNAL(error(QString)), this, SLOT(getPreAlbumError(QString)));
+    }else {
+        emit albumEnd(-1);
+    }
+}
+void AudioPlayer::getPreAlbumFinished(QString data) {
+    JsonDataAccess jda;
+    QVariant albumInfo = jda.loadFromBuffer(data.toUtf8());
+
+    QMap<QString, QVariant> info = albumInfo.toMap();
+    QMap<QString, QVariant> dataMap = info["data"].toMap();
+    QList<QVariant> list = dataMap["list"].toList();
+    int lastIndex = list.size() - 1;
+
+    // 判断上一页最后一个使用是不是付费
+    QMap<QString, QVariant> itemInfo = list.at(lastIndex).toMap();
+
+    if(itemInfo["isPaid"].toBool() && !itemInfo["isFree"].toBool()) {
+        qDebug() << "AudioPlayer::getPreAlbumFinished isFree" << itemInfo["isFree"].toBool();
+        emit track404();
+        return;
+    }
+
+    this->setAlbumInfo(albumInfo);
+    // 播放最后一首
+    this->go(list.at(lastIndex).toMap());
+}
+void AudioPlayer::getPreAlbumError(QString errorMsg) {
+    qDebug() << "AudioPlayer::getPreAlbumError errorMsg:" << errorMsg;
+}
+
 // 获取下一页专辑信息
 void AudioPlayer::playNextAlbum() {
     QMap<QString, QVariant> info = this->mAlbumInfo.toMap();
@@ -276,8 +322,9 @@ void AudioPlayer::previous() {
     // 获取当前播放的信息
     QMap<QString, QVariant> trackItem = this->getPreNextTrackItem(-1);
     if(trackItem.isEmpty()) {
-        // 没有上一曲了，或者为收费声音
-        emit albumEnd(-1);
+        // 没有去一曲了，加载上一页的内容
+        this->playPreAlbum();
+
     }else {
         emit preNextTrack(-1);
 
