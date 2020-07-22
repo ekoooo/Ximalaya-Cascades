@@ -74,6 +74,8 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/images/qr_wxpay.png) \
         $$quote($$BASEDIR/assets/images/radius.amd) \
         $$quote($$BASEDIR/assets/images/radius.png) \
+        $$quote($$BASEDIR/assets/images/radius_black.amd) \
+        $$quote($$BASEDIR/assets/images/radius_black.png) \
         $$quote($$BASEDIR/assets/images/sound_comments_icon.png) \
         $$quote($$BASEDIR/assets/images/sound_duration_icon.png) \
         $$quote($$BASEDIR/assets/images/sound_playtimes_icon.png) \

@@ -60,7 +60,9 @@ Page {
                         
                         WebImageView {
                             preferredHeight: logoContainer.logoWidth / 2
-                            url: "asset:///images/radius.amd"
+                            url: Application.themeSupport.theme.colorTheme.style === VisualStyle.Dark
+                                ? "asset:///images/radius_black.amd"
+                                : "asset:///images/radius.amd"
                             horizontalAlignment: HorizontalAlignment.Fill
                             verticalAlignment: VerticalAlignment.Bottom
                         }
@@ -85,7 +87,7 @@ Page {
                     }
                     // content Container
                     Container {
-                        background: Color.White
+                        background: ui.palette.background
                         horizontalAlignment: HorizontalAlignment.Fill
                         
                         // base info

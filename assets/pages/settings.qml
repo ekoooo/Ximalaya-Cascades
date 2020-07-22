@@ -17,7 +17,7 @@ Page {
     function calcInfo(init) {
         if(init) {
             backButtonVisiableToggleButton.checked = _misc.getConfig(common.settingsKey.backButtonVisiable, "1") === "1";
-            themeToggleButton.checked = _misc.getConfig(common.settingsKey.theme, "Light") === "Dark";
+            themeToggleButton.checked = _misc.getConfig(common.settingsKey.theme, "Bright") === "Dark";
 
             var sourceType = _misc.getConfig(common.settingsKey.audioPlayerSourceType, "playPathHq");
             playSourceDropDown.setSelectedIndex(common.sourceTypeArr.indexOf(sourceType));
