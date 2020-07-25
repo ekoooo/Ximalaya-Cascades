@@ -35,12 +35,16 @@ QtObject {
         // 声音列表是否正序（每个专辑都要存）（cpp也有这个key，要一致）
         "trackListIsAsc": "isAsc::albumId::",
         // 主页最后浏览的三个分类
-        "lastViewCategory": "lastViewCategory"
+        "lastViewCategory": "lastViewCategory",
+        // 播放历史记录
+        "playLog": "playLog",
+        // 开始播放位置
+        "playPosition": "playPosition"
     }
     
     // 快捷键
     property variant shortCutKey: {
-        "shortCutList": ['back', 'openPlayer', 'indexPage', 'searhPage', 
+        "shortCutList": ['back', 'openPlayer', 'indexPage', 'searchPage', 'playLogPage',
         'changeSegmented', 'playPreTrack', 'playNextTrack', 'togglePlayerState', 'togglePlayerOp', 
         'toggleMetaPanel'],
         
@@ -50,8 +54,10 @@ QtObject {
         "openPlayerLabel": qsTr("打开播放器"),
         "indexPage": "I",
         "indexPageLabel": qsTr("主页"),
-        "searhPage": "A",
-        "searhPageLabel": qsTr("搜索"),
+        "searchPage": "A",
+        "searchPageLabel": qsTr("搜索"),
+        "playLogPage": "L",
+        "playLogPageLabel": qsTr("历史记录"),
         "changeSegmented": "C",
         "changeSegmentedLabel": qsTr("搜索页、专辑页切换 Tab"),
         "playPreTrack": "S",

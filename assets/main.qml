@@ -10,14 +10,14 @@ TabbedPane {
     property bool backButtonVisiable: _misc.getConfig(common.settingsKey.backButtonVisiable, "1") === "1" // 是否显示返回按钮
     // audioPlayerUI property start
     property variant audioPlayerUIPage // 播放器页面
-    property variant albumInfo // 专辑信息
+    property variant albumInfo // 专辑信息(当播放列表)
+    property variant albumDetail // 专辑详情
     property variant trackId // 声音ID
     // audioPlayerUI property end
     property variant lastViewCategory: _misc.getConfig(common.settingsKey.lastViewCategory, "[]")
     
     showTabsOnActionBar: false
     activeTab: indexTab // 默认 activeTab 为 主页
-    // activeTab: searchTab // 默认 activeTab 为 主页
     
     shortcuts: [
         Shortcut {
@@ -39,17 +39,19 @@ TabbedPane {
         Shortcut {
             key: common.shortCutKey.indexPage
             onTriggered: {
-                if(nav.count() === 1) {
-                    activeTab = indexTab;
-                }
+                activeTab = indexTab;
             }
         },
         Shortcut {
-            key: common.shortCutKey.searhPage
+            key: common.shortCutKey.searchPage
             onTriggered: {
-                if(nav.count() === 1) {
-                    activeTab = searchTab;
-                }
+                activeTab = searchTab;
+            }
+        },
+        Shortcut {
+            key: common.shortCutKey.playLogPage
+            onTriggered: {
+                activeTab = playLogTab;
             }
         }
     ]
@@ -118,8 +120,29 @@ TabbedPane {
                 onPushTransitionEnded: common.onPushTransitionEnded(nav, page)
                 backButtonsVisible: tabbedPane.backButtonVisiable
             }
+        },
+        Tab {
+            id: playLogTab
+            property alias tabNav: playLogNav
+            title: qsTr("播放记录")
+            imageSource: "asset:///images/bb10/ic_history.png"
+            NavigationPane {
+                objectName: "playLogObject"
+                id: playLogNav
+                Page.playLog {}
+                onPopTransitionEnded: common.onPopTransitionEnded(nav, page)
+                onPushTransitionEnded: common.onPushTransitionEnded(nav, page)
+                backButtonsVisible: tabbedPane.backButtonVisiable
+            }
         }
     ]
+    
+    onActivePaneChanged: {
+        // 切换到历史记录，刷新列表
+        if(activePane.objectName === 'playLogObject') {
+            playLogNav.firstPage.initListData();
+        }
+    }
     
     attachedObjects: [
         ComponentDefinition {
@@ -217,21 +240,27 @@ TabbedPane {
         messageTimer.start();
     }
     
+    function getPlayer() {
+        return player;
+    }
+    
     /**
      * 进入播放器
      * 如果是直接进入，trackId = -1
      */
-    function pushAudioPlayerUI(trackId, albumInfo) {
+    function pushAudioPlayerUI(trackId, albumInfo, albumDetail) {
         audioPlayerUIPage = audioPlayerUI.createObject();
         nav.push(audioPlayerUIPage);
         // 保存至 tabbedPane 中，提供给 timer 使用
         tabbedPane.trackId = trackId;
+        tabbedPane.albumDetail = albumDetail;
         tabbedPane.albumInfo = albumInfo;
         
         audioPlayerUItimer.start();
     }
     function initAudioPlayerUIParams() {
         audioPlayerUIPage.audioPlayer = player;
+        audioPlayerUIPage.albumDetail = tabbedPane.albumDetail;
         audioPlayerUIPage.albumInfo = tabbedPane.albumInfo;
         audioPlayerUIPage.trackId = tabbedPane.trackId; // 注意顺序，trackId 赋值必须在最后面。
     }

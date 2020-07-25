@@ -21,6 +21,7 @@ using namespace bb::multimedia;
 using namespace bb::data;
 
 QString AudioPlayer::albumInfoApi = "http://mobile.ximalaya.com/mobile/v1/album/track?albumId=%1&pageId=%2&pageSize=20&isAsc=%3";
+int AudioPlayer::maxPlayLogSize = 60;
 
 AudioPlayer::AudioPlayer() : bb::multimedia::MediaPlayer() {
     this->playTimer = new QTimer();
@@ -29,6 +30,8 @@ AudioPlayer::AudioPlayer() : bb::multimedia::MediaPlayer() {
     this->exitTime = 0;
     this->currentExitTime = 0;
     this->requester = NULL;
+
+    this->lastSavePositionTime = QDateTime::currentDateTime().toTime_t();
 
     connect(playTimer, SIGNAL(timeout()), this, SLOT(playTimerTimeout()));
     connect(exitTimer, SIGNAL(timeout()), this, SLOT(exitTimerTimeout()));
@@ -48,10 +51,26 @@ AudioPlayer::AudioPlayer() : bb::multimedia::MediaPlayer() {
     connect(this, SIGNAL(playbackCompleted()), this, SLOT(mpPlaybackCompleted()));
 }
 
+void AudioPlayer::setPositionFromCache() {
+    int position = Misc::getConfig("playPosition", "0").toInt();
+
+    if(position == 0) {
+        return;
+    }
+
+    // 用一次就清理
+    Misc::setConfig("playPosition", "0");
+
+    // 移动到相应位置播放
+    this->seekTime(position);
+}
+
 void AudioPlayer::mpMediaStateChanged(bb::multimedia::MediaState::Type mediaState) {
     nowPlayingConnection->setMediaState(mediaState);
     if(mediaState == MediaState::Started) {
         nowPlayingConnection->acquire();
+        // 设置开始播放位置
+        this->setPositionFromCache();
     }else if(mediaState == MediaState::Stopped) {
         nowPlayingConnection->revoke();
     }
@@ -63,6 +82,8 @@ void AudioPlayer::mpDurationChanged(unsigned int duration) {
 }
 void AudioPlayer::mpPositionChanged(unsigned int position) {
     nowPlayingConnection->setPosition(position);
+
+    this->updatePlayLogPosition(this->currentTrackInfo["trackId"].toString(), position);
 }
 void AudioPlayer::mpPlaybackCompleted() {
     this->next();
@@ -87,10 +108,17 @@ void AudioPlayer::npNext() {
 QVariant AudioPlayer::albumInfo() const {
     return this->mAlbumInfo;
 }
+QVariant AudioPlayer::albumDetail() const {
+    return this->mAlbumDetail;
+}
 
 void AudioPlayer::setAlbumInfo(const QVariant albumInfo) {
     this->mAlbumInfo = albumInfo;
     emit albumInfoChanged();
+}
+
+void AudioPlayer::setAlbumDetail(const QVariant albumDetail) {
+    this->mAlbumDetail = albumDetail;
 }
 
 // 根据声音ID，获取信息
@@ -295,6 +323,12 @@ void AudioPlayer::go(QMap<QString, QVariant> trackItem) {
         this->currentTrackInfo = trackItem;
         // 保存标志到 Settings 中
         Misc::setConfig("currentPlayTrackId", trackItem["trackId"].toString());
+
+        /**
+         * 保存播放历史记录，最多保存近100条
+         */
+        this->savePlayLog(trackItem["trackId"].toString(), trackItem, this->mAlbumInfo, this->mAlbumDetail, 0);
+
         // 返回信息，用于更新界面
         emit currentTrackChanged(trackItem["trackId"].toString());
     }else {
@@ -336,6 +370,7 @@ void AudioPlayer::startPlayTimer() {
     this->playTimer->stop();
     this->playTimer->setInterval(300);
     this->playTimer->start();
+
     qDebug() << "AudioPlayer::startPlayTimer execute this->playTimer->start() ~~~~~";
 }
 void AudioPlayer::playTimerTimeout() {
@@ -371,4 +406,106 @@ void AudioPlayer::exitTimerTimeout() {
     }else {
         emit exitTimerInterval(this->currentExitTime, this->exitTime);
     }
+}
+
+// 更新播放历史记录播放进度
+void AudioPlayer::updatePlayLogPosition(QString trackId, unsigned int position) {
+    int nowTime = QDateTime::currentDateTime().toTime_t();
+
+    // 5s保存一次
+    if(nowTime - this->lastSavePositionTime < 5) {
+        return;
+    }
+
+    this->lastSavePositionTime = nowTime;
+
+    JsonDataAccess jda;
+    QVariant playLog = jda.loadFromBuffer(Misc::getConfig("playLog", "[]").toUtf8());
+    QList<QVariant> playLogList = playLog.toList();
+
+    int i = 0;
+    QMap<QString, QVariant> item;
+
+    for(i = 0; i < playLogList.length(); i++) {
+        item = playLogList.at(i).toMap();
+        if(item["trackId"] == trackId) {
+            item["position"] = QString::number(position);
+            playLogList.replace(i, item);
+            break;
+        }
+    }
+
+    QString jsonString;
+    jda.saveToBuffer(playLogList, &jsonString);
+
+    Misc::setConfig("playLog", jsonString);
+}
+
+void AudioPlayer::deletePlayLogByAlbumId(QVariant albumId) {
+    JsonDataAccess jda;
+    QVariant playLog = jda.loadFromBuffer(Misc::getConfig("playLog", "[]").toUtf8());
+    QList<QVariant> playLogList = playLog.toList();
+
+    int i = 0;
+    QMap<QString, QVariant> item;
+
+    for(i = 0; i < playLogList.length(); i++) {
+        item = playLogList.at(i).toMap();
+        if(item["albumId"] == albumId) {
+            playLogList.removeAt(i);
+            break;
+        }
+    }
+
+    QString jsonString;
+    jda.saveToBuffer(playLogList, &jsonString);
+
+    Misc::setConfig("playLog", jsonString);
+}
+
+void AudioPlayer::savePlayLog(QString trackId,
+        QMap<QString, QVariant> trackInfo,
+        QVariant albumInfo,
+        QVariant mAlbumDetail,
+        unsigned int position) {
+
+    QVariant albumId = mAlbumDetail.toMap()["albumId"];
+
+    QVariantMap map;
+    map.insert("trackId", trackId); // 声音id
+    map.insert("trackInfo", trackInfo); // 声音信息
+    map.insert("albumId", albumId); // 专辑ID
+    map.insert("mAlbumDetail", mAlbumDetail); // 当前播放专辑详细信息
+    map.insert("albumInfo", albumInfo); // 当前播放列表信息
+    map.insert("position", QString::number(position)); // 当前播放的位置
+
+    JsonDataAccess jda;
+    QVariant playLog = jda.loadFromBuffer(Misc::getConfig("playLog", "[]").toUtf8());
+
+    QList<QVariant> playLogList = playLog.toList();
+
+    // 如果存在相同专辑，则删除
+    int i = 0;
+    QMap<QString, QVariant> item;
+
+    for(i = 0; i < playLogList.length(); i++) {
+        item = playLogList.at(i).toMap();
+        if(item["albumId"] == albumId) {
+            playLogList.removeAt(i);
+            break;
+        }
+    }
+
+    // 最新播放的放入最前面
+    playLogList.prepend(map);
+
+    // 最多10条
+    if(playLogList.length() > AudioPlayer::maxPlayLogSize) {
+        playLogList.removeLast();
+    }
+
+    QString jsonString;
+    jda.saveToBuffer(playLogList, &jsonString);
+
+    Misc::setConfig("playLog", jsonString);
 }

@@ -173,7 +173,7 @@ Page {
                         return;
                     }
                     
-                    tabbedPane.pushAudioPlayerUI(listDm.data(indexPath)['trackId'], currentAlbumInfo);
+                    tabbedPane.pushAudioPlayerUI(listDm.data(indexPath)['trackId'], currentAlbumInfo, album);
                 }
                 
                 dataModel: ArrayDataModel {

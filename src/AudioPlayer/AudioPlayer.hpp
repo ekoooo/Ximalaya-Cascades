@@ -31,12 +31,14 @@ class AudioPlayer : public bb::multimedia::MediaPlayer {
      *      6，当传入新的专辑信息时，替换原有的专辑。
      */
     Q_PROPERTY(QVariant albumInfo READ albumInfo WRITE setAlbumInfo NOTIFY albumInfoChanged)
+    Q_PROPERTY(QVariant albumDetail READ albumDetail WRITE setAlbumDetail NOTIFY albumDetailChanged)
 
     public:
         AudioPlayer();
         virtual ~AudioPlayer() {};
 
         QVariant albumInfo() const;
+        QVariant albumDetail() const;
 
         // 获取当前播放的声音信息
         Q_INVOKABLE QVariant getCurrentTrackInfo();
@@ -52,6 +54,7 @@ class AudioPlayer : public bb::multimedia::MediaPlayer {
         Requester *requester;
         NowPlayingConnection *nowPlayingConnection;
         QVariant mAlbumInfo;
+        QVariant mAlbumDetail;
         QMap<QString, QVariant> currentTrackInfo; // 当前播放的声音信息
 
         QMap<QString, QVariant> getTrackItemNyId(QString trackId);
@@ -62,7 +65,13 @@ class AudioPlayer : public bb::multimedia::MediaPlayer {
         void go(QMap<QString, QVariant> trackItem);
         void setNpInfo(QMap<QString, QVariant> trackItem);
 
+        // 保存播放历史记录
+        void savePlayLog(QString trackId, QMap<QString, QVariant> trackInfo, QVariant albumInfo, QVariant albumDetail, unsigned int position);
+        // 设置播放位置
+        void setPositionFromCache();
+
         static QString albumInfoApi;
+        static int maxPlayLogSize;
 
         // 界面卡住的问题
         QTimer *playTimer;
@@ -72,6 +81,7 @@ class AudioPlayer : public bb::multimedia::MediaPlayer {
 
         void startPlayTimer();
 
+        int lastSavePositionTime;
     public slots:
         void npPlay();
         void npPause();
@@ -85,16 +95,21 @@ class AudioPlayer : public bb::multimedia::MediaPlayer {
         void mpPlaybackCompleted(); // 歌曲播放完毕
 
         void setAlbumInfo(const QVariant albumInfo);
+        void setAlbumDetail(const QVariant setAlbumDetail);
         void getNextAlbumFinished(QString data);
         void getNextAlbumError(QString errorMsg);
 
         void getPreAlbumFinished(QString data);
         void getPreAlbumError(QString errorMsg);
 
+        void deletePlayLogByAlbumId(QVariant albumId);
+        void updatePlayLogPosition(QString trackId, unsigned int position); // 更新播放历史记录播放进度
+
         void playTimerTimeout();
         void exitTimerTimeout();
     signals:
-        void albumInfoChanged(); // 专辑改变
+        void albumDetailChanged(); // 专辑详情改变
+        void albumInfoChanged(); // 专辑列表改变
         void currentTrackChanged(QString trackId); // 播放声音，信息改变
         void albumEnd(int flag); // 专辑播放完了, -1 播放列表无上一集了 1 专辑播放完了
         void track404(); // 播放声音没找到

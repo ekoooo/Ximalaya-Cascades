@@ -60,6 +60,7 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/images/bb10/ic_contact.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_edit_bookmarks.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_forward.png) \
+        $$quote($$BASEDIR/assets/images/bb10/ic_history.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_home.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_info.png) \
         $$quote($$BASEDIR/assets/images/bb10/ic_pause.png) \
@@ -118,6 +119,7 @@ config_pri_assets {
         $$quote($$BASEDIR/assets/pages/child/UserItem.qml) \
         $$quote($$BASEDIR/assets/pages/help.qml) \
         $$quote($$BASEDIR/assets/pages/index.qml) \
+        $$quote($$BASEDIR/assets/pages/playLog.qml) \
         $$quote($$BASEDIR/assets/pages/search.qml) \
         $$quote($$BASEDIR/assets/pages/settings.qml) \
         $$quote($$BASEDIR/assets/pages/sponsorInfo.qml)

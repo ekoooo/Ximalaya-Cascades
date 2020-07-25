@@ -115,14 +115,14 @@ void Misc::setConfig(const QString &key, const QString &val) {
     QSettings settings;
     settings.setValue(key, QVariant(val));
 
-    qDebug() << "QSettings set:" << key << ":" << val;
+//    qDebug() << "QSettings set:" << key << ":" << val;
 }
 
 QString Misc::getConfig(const QString &key, const QString &defaultVal) {
     QSettings settings;
     QString val = settings.value(key, defaultVal).toString();
 
-    qDebug() << "QSettings get:" << key << ":" << val;
+//    qDebug() << "QSettings get:" << key << ":" << val;
     return val;
 }
 

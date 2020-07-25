@@ -12,8 +12,9 @@ Page {
     property AudioPlayer audioPlayer
     property variant trackId // 当前播放声音ID，如果是直接打开播放器，请传入：-1
     property variant trackInfo: {} // 当前播放声音的信息
-    property variant albumInfo // 当前页的专辑信息
-    property variant listAlbumInfo // 当前列表显示的专辑信息
+    property variant albumInfo // 当前页的专辑信息(当前播放列表)
+    property variant albumDetail // 当前专辑的信息
+    property variant listAlbumInfo // 当前列表显示的专辑信息(当前显示列表)
     
     // 用于 timeline 和 pause 状态
     property variant mediaState: MediaState.Stopped // 播放器状态
@@ -502,6 +503,7 @@ Page {
             
             if(trackId === -1) { // 如果是直接打开播放器，则取出相应的信息
                 playTrackId = currentPlayTrackId;
+                albumDetail = audioPlayer.albumDetail;
                 albumInfo = audioPlayer.albumInfo;
                 isLoading = false;
 
@@ -517,7 +519,9 @@ Page {
                 return;
             }
             
+            audioPlayer.setAlbumDetail(albumDetail);
             audioPlayer.setAlbumInfo(albumInfo);
+            
             // 如果是暂停状态，直接进来，也会继续播放
             audioPlayer.go(playTrackId);
         }else {
