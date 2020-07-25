@@ -209,8 +209,10 @@ TabbedPane {
                 var isFirstShow = _misc.getConfig(common.settingsKey.developerMessageVersion, "0") != info['version'];
                 
                 if(rs.code === 200 && (isFirstShow || info['always'])) {
+                    var version = '『v' + common.version + '』';
+                    
                     // 弹出消息
-                    common.openDialog(info['title'], info['body'] + '' + info['date']);
+                    common.openDialog(info['title'] + version, '通知日期：' + info['date'] + '\r\n\r\n' + info['body']);
                     // 存储最新的消息版本，只提示一次
                     _misc.setConfig(common.settingsKey.developerMessageVersion, info['version']);
                 }

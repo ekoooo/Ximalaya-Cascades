@@ -592,42 +592,42 @@
 <context>
     <name>main</name>
     <message>
-        <location filename="../assets/main.qml" line="62"/>
+        <location filename="../assets/main.qml" line="61"/>
         <source>帮助</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="68"/>
+        <location filename="../assets/main.qml" line="67"/>
         <source>设置</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="75"/>
+        <location filename="../assets/main.qml" line="74"/>
         <source>赞助</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="82"/>
+        <location filename="../assets/main.qml" line="81"/>
         <source>关于作者</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="89"/>
+        <location filename="../assets/main.qml" line="88"/>
         <source>关于</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="102"/>
+        <location filename="../assets/main.qml" line="101"/>
         <source>主页</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="115"/>
+        <location filename="../assets/main.qml" line="114"/>
         <source>搜索</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/main.qml" line="128"/>
+        <location filename="../assets/main.qml" line="127"/>
         <source>播放记录</source>
         <translation type="unfinished"></translation>
     </message>
