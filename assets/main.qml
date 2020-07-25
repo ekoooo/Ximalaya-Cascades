@@ -23,9 +23,10 @@ TabbedPane {
         Shortcut {
             key: common.shortCutKey.openPlayer
             onTriggered: {
-                if(nav.top.objectName !== "audioPlayer") {
-                    pushAudioPlayerUI(-1);
+                if(isOnPlayerPage()) {
+                    return;
                 }
+                pushAudioPlayerUI(-1);
             }
         },
         Shortcut {
@@ -39,18 +40,27 @@ TabbedPane {
         Shortcut {
             key: common.shortCutKey.indexPage
             onTriggered: {
+                if(isOnPlayerPage()) {
+                    nav.pop();
+                }
                 activeTab = indexTab;
             }
         },
         Shortcut {
             key: common.shortCutKey.searchPage
             onTriggered: {
+                if(isOnPlayerPage()) {
+                    nav.pop();
+                }
                 activeTab = searchTab;
             }
         },
         Shortcut {
             key: common.shortCutKey.playLogPage
             onTriggered: {
+                if(isOnPlayerPage()) {
+                    nav.pop();
+                }
                 activeTab = playLogTab;
             }
         }
@@ -244,6 +254,11 @@ TabbedPane {
     
     function getPlayer() {
         return player;
+    }
+    
+    // 当前界面时候在播放器界面中
+    function isOnPlayerPage() {
+        return nav.top.objectName === "audioPlayer";
     }
     
     /**
