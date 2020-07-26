@@ -546,37 +546,37 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/help.qml" line="22"/>
+        <location filename="../assets/pages/help.qml" line="24"/>
         <source>“播放记录”说明</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/help.qml" line="29"/>
+        <location filename="../assets/pages/help.qml" line="31"/>
         <source>播放记录最多记录近 50 几条记录，当前声音播放位置每5秒记录一次，需要查看最新记录记得刷新列表。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/help.qml" line="33"/>
+        <location filename="../assets/pages/help.qml" line="35"/>
         <source>如需删除某条记录，可长按进行删除</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/help.qml" line="43"/>
+        <location filename="../assets/pages/help.qml" line="48"/>
         <source>专辑声音列表</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/help.qml" line="50"/>
+        <location filename="../assets/pages/help.qml" line="55"/>
         <source>专辑声音列表可下拉选择声音排序规则：“正序/倒叙”，也可以进行翻页。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/help.qml" line="57"/>
+        <location filename="../assets/pages/help.qml" line="65"/>
         <source>快捷键说明</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/help.qml" line="81"/>
+        <location filename="../assets/pages/help.qml" line="89"/>
         <source>为保证不与系统快自带捷键冲突，有的快捷键是根据拼音首字母指定的。</source>
         <translation type="unfinished"></translation>
     </message>
