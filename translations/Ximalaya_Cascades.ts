@@ -541,32 +541,42 @@
 <context>
     <name>help</name>
     <message>
-        <location filename="../assets/pages/help.qml" line="16"/>
-        <source>模块&amp;功能</source>
+        <location filename="../assets/pages/help.qml" line="11"/>
+        <source>帮助</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/help.qml" line="23"/>
-        <source>分类、搜索、分类列表等。</source>
+        <location filename="../assets/pages/help.qml" line="22"/>
+        <source>“播放记录”说明</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/help.qml" line="27"/>
-        <source>查看、播放专辑、查看主播、定时关闭等。</source>
+        <location filename="../assets/pages/help.qml" line="29"/>
+        <source>播放记录最多记录近 50 几条记录，当前声音播放位置每5秒记录一次，需要查看最新记录记得刷新列表。</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/help.qml" line="31"/>
-        <source>帮助、赞助、关于、设置。</source>
+        <location filename="../assets/pages/help.qml" line="33"/>
+        <source>如需删除某条记录，可长按进行删除</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/help.qml" line="37"/>
-        <source>快捷键</source>
+        <location filename="../assets/pages/help.qml" line="43"/>
+        <source>专辑声音列表</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../assets/pages/help.qml" line="61"/>
+        <location filename="../assets/pages/help.qml" line="50"/>
+        <source>专辑声音列表可下拉选择声音排序规则：“正序/倒叙”，也可以进行翻页。</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/help.qml" line="57"/>
+        <source>快捷键说明</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../assets/pages/help.qml" line="81"/>
         <source>为保证不与系统快自带捷键冲突，有的快捷键是根据拼音首字母指定的。</source>
         <translation type="unfinished"></translation>
     </message>
@@ -575,7 +585,7 @@
     <name>index</name>
     <message>
         <location filename="../assets/pages/index.qml" line="10"/>
-        <source>分类</source>
+        <source>喜马拉雅FM</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -722,7 +732,7 @@
     </message>
     <message>
         <location filename="../assets/pages/settings.qml" line="65"/>
-        <source>主题切换可立即生效，夜间建议启动暗黑模式</source>
+        <source>主题切换可立即生效，夜间建议启动暗黑主题</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
