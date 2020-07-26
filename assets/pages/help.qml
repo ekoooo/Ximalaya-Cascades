@@ -7,34 +7,54 @@ Page {
     
     actionBarVisibility: ChromeVisibility.Compact
     
+    titleBar: TitleBar {
+        title: qsTr("帮助")
+        scrollBehavior: TitleBarScrollBehavior.Sticky
+    }
+    
     ScrollView {
         scrollRole: ScrollRole.Main
         
         Container {
             bottomPadding: ui.du(14)
+            
             Header {
-                title: qsTr("模块&功能")
+                title: qsTr("“播放记录”说明")
             }
             ItemContainer {
                 layout_: StackLayout {
                     orientation: LayoutOrientation.TopToBottom
                 }
                 Label {
-                    text: qsTr("分类、搜索、分类列表等。")
+                    text: qsTr("播放记录最多记录近 50 几条记录，当前声音播放位置每5秒记录一次，需要查看最新记录记得刷新列表。")
                     multiline: true
                 }
                 Label {
-                    text: qsTr("查看、播放专辑、查看主播、定时关闭等。")
-                    multiline: true
+                    text: qsTr("如需删除某条记录，可长按进行删除")
+                    textStyle {
+                        base: SystemDefaults.TextStyles.SubtitleText
+                        color: Color.Gray
+                    }
+                }
+            }
+            
+            Divider {}
+            Header {
+                title: qsTr("专辑声音列表")
+            }
+            ItemContainer {
+                layout_: StackLayout {
+                    orientation: LayoutOrientation.TopToBottom
                 }
                 Label {
-                    text: qsTr("帮助、赞助、关于、设置。")
+                    text: qsTr("专辑声音列表可下拉选择声音排序规则：“正序/倒叙”，也可以进行翻页。")
                     multiline: true
                 }
             }
+            
             Divider {}
             Header {
-                title: qsTr("快捷键")
+                title: qsTr("快捷键说明")
             }
             Container {
                 id: shortCutKeyContainer
@@ -83,6 +103,7 @@ Page {
                 }
                 Label {
                     text: key
+                    textStyle.fontWeight: FontWeight.Bold
                 }
             }
         }

@@ -717,12 +717,12 @@
     </message>
     <message>
         <location filename="../assets/pages/settings.qml" line="46"/>
-        <source>应用暗色主题</source>
+        <source>应用暗黑主题</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../assets/pages/settings.qml" line="65"/>
-        <source>与文章护眼模式相互独立，护眼模式直接在文章页中可设置</source>
+        <source>主题切换可立即生效，夜间建议启动暗黑模式</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

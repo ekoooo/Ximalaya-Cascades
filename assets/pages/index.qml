@@ -7,7 +7,7 @@ Page {
     actionBarVisibility: ChromeVisibility.Compact
     
     titleBar: TitleBar {
-        title: qsTr("分类")
+        title: qsTr("喜马拉雅FM")
         scrollBehavior: TitleBarScrollBehavior.Sticky
     }
     

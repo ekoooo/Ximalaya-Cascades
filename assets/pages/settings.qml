@@ -43,7 +43,7 @@ Page {
                         layoutProperties: StackLayoutProperties {
                             spaceQuota: 1
                         }
-                        text: qsTr("应用暗色主题")
+                        text: qsTr("应用暗黑主题")
                     }
                     
                     ToggleButton {
@@ -62,7 +62,7 @@ Page {
                 }
                 ItemContainer {
                     Label {
-                        text: qsTr("与文章护眼模式相互独立，护眼模式直接在文章页中可设置")
+                        text: qsTr("主题切换可立即生效，夜间建议启动暗黑主题")
                         textStyle {
                             base: SystemDefaults.TextStyles.SubtitleText
                             color: Color.Gray
