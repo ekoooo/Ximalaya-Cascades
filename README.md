@@ -1,60 +1,44 @@
-# 喜马拉雅 Cascades 版
-> 正在整理思路中...
+BB10《喜马拉雅FM》是原生开发版本，不发热，流畅，欢迎体验。
 
+### 更新日志
+**v1.0.1.0** Jul 25, 2020
+- feat: 历史播放记录列表，长按可删除
+- feat: Tab（主页、搜索、播放记录）可随意用快捷键切换，取消了只能在第一页切换的限制
 
+**v1.0.0.8** Jul 22, 2020
+- fix: 主播个人中心黑色主题显示不和谐问题修正
+- feat: 播放当页第一首，按“上一首”会自动跳转到上一页最后一首播放
 
-- dns: `http://dns.ximalaya.com/xdns/iplist?device=iPhone`
-- 搜索
-    - 搜索历史
-    - 搜索提示
-    - 搜专辑
-    - 搜主播
-- 主页
-    - 分类
-    - 推荐
-    - 精品
-    - ~~直播~~
-    - ~~广播~~
+**v1.0.0.7** Jul 19, 2020
+- feat: 播放源质量可设置
+- feat: 播放器显示当前播放和自动滚动到当前播放
 
+**v1.0.0.6** Jul 18, 2020
+- 第一版
 
+### 安装包下载地址
+百度网盘: https://pan.baidu.com/s/1dUUSmKberObbQiBggm4aHw
+提取密码: 5nhz
 
-##### 播放
-- 播放器列表按专辑播放。
-- 不能对播放器列表中的声音进行排序等操作。
-- 当播放当前 page 最后一首时，自动加载 next page 音频，直到播放完毕。
-- 当播放其他专辑时，之前播放列表清空。
-- 记录播放历史。
+onedrive 网盘: https://1drv.ms/f/s!AlXW6VneKMgtdomdr5EGme7NGeg
 
-##### 播放源（是否提供选择，经过测试有的地址加载比较慢）
-- playUrl32
-- playUrl64
-- playPathAacv164
-- playPathAacv224
+### 效果截图
+![](http://img.lwl.tech/8404961031748_1595038968253.png)
 
-##### 播放器元素
-- 演播+当前播放
-- 当前播放专辑页
-    - 上页下页
-- 时间轴
-    - 可调整时间
-- 上集、下集
-    - 当前页面播放完毕，自动加载下集播放
-    - 上集到当前页面第一个不能继续上一集
-- 定时关闭
-    - 声音集数
-    - 时间
+------------
+![](http://img.lwl.tech/8404961034588_1595038965412.png)
 
-##### 测试地址
-list: `http://mobile.ximalaya.com/mobile/v1/album/track?albumId=4756811&pageId=3&pageSize=20&device=android&isAsc=true`
+------------
+![](http://img.lwl.tech/8404961036596_1595038963403.png)
 
-item: `http://mobile.ximalaya.com/v1/track/baseInfo?device=android&trackId=28644975`
+------------
+![](http://img.lwl.tech/8404961038796_1595038961202.png)
 
-playUrl32: `http://fdfs.xmcdn.com/group24/M09/7A/9A/wKgJMFh3gWSCoMhRADeg0s5eCu8103.mp3`
+------------
+![](http://img.lwl.tech/8404961041406_1595038958593.png)
 
-playUrl64: `http://fdfs.xmcdn.com/group24/M09/7A/97/wKgJMFh3gVeRBm_IAG9BOlwcZH4917.mp3`
+------------
+![](http://img.lwl.tech/8404961043605_1595038956393.png)
 
-downloadAacUrl: `http://download.xmcdn.com/group24/M09/7A/9A/wKgJMFh3gWnDvg_xACsOftIhkuI230.m4a`
-
-playPathAacv164: `http://audio.xmcdn.com/group24/M09/7A/B9/wKgJNVh3gVfS0u9oAHCYMSwdh6M396.m4a`
-
-playPathAacv224: `http://audio.xmcdn.com/group24/M09/7A/9A/wKgJMFh3gWnDvg_xACsOftIhkuI230.m4a`
+------------
+![](http://img.lwl.tech/8404961046323_1595038953671.png)
