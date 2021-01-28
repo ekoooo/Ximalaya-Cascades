@@ -1,6 +1,7 @@
+# Blackberry BB10 喜马拉雅FM，Cascades 原生开发
 BB10《喜马拉雅FM》是原生开发版本，不发热，流畅，欢迎体验。
 
-### 更新日志
+## 更新日志
 **v1.0.1.0** Jul 25, 2020
 - feat: 历史播放记录列表，长按可删除
 - feat: Tab（主页、搜索、播放记录）可随意用快捷键切换，取消了只能在第一页切换的限制
@@ -16,13 +17,13 @@ BB10《喜马拉雅FM》是原生开发版本，不发热，流畅，欢迎体�
 **v1.0.0.6** Jul 18, 2020
 - 第一版
 
-### 安装包下载地址
+## 安装包下载地址
 百度网盘: https://pan.baidu.com/s/1dUUSmKberObbQiBggm4aHw
 提取密码: 5nhz
 
 onedrive 网盘: https://1drv.ms/f/s!AlXW6VneKMgtdomdr5EGme7NGeg
 
-### 效果截图
+## 效果截图
 ![](http://img.lwl.tech/8404961031748_1595038968253.png)
 
 ------------
